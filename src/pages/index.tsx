@@ -78,9 +78,11 @@ export default function Home() {
   // 动画变体
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
+    animate: { opacity: 1, y: 0 }
   }
+
+  // 动画过渡配置
+  const fadeTransition = { duration: 0.6, ease: "easeOut" }
 
   const staggerContainer = {
     animate: {
@@ -183,9 +185,10 @@ export default function Home() {
             animate="animate"
             variants={staggerContainer}
           >
-            <motion.h1 
+            <motion.h1
               className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6"
               variants={fadeInUp}
+              transition={fadeTransition}
             >
               {t('你好，我是', 'Hello, I am')} 
               <motion.span 
@@ -203,9 +206,10 @@ export default function Home() {
               </motion.span>
             </motion.h1>
             
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
               variants={fadeInUp}
+              transition={fadeTransition}
             >
               {t(
                 '一名专注数据科学的分析师，致力于从数据中挖掘洞察，用智能分析驱动商业决策',
@@ -216,6 +220,7 @@ export default function Home() {
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
               variants={fadeInUp}
+              transition={fadeTransition}
             >
               <motion.a
                 href="#projects"

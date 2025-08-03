@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 interface Shortcut {
-  key: string
+  key?: string
   description: string
   combo?: string[]
 }
@@ -127,11 +127,11 @@ export default function KeyboardShortcutsHelp() {
                             )}
                           </span>
                         ))
-                      ) : (
+                      ) : shortcut.key ? (
                         <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-200 border border-gray-300 rounded dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
                           {shortcut.key}
                         </kbd>
-                      )}
+                      ) : null}
                     </div>
                   </motion.div>
                 ))}
