@@ -17,6 +17,7 @@ export default function Layout({ children }: LayoutProps) {
     { name: t('首页', 'Home'), href: '/' },
     { name: t('项目', 'Projects'), href: '/projects' },
     { name: t('生活', 'Life'), href: '/life' },
+    { name: t('关于', 'About'), href: '#about' },
   ]
 
   // 完全移除滚动相关的 useEffect
@@ -46,8 +47,8 @@ export default function Layout({ children }: LayoutProps) {
             </div>
 
             {/* 移动端导航 */}
-            <div className="md:hidden flex items-center space-x-2">
-              {navItems.slice(0, 2).map((item) => (
+            <div className="md:hidden flex items-center space-x-1">
+              {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}

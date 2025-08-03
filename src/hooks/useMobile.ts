@@ -6,19 +6,27 @@ export function useMobile() {
 
   useEffect(() => {
     const checkMobile = () => {
-      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera
+      // 简化检测逻辑，主要基于屏幕宽度
+      const isSmallScreen = window.innerWidth < 768
+      const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : ''
       const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
       const isMobileDevice = mobileRegex.test(userAgent)
-      const isSmallScreen = window.innerWidth < 768
-      
-      setIsMobile(isMobileDevice || isSmallScreen)
+
+      const mobile = isMobileDevice || isSmallScreen
+      console.log('Mobile detection:', { isMobileDevice, isSmallScreen, mobile, width: window.innerWidth })
+
+      setIsMobile(mobile)
       setIsLoaded(true)
     }
 
-    checkMobile()
+    // 延迟检测，确保DOM完全加载
+    const timer = setTimeout(checkMobile, 100)
     window.addEventListener('resize', checkMobile)
-    
-    return () => window.removeEventListener('resize', checkMobile)
+
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', checkMobile)
+    }
   }, [])
 
   return { isMobile, isLoaded }

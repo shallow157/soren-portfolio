@@ -64,14 +64,14 @@ export default function BookModal() {
 
           {/* 模态框内容 */}
           <motion.div
-            className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden"
+            className="relative w-full max-w-4xl h-[90vh] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 300, 
-              damping: 25 
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 25
             }}
           >
             {/* 关闭按钮 */}
@@ -86,7 +86,7 @@ export default function BookModal() {
               </svg>
             </motion.button>
 
-            <div className="flex flex-col md:flex-row h-full">
+            <div className="flex flex-col md:flex-row flex-1 min-h-0">
               {/* 左侧：书籍封面和信息 */}
               <motion.div 
                 className="md:w-1/3 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800"
@@ -155,12 +155,13 @@ export default function BookModal() {
               </motion.div>
 
               {/* 右侧：读书笔记内容 */}
-              <motion.div 
-                className="md:w-2/3 p-6 overflow-y-auto"
+              <motion.div
+                className="md:w-2/3 flex flex-col min-h-0"
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
+                <div className="p-6 overflow-y-auto flex-1">
                 {loading ? (
                   <div className="flex items-center justify-center h-64">
                     <motion.div
@@ -210,6 +211,7 @@ export default function BookModal() {
                     </ReactMarkdown>
                   </motion.div>
                 )}
+                </div>
               </motion.div>
             </div>
           </motion.div>

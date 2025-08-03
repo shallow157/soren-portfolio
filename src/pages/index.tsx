@@ -9,11 +9,8 @@ import SearchBar from '../components/SearchBar'
 import BackToTop from '../components/BackToTop'
 import KeyboardShortcutsHelp from '../components/KeyboardShortcutsHelp'
 import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShortcuts'
-import { useMobile } from '../hooks/useMobile'
-
 export default function Home() {
   const { t } = useLanguage()
-  const { isMobile, isLoaded } = useMobile()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -136,30 +133,26 @@ export default function Home() {
     }
   }
 
-  // 移动端加载状态
-  if (!isLoaded) {
-    return (
-      <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600 dark:text-gray-400">加载中...</p>
-          </div>
-        </div>
-      </Layout>
-    )
-  }
 
-  // 移动端简化版本
-  if (isMobile) {
-    return (
-      <Layout>
-        {/* 移动端简化Hero区域 */}
-        <div className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="text-center max-w-lg">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+
+  return (
+    <Layout>
+      {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
+      <div className="block md:hidden">
+        {/* 移动端Hero区域 - 改进版 */}
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+          {/* 背景动画 */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-200 dark:bg-purple-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+          </div>
+
+          <div className="relative z-10 text-center max-w-lg">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {t('你好，我是', 'Hello, I am')}
-              <span className="text-blue-600 dark:text-blue-400 block mt-2">Soren</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 block mt-2">
+                Soren
+              </span>
             </h1>
 
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
@@ -169,25 +162,138 @@ export default function Home() {
               )}
             </p>
 
-            <div className="flex flex-col gap-4 mb-12">
-              <Link
-                href="/projects"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors text-center"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <a
+                href="#projects"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {t('查看项目', 'View Projects')}
-              </Link>
-              <Link
-                href="/life"
-                className="border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 rounded-lg transition-colors text-center"
+              </a>
+              <a
+                href="#about"
+                className="border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 rounded-full transition-colors"
               >
-                {t('阅读笔记', 'Reading Notes')}
-              </Link>
+                {t('了解更多', 'Learn More')}
+              </a>
+            </div>
+
+            {/* 滚动提示 */}
+            <div className="mt-12">
+              <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center mx-auto">
+                <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2 animate-bounce"></div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 移动端简化书架区域 */}
-        <div className="py-20 px-4">
+        {/* 移动端技能部分 */}
+        <section id="skills" className="py-16 px-4 bg-white dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              {t('我的技能', 'My Skills')}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-12">
+              {t('专注于数据科学和全栈开发的技术栈', 'Focused on data science and full-stack development')}
+            </p>
+
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { name: 'Python', level: 90, color: 'bg-blue-500' },
+                { name: 'JavaScript', level: 85, color: 'bg-yellow-500' },
+                { name: 'React', level: 88, color: 'bg-cyan-500' },
+                { name: 'SQL', level: 92, color: 'bg-green-500' },
+                { name: 'Machine Learning', level: 85, color: 'bg-purple-500' },
+                { name: 'Data Analysis', level: 95, color: 'bg-red-500' }
+              ].map((skill, index) => (
+                <div key={skill.name} className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <div className={`w-8 h-8 rounded-full ${skill.color}`}></div>
+                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{skill.name}</h3>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                    <div
+                      className={`h-2 rounded-full ${skill.color}`}
+                      style={{ width: `${skill.level}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 移动端精选项目部分 */}
+        <section id="projects" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('精选项目', 'Featured Projects')}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {t('一些我最引以为豪的项目作品', 'Some of my most proud project works')}
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  title: t('数据可视化平台', 'Data Visualization Platform'),
+                  description: t('基于React和D3.js构建的交互式数据可视化平台', 'Interactive data visualization platform built with React and D3.js'),
+                  tech: ['React', 'D3.js', 'Python', 'FastAPI'],
+                  gradient: 'from-blue-500 to-cyan-500'
+                },
+                {
+                  title: t('机器学习预测系统', 'ML Prediction System'),
+                  description: t('使用深度学习技术的智能预测分析系统', 'Intelligent prediction analysis system using deep learning'),
+                  tech: ['Python', 'TensorFlow', 'Docker', 'AWS'],
+                  gradient: 'from-purple-500 to-pink-500'
+                },
+                {
+                  title: t('实时数据监控', 'Real-time Data Monitoring'),
+                  description: t('企业级实时数据监控和告警系统', 'Enterprise-level real-time data monitoring and alerting system'),
+                  tech: ['Node.js', 'Redis', 'WebSocket', 'MongoDB'],
+                  gradient: 'from-green-500 to-teal-500'
+                }
+              ].map((project, index) => (
+                <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
+                  <div className={`w-full h-32 bg-gradient-to-r ${project.gradient} rounded-lg mb-4 flex items-center justify-center`}>
+                    <div className="text-white text-2xl font-bold">
+                      {project.title.split(' ')[0]}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <Link
+                href="/projects"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                {t('查看所有项目', 'View All Projects')}
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 移动端书架区域 */}
+        <section className="py-16 px-4 bg-white dark:bg-gray-900">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               {t('我的书架', 'My Bookshelf')}
@@ -197,31 +303,204 @@ export default function Home() {
             </p>
           </div>
           <BookshelfSection />
-        </div>
+        </section>
 
-        {/* 移动端简化联系区域 */}
-        <div className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="text-center max-w-lg mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              {t('联系我', 'Contact Me')}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-8">
-              {t('有任何想法或合作机会，欢迎联系', 'Feel free to reach out for any ideas or collaboration opportunities')}
-            </p>
-            <a
-              href="mailto:your-email@example.com"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors inline-block"
-            >
-              {t('发送邮件', 'Send Email')}
-            </a>
+        {/* 移动端最新文章部分 */}
+        <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('最新文章', 'Latest Articles')}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {t('分享一些思考和学习心得', 'Sharing thoughts and learning insights')}
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  title: t('数据科学在商业决策中的应用', 'Application of Data Science in Business Decision Making'),
+                  excerpt: t('探讨如何运用数据科学方法来优化商业决策流程...', 'Exploring how to use data science methods to optimize business decision-making processes...'),
+                  date: '2024-01-15',
+                  category: t('数据科学', 'Data Science')
+                },
+                {
+                  title: t('React性能优化最佳实践', 'React Performance Optimization Best Practices'),
+                  excerpt: t('分享在大型React应用中的性能优化经验和技巧...', 'Sharing performance optimization experience and techniques in large React applications...'),
+                  date: '2024-01-10',
+                  category: t('前端开发', 'Frontend Development')
+                },
+                {
+                  title: t('机器学习模型部署指南', 'Machine Learning Model Deployment Guide'),
+                  excerpt: t('从模型训练到生产环境部署的完整流程介绍...', 'Complete process introduction from model training to production deployment...'),
+                  date: '2024-01-05',
+                  category: t('机器学习', 'Machine Learning')
+                }
+              ].map((article, index) => (
+                <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 text-xs rounded-full">
+                      {article.category}
+                    </span>
+                    <span className="text-gray-500 dark:text-gray-400 text-sm">
+                      {article.date}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                    {article.excerpt}
+                  </p>
+                  <a href="#" className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline">
+                    {t('阅读更多', 'Read More')} →
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <Link
+                href="/life"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                {t('查看所有文章', 'View All Articles')}
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
-        </div>
-      </Layout>
-    )
-  }
+        </section>
 
-  return (
-    <Layout>
+        {/* 移动端关于我部分 */}
+        <section id="about" className="py-16 px-4 bg-white dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('关于我', 'About Me')}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {t('了解更多关于我的背景和经历', 'Learn more about my background and experience')}
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t('专业背景', 'Professional Background')}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t(
+                    '我是一名专注于数据科学和全栈开发的工程师，拥有丰富的项目经验。擅长使用Python、JavaScript等技术栈，在机器学习、数据分析和Web开发方面有深入的研究和实践。',
+                    'I am an engineer focused on data science and full-stack development with rich project experience. Proficient in Python, JavaScript and other tech stacks, with in-depth research and practice in machine learning, data analysis and web development.'
+                  )}
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t('兴趣爱好', 'Interests & Hobbies')}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {t(
+                    '除了技术工作，我热爱阅读、跑步和摄影。通过阅读不断拓展视野，通过跑步保持身心健康，通过摄影记录生活中的美好瞬间。这些爱好让我在工作之余保持平衡和创造力。',
+                    'Besides technical work, I love reading, running and photography. Reading constantly expands my horizons, running keeps me physically and mentally healthy, and photography captures beautiful moments in life. These hobbies help me maintain balance and creativity outside of work.'
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 移动端联系我部分 */}
+        <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('联系我', 'Contact Me')}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {t('有任何想法或合作机会，欢迎联系', 'Feel free to reach out for any ideas or collaboration opportunities')}
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('姓名', 'Name')}
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('邮箱', 'Email')}
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('消息', 'Message')}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
+                >
+                  {isSubmitting ? t('发送中...', 'Sending...') : t('发送消息', 'Send Message')}
+                </button>
+              </form>
+
+              {submitStatus && (
+                <div className={`mt-4 p-4 rounded-lg ${
+                  submitStatus === 'success'
+                    ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300'
+                    : 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300'
+                }`}>
+                  {submitStatus === 'success'
+                    ? t('消息发送成功！', 'Message sent successfully!')
+                    : t('发送失败，请稍后重试。', 'Failed to send. Please try again later.')
+                  }
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* 桌面端版本 - 使用CSS媒体查询控制显示 */}
+      <div className="hidden md:block">
       {/* Hero Section with animated background */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated background elements */}
@@ -2168,6 +2447,7 @@ export default function Home() {
 
       {/* 键盘快捷键帮助 */}
       <KeyboardShortcutsHelp />
+      </div>
     </Layout>
   )
 }
