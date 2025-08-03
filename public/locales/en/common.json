@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "life": "Life",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Hi, I'm Soren",
+    "subtitle": "A passionate developer who loves creating and sharing, focused on building elegant digital experiences",
+    "cta": {
+      "projects": "View Projects",
+      "about": "Learn More"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Some of my proudest work"
+  },
+  "life": {
+    "title": "Life Insights",
+    "subtitle": "Recording thoughts and growth moments"
+  }
+}

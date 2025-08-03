@@ -1,0 +1,25 @@
+# 缓存静态资源
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 缓存图片
+/images/*
+  Cache-Control: public, max-age=31536000
+
+# 缓存字体
+/fonts/*
+  Cache-Control: public, max-age=31536000
+
+# 安全头
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# CORS for API routes (if any)
+/api/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization

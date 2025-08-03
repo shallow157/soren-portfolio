@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "首页",
+    "projects": "项目",
+    "life": "生活",
+    "about": "关于"
+  },
+  "hero": {
+    "title": "你好，我是 Soren",
+    "subtitle": "一个热爱创造与分享的开发者，专注于构建优雅的数字体验",
+    "cta": {
+      "projects": "查看项目",
+      "about": "了解更多"
+    }
+  },
+  "projects": {
+    "title": "精选项目",
+    "subtitle": "一些我引以为豪的作品"
+  },
+  "life": {
+    "title": "生活感悟",
+    "subtitle": "记录思考与成长的点点滴滴"
+  }
+}
