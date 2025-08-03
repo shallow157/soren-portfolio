@@ -132,12 +132,9 @@ export default function BookModal() {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3 }}
                       >
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                           {selectedBook.title}
                         </h2>
-                        <p className="text-gray-600 dark:text-gray-300 mb-2">
-                          {selectedBook.author}
-                        </p>
                         <div className="flex items-center justify-center mb-4">
                           <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full">
                             {selectedBook.category}
