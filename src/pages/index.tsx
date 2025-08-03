@@ -9,9 +9,11 @@ import SearchBar from '../components/SearchBar'
 import BackToTop from '../components/BackToTop'
 import KeyboardShortcutsHelp from '../components/KeyboardShortcutsHelp'
 import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShortcuts'
+import { useMobile } from '../hooks/useMobile'
 
 export default function Home() {
   const { t } = useLanguage()
+  const { isMobile, isLoaded } = useMobile()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -132,6 +134,90 @@ export default function Home() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  // 移动端加载状态
+  if (!isLoaded) {
+    return (
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-600 dark:text-gray-400">加载中...</p>
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
+  // 移动端简化版本
+  if (isMobile) {
+    return (
+      <Layout>
+        {/* 移动端简化Hero区域 */}
+        <div className="min-h-screen flex items-center justify-center px-4 py-20">
+          <div className="text-center max-w-lg">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              {t('你好，我是', 'Hello, I am')}
+              <span className="text-blue-600 dark:text-blue-400 block mt-2">Soren</span>
+            </h1>
+
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              {t(
+                '一名专注数据科学的分析师，致力于从数据中挖掘洞察，用智能分析驱动商业决策',
+                'A data science analyst focused on extracting insights from data and driving business decisions through intelligent analysis'
+              )}
+            </p>
+
+            <div className="flex flex-col gap-4 mb-12">
+              <Link
+                href="/projects"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors text-center"
+              >
+                {t('查看项目', 'View Projects')}
+              </Link>
+              <Link
+                href="/life"
+                className="border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 rounded-lg transition-colors text-center"
+              >
+                {t('阅读笔记', 'Reading Notes')}
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* 移动端简化书架区域 */}
+        <div className="py-20 px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              {t('我的书架', 'My Bookshelf')}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              {t('分享一些读过的好书和思考', 'Sharing some good books and thoughts')}
+            </p>
+          </div>
+          <BookshelfSection />
+        </div>
+
+        {/* 移动端简化联系区域 */}
+        <div className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="text-center max-w-lg mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              {t('联系我', 'Contact Me')}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">
+              {t('有任何想法或合作机会，欢迎联系', 'Feel free to reach out for any ideas or collaboration opportunities')}
+            </p>
+            <a
+              href="mailto:your-email@example.com"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors inline-block"
+            >
+              {t('发送邮件', 'Send Email')}
+            </a>
+          </div>
+        </div>
+      </Layout>
+    )
   }
 
   return (

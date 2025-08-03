@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode } from 'react'
 import { useRouter } from 'next/router'
 import { useTheme } from '@/contexts/ThemeContext'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -12,30 +12,18 @@ export default function Layout({ children }: LayoutProps) {
   const { language, toggleLanguage, t } = useLanguage()
   const router = useRouter()
 
-  // 只在路由变化时滚动到顶部，语言切换时不滚动
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      // 如果只是语言切换（路径相同），不滚动
-      if (url === router.asPath) return
-      window.scrollTo(0, 0)
-    }
-
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router])
-
+  // 导航项配置
   const navItems = [
     { name: t('首页', 'Home'), href: '/' },
-    { name: t('项目', 'Projects'), href: '#projects' },
+    { name: t('项目', 'Projects'), href: '/projects' },
     { name: t('生活', 'Life'), href: '/life' },
-    { name: t('关于', 'About'), href: '#about' },
   ]
 
+  // 完全移除滚动相关的 useEffect
+  
   return (
-    <div className="min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
-      <nav className="shadow-sm border-b transition-colors duration-300 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+      <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -44,12 +32,26 @@ export default function Layout({ children }: LayoutProps) {
               </h1>
             </div>
 
-            <div className="flex items-center space-x-6">
+            {/* 桌面端导航 */}
+            <div className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   className="transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+
+            {/* 移动端导航 */}
+            <div className="md:hidden flex items-center space-x-2">
+              {navItems.slice(0, 2).map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-xs px-2 py-1 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
                 >
                   {item.name}
                 </a>
@@ -80,6 +82,8 @@ export default function Layout({ children }: LayoutProps) {
     </div>
   )
 }
+
+
 
 
 
