@@ -119,6 +119,9 @@ dist
 tmp/
 temp/
 
+# Local project folders (embedded git repos)
+local_projrcts_tmp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

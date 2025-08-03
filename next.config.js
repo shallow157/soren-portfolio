@@ -2,10 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // 移除 output: 'export' 以支持服务端功能
-  experimental: {
-    runtime: 'edge', // 使用Edge Runtime以兼容Cloudflare Workers
-  },
+  // 移除无效的 experimental.runtime 配置
   images: {
     domains: ['localhost'], // 添加允许的图片域名
     formats: ['image/avif', 'image/webp'],

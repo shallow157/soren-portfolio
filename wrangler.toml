@@ -1,8 +1,8 @@
 name = "soren-portfolio"
 compatibility_date = "2024-01-01"
 
-# Pages 配置 - 使用 @cloudflare/next-on-pages 构建输出
-pages_build_output_dir = ".vercel/output/static"
+# Pages 配置 - 使用标准Next.js构建输出
+pages_build_output_dir = ".next"
 
 # 环境变量
 [vars]
