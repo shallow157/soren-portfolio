@@ -188,36 +188,76 @@ export default function Home() {
 
         {/* 移动端技能部分 */}
         <section id="skills" className="py-16 px-4 bg-white dark:bg-gray-900">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              {t('我的技能', 'My Skills')}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-12">
-              {t('专注于数据科学和全栈开发的技术栈', 'Focused on data science and full-stack development')}
-            </p>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                {t('技能专长', 'Skills & Expertise')}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {t('专注于数据分析与商业智能技术栈', 'Focused on data analysis and business intelligence technologies')}
+              </p>
+            </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { name: 'Python', level: 90, color: 'bg-blue-500' },
-                { name: 'JavaScript', level: 85, color: 'bg-yellow-500' },
-                { name: 'React', level: 88, color: 'bg-cyan-500' },
-                { name: 'SQL', level: 92, color: 'bg-green-500' },
-                { name: 'Machine Learning', level: 85, color: 'bg-purple-500' },
-                { name: 'Data Analysis', level: 95, color: 'bg-red-500' }
-              ].map((skill, index) => (
-                <div key={skill.name} className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                    <div className={`w-8 h-8 rounded-full ${skill.color}`}></div>
-                  </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{skill.name}</h3>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
-                    <div
-                      className={`h-2 rounded-full ${skill.color}`}
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
+            <div className="space-y-6">
+              {/* 数据处理与分析 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <div className="text-2xl mr-3">📊</div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {t('数据处理与分析', 'Data Processing & Analysis')}
+                  </h3>
                 </div>
-              ))}
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                  {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Python', 'R', 'SQL', 'SPSS'].map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-800 dark:text-sky-200 text-sm rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* 数据可视化 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <div className="text-2xl mr-3">📈</div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {t('数据可视化', 'Data Visualization')}
+                  </h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                  {t('创建直观美观的数据图表和交互式仪表板', 'Create intuitive and beautiful data charts and interactive dashboards')}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Tableau', 'Power BI', 'Matplotlib', 'Seaborn'].map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 text-sm rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* 数据库与工具 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <div className="text-2xl mr-3">🗄️</div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {t('数据库与工具', 'Database & Tools')}
+                  </h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                  {t('熟练掌握多种数据库系统和开发工具', 'Proficient in various database systems and development tools')}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['MySQL', 'PostgreSQL', 'MongoDB', 'Jupyter'].map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-200 text-sm rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -230,52 +270,76 @@ export default function Home() {
                 {t('精选项目', 'Featured Projects')}
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                {t('一些我最引以为豪的项目作品', 'Some of my most proud project works')}
+                {t('展示我在数据分析和机器学习领域的实践成果', 'Showcasing my practical achievements in data analysis and machine learning')}
               </p>
             </div>
 
             <div className="space-y-6">
-              {[
-                {
-                  title: t('数据可视化平台', 'Data Visualization Platform'),
-                  description: t('基于React和D3.js构建的交互式数据可视化平台', 'Interactive data visualization platform built with React and D3.js'),
-                  tech: ['React', 'D3.js', 'Python', 'FastAPI'],
-                  gradient: 'from-blue-500 to-cyan-500'
-                },
-                {
-                  title: t('机器学习预测系统', 'ML Prediction System'),
-                  description: t('使用深度学习技术的智能预测分析系统', 'Intelligent prediction analysis system using deep learning'),
-                  tech: ['Python', 'TensorFlow', 'Docker', 'AWS'],
-                  gradient: 'from-purple-500 to-pink-500'
-                },
-                {
-                  title: t('实时数据监控', 'Real-time Data Monitoring'),
-                  description: t('企业级实时数据监控和告警系统', 'Enterprise-level real-time data monitoring and alerting system'),
-                  tech: ['Node.js', 'Redis', 'WebSocket', 'MongoDB'],
-                  gradient: 'from-green-500 to-teal-500'
-                }
-              ].map((project, index) => (
-                <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
-                  <div className={`w-full h-32 bg-gradient-to-r ${project.gradient} rounded-lg mb-4 flex items-center justify-center`}>
-                    <div className="text-white text-2xl font-bold">
-                      {project.title.split(' ')[0]}
-                    </div>
+              {/* 项目1：酒店预订取消率分析 */}
+              <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+                <div className="h-32 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative">
+                  <div className="text-4xl text-white">🏨</div>
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
+                      {t('机器学习', 'Machine Learning')}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                    {project.title}
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {t('酒店预订取消率分析', 'Hotel Booking Cancellation Analysis')}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">
-                    {project.description}
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    {t('基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。', 'Built XGBoost prediction model with 87% accuracy using Kaggle hotel booking dataset. Combined with SQL database design and PowerBI dashboard.')}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-full">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {['Python', 'XGBoost', 'SQL', 'PowerBI'].map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm rounded-full">
                         {tech}
                       </span>
                     ))}
                   </div>
+                  <a
+                    href="/reports/1"
+                    className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:from-blue-600 hover:to-purple-700 transition-colors"
+                  >
+                    {t('查看项目', 'View Project')}
+                  </a>
                 </div>
-              ))}
+              </div>
+
+              {/* 项目2：淘宝用户行为分析 */}
+              <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+                <div className="h-32 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center relative">
+                  <div className="text-4xl text-white">🛒</div>
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
+                      {t('数据挖掘', 'Data Mining')}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {t('淘宝用户行为分析', 'Taobao User Behavior Analysis')}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                    {t('处理1亿条用户行为数据，构建完整的用户行为分析框架，RFM模型实现精准用户分群，Tableau可视化仪表板展示核心指标。', 'Processed 100M user behavior records, built comprehensive analysis framework, RFM model for user segmentation, Tableau dashboard for key metrics.')}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {['MySQL', 'Tableau', 'Python', 'RFM模型'].map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-sm rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="/reports/2"
+                    className="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white px-4 py-2 rounded-lg text-sm hover:from-green-600 hover:to-teal-700 transition-colors"
+                  >
+                    {t('查看项目', 'View Project')}
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div className="text-center mt-8">
@@ -306,64 +370,116 @@ export default function Home() {
         </section>
 
         {/* 移动端最新文章部分 */}
-        <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+        <section className="py-16 px-4 bg-white dark:bg-gray-900">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t('最新文章', 'Latest Articles')}
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                {t('分享一些思考和学习心得', 'Sharing thoughts and learning insights')}
+                {t('分享技术心得与生活感悟', 'Sharing technical insights and life thoughts')}
               </p>
             </div>
 
             <div className="space-y-6">
-              {[
-                {
-                  title: t('数据科学在商业决策中的应用', 'Application of Data Science in Business Decision Making'),
-                  excerpt: t('探讨如何运用数据科学方法来优化商业决策流程...', 'Exploring how to use data science methods to optimize business decision-making processes...'),
-                  date: '2024-01-15',
-                  category: t('数据科学', 'Data Science')
-                },
-                {
-                  title: t('React性能优化最佳实践', 'React Performance Optimization Best Practices'),
-                  excerpt: t('分享在大型React应用中的性能优化经验和技巧...', 'Sharing performance optimization experience and techniques in large React applications...'),
-                  date: '2024-01-10',
-                  category: t('前端开发', 'Frontend Development')
-                },
-                {
-                  title: t('机器学习模型部署指南', 'Machine Learning Model Deployment Guide'),
-                  excerpt: t('从模型训练到生产环境部署的完整流程介绍...', 'Complete process introduction from model training to production deployment...'),
-                  date: '2024-01-05',
-                  category: t('机器学习', 'Machine Learning')
-                }
-              ].map((article, index) => (
-                <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 text-xs rounded-full">
-                      {article.category}
-                    </span>
-                    <span className="text-gray-500 dark:text-gray-400 text-sm">
-                      {article.date}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                    {article.excerpt}
-                  </p>
-                  <a href="#" className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline">
-                    {t('阅读更多', 'Read More')} →
-                  </a>
+              {/* 文章1：关于技术成长的思考 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-start justify-between mb-4">
+                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-sm rounded-full">
+                    {t('技术感悟', 'Tech Insights')}
+                  </span>
+                  <span className="text-gray-500 dark:text-gray-400 text-sm">
+                    2025-07-25
+                  </span>
                 </div>
-              ))}
+                <Link href="/life/1">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer">
+                    {t('关于技术成长的思考', 'Thoughts on Technical Growth')}
+                  </h3>
+                </Link>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {t(
+                    '在这个快速发展的技术世界中，如何保持持续学习的动力和方向...',
+                    'In this rapidly evolving tech world, how to maintain motivation for continuous learning...'
+                  )}
+                </p>
+                <Link href="/life/1">
+                  <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline">
+                    {t('阅读更多', 'Read More')}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              </div>
+
+              {/* 文章2：远程工作的利与弊 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-start justify-between mb-4">
+                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 text-sm rounded-full">
+                    {t('工作思考', 'Work Thoughts')}
+                  </span>
+                  <span className="text-gray-500 dark:text-gray-400 text-sm">
+                    2025-05-12
+                  </span>
+                </div>
+                <Link href="/life/2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer">
+                    {t('远程工作的利与弊', 'Pros and Cons of Remote Work')}
+                  </h3>
+                </Link>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {t(
+                    '疫情改变了我们的工作方式，远程工作成为新常态...',
+                    'The pandemic changed our work patterns, remote work became the new normal...'
+                  )}
+                </p>
+                <Link href="/life/2">
+                  <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline">
+                    {t('阅读更多', 'Read More')}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              </div>
+
+              {/* 文章3：AI 时代的程序员 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-start justify-between mb-4">
+                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                    {t('社会热点', 'Social Trends')}
+                  </span>
+                  <span className="text-gray-500 dark:text-gray-400 text-sm">
+                    2025-03-21
+                  </span>
+                </div>
+                <Link href="/life/3">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer">
+                    {t('AI 时代的程序员', 'Programmers in the AI Era')}
+                  </h3>
+                </Link>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {t(
+                    '人工智能的快速发展对程序员意味着什么？我们应该如何应对...',
+                    'What does the rapid development of AI mean for programmers? How should we respond...'
+                  )}
+                </p>
+                <Link href="/life/3">
+                  <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline">
+                    {t('阅读更多', 'Read More')}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              </div>
             </div>
 
             <div className="text-center mt-8">
               <Link
                 href="/life"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {t('查看所有文章', 'View All Articles')}
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -375,40 +491,59 @@ export default function Home() {
         </section>
 
         {/* 移动端关于我部分 */}
-        <section id="about" className="py-16 px-4 bg-white dark:bg-gray-900">
+        <section id="about" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t('关于我', 'About Me')}
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                {t('了解更多关于我的背景和经历', 'Learn more about my background and experience')}
+              <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                {t(
+                  '我是一名充满热情的数据分析爱好者。我热爱发现数据之美，我喜欢用数据解决问题，用数据分析解决问题，用数据创造价值，并始终保持学习新技术的热情。',
+                  'I am a passionate data analysis enthusiast. I love discovering the beauty of data, solving problems with data, creating value through data analysis, and always maintain enthusiasm for learning new technologies.'
+                )}
               </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('专业背景', 'Professional Background')}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {t(
-                    '我是一名专注于数据科学和全栈开发的工程师，拥有丰富的项目经验。擅长使用Python、JavaScript等技术栈，在机器学习、数据分析和Web开发方面有深入的研究和实践。',
-                    'I am an engineer focused on data science and full-stack development with rich project experience. Proficient in Python, JavaScript and other tech stacks, with in-depth research and practice in machine learning, data analysis and web development.'
-                  )}
-                </p>
+            <div className="space-y-6">
+              {/* 数据驱动 */}
+              <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="text-center">
+                  <div className="text-4xl mb-4">📊</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {t('数据驱动', 'Data Driven')}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {t('用数据说话，让洞察指导决策', 'Let data speak and insights guide decisions')}
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t('兴趣爱好', 'Interests & Hobbies')}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {t(
-                    '除了技术工作，我热爱阅读、跑步和摄影。通过阅读不断拓展视野，通过跑步保持身心健康，通过摄影记录生活中的美好瞬间。这些爱好让我在工作之余保持平衡和创造力。',
-                    'Besides technical work, I love reading, running and photography. Reading constantly expands my horizons, running keeps me physically and mentally healthy, and photography captures beautiful moments in life. These hobbies help me maintain balance and creativity outside of work.'
-                  )}
-                </p>
+              {/* 持续创新 */}
+              <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="text-center">
+                  <div className="text-4xl mb-4">🚀</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {t('持续创新', 'Continuous Innovation')}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {t('拥抱新技术，探索无限可能', 'Embrace new technologies and explore infinite possibilities')}
+                  </p>
+                </div>
+              </div>
+
+              {/* 解决问题 */}
+              <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="text-center">
+                  <div className="text-4xl mb-4">💡</div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {t('解决问题', 'Problem Solving')}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {t('化复杂为简单，变挑战为机遇', 'Turn complexity into simplicity, challenges into opportunities')}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
