@@ -45,57 +45,6 @@ a {
   text-decoration: none;
 }
 
-/* 移动端兼容性增强 - 只在移动端生效 */
-@media (max-width: 767px) {
-  /* 移动端基础样式强化 */
-  html {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    -webkit-overflow-scrolling: touch;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* 移动端Flexbox兼容性 */
-  .flex {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-
-  .flex-col {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  /* 移动端Grid兼容性 */
-  .grid {
-    display: -ms-grid;
-    display: grid;
-  }
-
-  /* 移动端Transform兼容性 */
-  .transform {
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  /* 移动端Transition兼容性 */
-  .transition {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-}
-
 /* 深色模式样式 */
 .dark {
   color-scheme: dark;

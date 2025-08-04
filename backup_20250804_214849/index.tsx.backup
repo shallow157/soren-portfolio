@@ -214,15 +214,6 @@ export default function Home() {
 
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
       <div className="block md:hidden">
-        {/* 移动端CSS诊断系统 */}
-        <div className="mobile-css-test">
-          移动端CSS加载诊断
-        </div>
-
-        <div className="mobile-css-loaded">
-          移动端CSS修复系统
-        </div>
-
         {/* 移动端样式隔离测试 */}
         <div className="isolation-test">
           移动端样式隔离测试

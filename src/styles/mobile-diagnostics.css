@@ -1,0 +1,287 @@
+/* 移动端CSS诊断和修复系统 */
+/* 专门解决移动端CSS样式失效问题 */
+
+/* 
+  诊断目标：
+  1. CSS文件路径问题
+  2. 移动端媒体查询配置错误  
+  3. HTTPS混合内容拦截
+  4. 移动端浏览器兼容性
+*/
+
+/* 移动端基础样式强制加载测试 - 只在移动端生效 */
+@media (max-width: 767px) {
+  
+  /* 1. 基础CSS加载测试 */
+  .mobile-css-test {
+    background-color: #ff6b6b !important;
+    color: white !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    margin: 16px 0 !important;
+    border: 3px solid #ff5252 !important;
+    font-size: 14px !important;
+    display: block !important;
+  }
+
+  .mobile-css-test::before {
+    content: "🔴 移动端CSS诊断：如果看到红色背景，说明CSS已加载" !important;
+    display: block !important;
+  }
+
+  /* 2. 移动端基础重置样式 - 解决布局坍塌 */
+  * {
+    box-sizing: border-box !important;
+  }
+
+  html {
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100% !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    line-height: 1.5 !important;
+    color: #333333 !important;
+    background-color: #ffffff !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 3. 移动端容器基础样式 */
+  .mobile-container-fix {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0 16px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  /* 4. 移动端文本基础样式 */
+  .mobile-text-fix {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: #333333 !important;
+    margin-bottom: 16px !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .mobile-title-fix {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+    margin-bottom: 16px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+  }
+
+  /* 5. 移动端布局修复 */
+  .mobile-flex-fix {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-direction: column !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .mobile-grid-fix {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  /* 6. 移动端按钮修复 */
+  .mobile-button-fix {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 20px !important;
+    background-color: #007bff !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    margin-bottom: 12px !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
+  .mobile-button-fix:hover,
+  .mobile-button-fix:active {
+    background-color: #0056b3 !important;
+  }
+
+  /* 7. 移动端导航修复 */
+  .mobile-nav-fix {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-direction: column !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 16px !important;
+    background-color: #f8f9fa !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .mobile-nav-item-fix {
+    display: block !important;
+    padding: 12px 16px !important;
+    color: #333333 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #e9ecef !important;
+    font-weight: 500 !important;
+  }
+
+  .mobile-nav-item-fix:last-child {
+    border-bottom: none !important;
+  }
+
+  .mobile-nav-item-fix:hover,
+  .mobile-nav-item-fix:active {
+    background-color: #e9ecef !important;
+    color: #007bff !important;
+  }
+
+  /* 8. 移动端卡片修复 */
+  .mobile-card-fix {
+    background-color: white !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    width: 100% !important;
+  }
+
+  /* 9. 移动端图片修复 */
+  .mobile-image-fix {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+    display: block !important;
+  }
+
+  /* 10. 移动端表单修复 */
+  .mobile-input-fix {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border: 2px solid #ced4da !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    margin-bottom: 16px !important;
+    background-color: white !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
+  .mobile-input-fix:focus {
+    outline: none !important;
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25) !important;
+  }
+
+  /* 11. 移动端间距修复 */
+  .mobile-spacing-fix {
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .mobile-spacing-sm-fix {
+    padding: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .mobile-spacing-lg-fix {
+    padding: 24px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* 12. 移动端隐藏/显示修复 */
+  .mobile-show-fix {
+    display: block !important;
+  }
+
+  .mobile-hide-fix {
+    display: none !important;
+  }
+
+  /* 13. 移动端滚动修复 */
+  .mobile-scroll-fix {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-height: 70vh !important;
+  }
+
+  /* 14. 移动端兼容性前缀 */
+  .mobile-transform-fix {
+    -webkit-transform: translateZ(0) !important;
+    -moz-transform: translateZ(0) !important;
+    -ms-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+  }
+
+  .mobile-transition-fix {
+    -webkit-transition: all 0.3s ease !important;
+    -moz-transition: all 0.3s ease !important;
+    -ms-transition: all 0.3s ease !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* 15. 移动端强制显示测试 */
+  .mobile-force-visible {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* 16. 移动端CSS加载成功指示器 */
+  .mobile-css-loaded {
+    background-color: #28a745 !important;
+    color: white !important;
+    padding: 12px !important;
+    border-radius: 6px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    margin: 12px 0 !important;
+    font-size: 14px !important;
+  }
+
+  .mobile-css-loaded::before {
+    content: "✅ 移动端CSS修复样式已加载成功！" !important;
+    display: block !important;
+  }
+
+} /* 结束移动端诊断样式 - 确保不影响桌面端 */
+
+/* 移动端CSS加载失败检测 */
+@media (max-width: 767px) {
+  /* 如果这个样式没有生效，说明CSS文件未加载 */
+  .css-load-detector {
+    content: "CSS_LOADED" !important;
+  }
+}
