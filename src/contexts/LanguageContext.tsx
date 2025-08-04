@@ -18,10 +18,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-    // 从路由获取当前语言
+    // 从路由获取当前语言，确保默认为中文
     const currentLanguage = (router.locale as Language) || 'zh'
     setLanguage(currentLanguage)
-  }, [router.locale])
+
+    // 如果没有设置locale，强制设置为中文
+    if (!router.locale || router.locale === 'default') {
+      router.push(router.asPath, router.asPath, {
+        locale: 'zh',
+        scroll: false
+      })
+    }
+  }, [router.locale, router])
 
   const toggleLanguage = () => {
     const newLanguage = language === 'zh' ? 'en' : 'zh'
@@ -59,3 +67,4 @@ export function useLanguage() {
   }
   return context
 }
+
