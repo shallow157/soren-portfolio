@@ -1,0 +1,386 @@
+/* 桌面端专用样式文件 - 严格隔离系统 */
+/* 重要：所有样式都被严格限制在桌面端，绝对不会影响移动端 */
+
+/* 
+  样式隔离原则：
+  1. 所有样式必须包裹在 @media (min-width: 768px) 中
+  2. 使用 768px 确保与 Tailwind 的 md: 断点完全对应
+  3. 禁止使用 !important，避免优先级污染
+  4. 禁止使用全局选择器（如 * 、body、html）
+  5. 只使用类选择器，避免ID选择器的高优先级
+*/
+
+/* 桌面端专用样式 - 只在屏幕宽度 ≥ 768px 时生效 */
+@media (min-width: 768px) {
+  
+  /* 桌面端容器优化 */
+  .desktop-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 32px;
+    margin: 0 auto;
+  }
+
+  .desktop-container-wide {
+    max-width: 1400px;
+  }
+
+  .desktop-container-narrow {
+    max-width: 800px;
+  }
+
+  /* 桌面端卡片样式 */
+  .desktop-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .desktop-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* 桌面端导航优化 */
+  .desktop-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding: 16px 32px;
+  }
+
+  .desktop-nav-item {
+    padding: 8px 16px;
+    color: #374151;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .desktop-nav-item:hover {
+    background: #f3f4f6;
+    color: #111827;
+  }
+
+  /* 桌面端文本优化 */
+  .desktop-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #111827;
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .desktop-subtitle {
+    font-size: 32px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 20px;
+  }
+
+  .desktop-text {
+    font-size: 18px;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  /* 桌面端按钮样式 */
+  .desktop-button {
+    display: inline-block;
+    padding: 16px 32px;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 8px 12px 8px 0;
+    transition: all 0.2s ease;
+  }
+
+  .desktop-button:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .desktop-button-secondary {
+    background: transparent;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+  }
+
+  .desktop-button-secondary:hover {
+    background: #3b82f6;
+    color: white;
+  }
+
+  /* 桌面端表单优化 */
+  .desktop-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    background: white;
+    transition: all 0.2s ease;
+  }
+
+  .desktop-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+
+  /* 桌面端网格布局 */
+  .desktop-grid {
+    display: grid;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .desktop-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .desktop-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .desktop-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* 桌面端间距工具类 */
+  .desktop-spacing-sm {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .desktop-spacing-md {
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  .desktop-spacing-lg {
+    padding: 48px;
+    margin-bottom: 48px;
+  }
+
+  /* 桌面端图片优化 */
+  .desktop-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .desktop-image:hover {
+    transform: scale(1.02);
+  }
+
+  /* 桌面端列表样式 */
+  .desktop-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .desktop-list-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    transition: all 0.2s ease;
+  }
+
+  .desktop-list-item:hover {
+    color: #111827;
+    padding-left: 8px;
+  }
+
+  .desktop-list-item:last-child {
+    border-bottom: none;
+  }
+
+  /* 桌面端模态框优化 */
+  .desktop-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    z-index: 50;
+  }
+
+  .desktop-modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  }
+
+  /* 桌面端滚动优化 */
+  .desktop-scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .desktop-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .desktop-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .desktop-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+
+  .desktop-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  /* 桌面端隐藏工具类 */
+  .desktop-hide {
+    display: none;
+  }
+
+  .desktop-show {
+    display: block;
+  }
+
+  /* 桌面端文本对齐 */
+  .desktop-text-center {
+    text-align: center;
+  }
+
+  .desktop-text-left {
+    text-align: left;
+  }
+
+  .desktop-text-right {
+    text-align: right;
+  }
+
+  /* 桌面端Flexbox工具 */
+  .desktop-flex {
+    display: flex;
+  }
+
+  .desktop-flex-col {
+    flex-direction: column;
+  }
+
+  .desktop-flex-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop-flex-between {
+    justify-content: space-between;
+  }
+
+  .desktop-flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  /* 桌面端阴影 */
+  .desktop-shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .desktop-shadow-md {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .desktop-shadow-lg {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 桌面端边框 */
+  .desktop-border {
+    border: 1px solid #e5e7eb;
+  }
+
+  .desktop-border-t {
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .desktop-border-b {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* 桌面端背景色 */
+  .desktop-bg-white {
+    background-color: white;
+  }
+
+  .desktop-bg-gray {
+    background-color: #f9fafb;
+  }
+
+  .desktop-bg-blue {
+    background-color: #eff6ff;
+  }
+
+  /* 桌面端动画 */
+  .desktop-animate-fade {
+    animation: desktopFadeIn 0.6s ease-out;
+  }
+
+  .desktop-animate-slide {
+    animation: desktopSlideUp 0.8s ease-out;
+  }
+
+  @keyframes desktopFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes desktopSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+} /* 结束桌面端媒体查询 - 确保移动端不受任何影响 */
+
+/* 
+  验证隔离效果的方法：
+  1. 在移动端浏览器中，所有 .desktop-* 类都不应该生效
+  2. 在桌面端浏览器中，所有 .desktop-* 类才会生效
+  3. 可以通过浏览器开发者工具的设备模拟器测试
+*/

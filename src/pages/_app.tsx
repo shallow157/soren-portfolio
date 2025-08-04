@@ -1,4 +1,7 @@
 import '@/styles/globals.css'
+import '@/styles/mobile-only.css'
+import '@/styles/desktop-only.css'
+import '@/styles/isolation-test.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { LanguageProvider } from '@/contexts/LanguageContext'

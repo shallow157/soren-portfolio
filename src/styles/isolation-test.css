@@ -1,0 +1,216 @@
+/* 样式隔离验证工具 - 用于测试移动端和桌面端样式是否正确隔离 */
+
+/* 
+  使用方法：
+  1. 在需要测试的组件中添加 .isolation-test 类
+  2. 在桌面端浏览器中，应该显示绿色背景和 "桌面端样式生效" 文字
+  3. 在移动端浏览器中，应该显示蓝色背景和 "移动端样式生效" 文字
+  4. 如果显示错误，说明样式隔离失败
+*/
+
+/* 移动端测试样式 - 只在 ≤ 767px 时生效 */
+@media (max-width: 767px) {
+  .isolation-test {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    margin: 16px 0 !important;
+    border: 2px solid #1d4ed8 !important;
+  }
+
+  .isolation-test::before {
+    content: "✅ 移动端样式生效 (≤767px)" !important;
+    display: block !important;
+    font-size: 14px !important;
+  }
+
+  .isolation-test-mobile {
+    display: block !important;
+    background-color: #10b981 !important;
+    color: white !important;
+    padding: 12px !important;
+    border-radius: 6px !important;
+    text-align: center !important;
+    margin: 8px 0 !important;
+  }
+
+  .isolation-test-desktop {
+    display: none !important;
+  }
+}
+
+/* 桌面端测试样式 - 只在 ≥ 768px 时生效 */
+@media (min-width: 768px) {
+  .isolation-test {
+    background-color: #10b981 !important;
+    color: white !important;
+    padding: 24px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    margin: 24px 0 !important;
+    border: 2px solid #059669 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .isolation-test::before {
+    content: "✅ 桌面端样式生效 (≥768px)" !important;
+    display: block !important;
+    font-size: 16px !important;
+  }
+
+  .isolation-test-desktop {
+    display: block !important;
+    background-color: #3b82f6 !important;
+    color: white !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    margin: 12px 0 !important;
+  }
+
+  .isolation-test-mobile {
+    display: none !important;
+  }
+}
+
+/* 错误状态指示器 - 如果样式隔离失败会显示 */
+.isolation-error {
+  background-color: #ef4444 !important;
+  color: white !important;
+  padding: 16px !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  margin: 16px 0 !important;
+  border: 2px solid #dc2626 !important;
+}
+
+.isolation-error::before {
+  content: "❌ 样式隔离失败！请检查媒体查询" !important;
+  display: block !important;
+}
+
+/* 样式隔离检查清单 */
+/*
+  ✅ 正确的隔离方式：
+  
+  移动端样式：
+  @media (max-width: 767px) {
+    .mobile-class {
+      // 移动端专用样式
+    }
+  }
+  
+  桌面端样式：
+  @media (min-width: 768px) {
+    .desktop-class {
+      // 桌面端专用样式
+    }
+  }
+  
+  ❌ 错误的方式：
+  
+  1. 全局样式（无媒体查询）：
+  .global-class {
+    // 这会影响所有设备
+  }
+  
+  2. 错误的断点：
+  @media (min-width: 320px) {
+    // 这会影响桌面端（因为桌面端 > 320px）
+  }
+  
+  3. 使用 !important 污染：
+  .some-class {
+    color: red !important; // 可能覆盖其他样式
+  }
+  
+  4. 使用ID选择器：
+  #mobile-nav {
+    // ID选择器优先级过高
+  }
+*/
+
+/* 调试工具 - 显示当前断点 */
+.breakpoint-indicator {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .breakpoint-indicator {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .breakpoint-indicator::before {
+    content: "📱 Mobile (≤767px)";
+  }
+}
+
+@media (min-width: 768px) {
+  .breakpoint-indicator {
+    background-color: #10b981;
+    color: white;
+  }
+  
+  .breakpoint-indicator::before {
+    content: "🖥️ Desktop (≥768px)";
+  }
+}
+
+/* 样式冲突检测器 */
+.conflict-detector {
+  position: relative;
+}
+
+.conflict-detector::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* 如果移动端样式在桌面端生效，显示红色边框 */
+@media (min-width: 768px) {
+  .conflict-detector.mobile-style-active::after {
+    border: 3px solid #ef4444;
+    content: "❌ 移动端样式污染桌面端";
+    background-color: rgba(239, 68, 68, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ef4444;
+    font-weight: bold;
+  }
+}
+
+/* 如果桌面端样式在移动端生效，显示红色边框 */
+@media (max-width: 767px) {
+  .conflict-detector.desktop-style-active::after {
+    border: 3px solid #ef4444;
+    content: "❌ 桌面端样式污染移动端";
+    background-color: rgba(239, 68, 68, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ef4444;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}

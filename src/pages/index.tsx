@@ -209,8 +209,15 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* 样式隔离验证指示器 - 开发时使用 */}
+      <div className="breakpoint-indicator"></div>
+
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
       <div className="block md:hidden">
+        {/* 移动端样式隔离测试 */}
+        <div className="isolation-test">
+          移动端样式隔离测试
+        </div>
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 背景动画 */}
@@ -708,6 +715,11 @@ export default function Home() {
 
       {/* 桌面端版本 - 使用CSS媒体查询控制显示 */}
       <div className="hidden md:block">
+        {/* 桌面端样式隔离测试 */}
+        <div className="isolation-test">
+          桌面端样式隔离测试
+        </div>
+
       {/* Hero Section with animated background */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated background elements */}

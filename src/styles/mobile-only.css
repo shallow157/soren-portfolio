@@ -1,0 +1,299 @@
+/* 移动端专用样式文件 - 严格隔离系统 */
+/* 重要：所有样式都被严格限制在移动端，绝对不会影响桌面端 */
+
+/* 
+  样式隔离原则：
+  1. 所有样式必须包裹在 @media (max-width: 767px) 中
+  2. 使用 767px 而不是 768px，确保与 Tailwind 的 md: 断点完全对应
+  3. 禁止使用 !important，避免优先级污染
+  4. 禁止使用全局选择器（如 * 、body、html）
+  5. 只使用类选择器，避免ID选择器的高优先级
+*/
+
+/* 移动端专用样式 - 只在屏幕宽度 ≤ 767px 时生效 */
+@media (max-width: 767px) {
+  
+  /* 移动端容器优化 */
+  .mobile-container {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 16px;
+    margin: 0 auto;
+  }
+
+  /* 移动端卡片样式 */
+  .mobile-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  /* 移动端导航优化 */
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .mobile-nav-item {
+    padding: 12px 16px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    text-align: center;
+    color: #374151;
+    font-weight: 500;
+  }
+
+  /* 移动端文本优化 */
+  .mobile-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .mobile-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 12px;
+  }
+
+  .mobile-text {
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  /* 移动端按钮样式 */
+  .mobile-button {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 20px;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .mobile-button:hover {
+    background: #2563eb;
+  }
+
+  .mobile-button-secondary {
+    background: transparent;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+  }
+
+  .mobile-button-secondary:hover {
+    background: #3b82f6;
+    color: white;
+  }
+
+  /* 移动端表单优化 */
+  .mobile-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    background: white;
+  }
+
+  .mobile-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  /* 移动端网格布局 */
+  .mobile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .mobile-grid-2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* 移动端间距工具类 */
+  .mobile-spacing-sm {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  .mobile-spacing-md {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .mobile-spacing-lg {
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* 移动端图片优化 */
+  .mobile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* 移动端列表样式 */
+  .mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-list-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+  }
+
+  .mobile-list-item:last-child {
+    border-bottom: none;
+  }
+
+  /* 移动端模态框优化 */
+  .mobile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+  }
+
+  .mobile-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  /* 移动端滚动优化 */
+  .mobile-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 移动端隐藏工具类 */
+  .mobile-hide {
+    display: none;
+  }
+
+  .mobile-show {
+    display: block;
+  }
+
+  /* 移动端文本对齐 */
+  .mobile-text-center {
+    text-align: center;
+  }
+
+  .mobile-text-left {
+    text-align: left;
+  }
+
+  .mobile-text-right {
+    text-align: right;
+  }
+
+  /* 移动端Flexbox工具 */
+  .mobile-flex {
+    display: flex;
+  }
+
+  .mobile-flex-col {
+    flex-direction: column;
+  }
+
+  .mobile-flex-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-flex-between {
+    justify-content: space-between;
+  }
+
+  .mobile-flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  /* 移动端阴影 */
+  .mobile-shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 移动端边框 */
+  .mobile-border {
+    border: 1px solid #e5e7eb;
+  }
+
+  .mobile-border-t {
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .mobile-border-b {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* 移动端背景色 */
+  .mobile-bg-white {
+    background-color: white;
+  }
+
+  .mobile-bg-gray {
+    background-color: #f9fafb;
+  }
+
+  .mobile-bg-blue {
+    background-color: #eff6ff;
+  }
+
+} /* 结束移动端媒体查询 - 确保桌面端不受任何影响 */
+
+/* 
+  验证隔离效果的方法：
+  1. 在桌面端浏览器中，所有 .mobile-* 类都不应该生效
+  2. 在移动端浏览器中，所有 .mobile-* 类才会生效
+  3. 可以通过浏览器开发者工具的设备模拟器测试
+*/
