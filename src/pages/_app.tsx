@@ -12,6 +12,50 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#3B82F6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+        {/* CSS回退系统 - 确保移动端样式加载 */}
+        <link rel="stylesheet" href="/fallback-mobile.css" />
+
+        {/* 内联CSS测试 - 测试基础CSS是否工作 */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .css-test-inline {
+              background-color: #10b981 !important;
+              color: white !important;
+              padding: 8px 16px !important;
+              border-radius: 4px !important;
+              margin: 8px 0 !important;
+              font-weight: 600 !important;
+              text-align: center !important;
+              display: block !important;
+            }
+
+            /* 移动端强制样式 */
+            @media (max-width: 768px) {
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                background-color: #f9fafb !important;
+                margin: 0 !important;
+                padding: 0 !important;
+              }
+
+              .mobile-force-layout {
+                display: block !important;
+                width: 100% !important;
+                padding: 16px !important;
+              }
+
+              .mobile-force-flex {
+                display: -webkit-box !important;
+                display: -webkit-flex !important;
+                display: -ms-flexbox !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+              }
+            }
+          `
+        }} />
       </Head>
       <ThemeProvider>
         <LanguageProvider>
