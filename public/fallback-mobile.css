@@ -1,337 +1,288 @@
 /* 移动端CSS回退系统 - 完整样式保障 */
-/* 确保在Tailwind CSS失效时提供完整的移动端布局 */
+/* 重要：所有样式只在移动端生效，绝对不影响桌面端 */
 
-/* 基础重置和移动端优化 */
-* {
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-html, body {
-  width: 100% !important;
-  height: 100% !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-  background-color: #f9fafb !important;
-  color: #111827 !important;
-  overflow-x: hidden !important;
-  -webkit-text-size-adjust: 100% !important;
-  -webkit-font-smoothing: antialiased !important;
-}
-
-/* 容器和布局 */
-.mobile-container {
-  width: 100% !important;
-  max-width: 100vw !important;
-  padding: 0 16px !important;
-  margin: 0 auto !important;
-}
-
-.mobile-section {
-  width: 100% !important;
-  padding: 32px 16px !important;
-  margin-bottom: 24px !important;
-  background: white !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-}
-
-/* 导航栏 */
-nav {
-  width: 100% !important;
-  background: white !important;
-  border-bottom: 1px solid #e5e7eb !important;
-  padding: 12px 16px !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 50 !important;
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-pack: justify !important;
-  -webkit-justify-content: space-between !important;
-  -ms-flex-pack: justify !important;
-  justify-content: space-between !important;
-  -webkit-box-align: center !important;
-  -webkit-align-items: center !important;
-  -ms-flex-align: center !important;
-  align-items: center !important;
-}
-
-.mobile-nav {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-flex-wrap: wrap !important;
-  -ms-flex-wrap: wrap !important;
-  flex-wrap: wrap !important;
-  gap: 8px !important;
-}
-
-.mobile-nav a {
-  padding: 6px 12px !important;
-  background: #f3f4f6 !important;
-  border-radius: 20px !important;
-  text-decoration: none !important;
-  color: #374151 !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-}
-
-/* 标题样式 */
-.mobile-title {
-  font-size: 28px !important;
-  font-weight: 700 !important;
-  color: #111827 !important;
-  text-align: center !important;
-  margin-bottom: 16px !important;
-  line-height: 1.2 !important;
-}
-
-.mobile-subtitle {
-  font-size: 20px !important;
-  font-weight: 600 !important;
-  color: #374151 !important;
-  margin-bottom: 12px !important;
-}
-
-.mobile-text {
-  font-size: 16px !important;
-  color: #6b7280 !important;
-  line-height: 1.6 !important;
-  margin-bottom: 12px !important;
-}
-
-/* 卡片布局 */
-.mobile-card {
-  background: white !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 12px !important;
-  padding: 20px !important;
-  margin-bottom: 16px !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
-}
-
-.mobile-card-grid {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-flex-direction: column !important;
-  -ms-flex-direction: column !important;
-  flex-direction: column !important;
-  gap: 16px !important;
-}
-
-/* 按钮样式 */
-.mobile-button {
-  display: inline-block !important;
-  padding: 12px 24px !important;
-  background: #3b82f6 !important;
-  color: white !important;
-  text-decoration: none !important;
-  border-radius: 25px !important;
-  font-weight: 600 !important;
-  text-align: center !important;
-  border: none !important;
-  cursor: pointer !important;
-  font-size: 16px !important;
-  margin: 8px 4px !important;
-}
-
-.mobile-button:hover {
-  background: #2563eb !important;
-}
-
-.mobile-button-secondary {
-  background: transparent !important;
-  color: #3b82f6 !important;
-  border: 2px solid #3b82f6 !important;
-}
-
-/* Hero区域 */
-.mobile-hero {
-  text-align: center !important;
-  padding: 40px 20px !important;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  color: white !important;
-  margin-bottom: 24px !important;
-}
-
-.mobile-hero h1 {
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  margin-bottom: 16px !important;
-  color: white !important;
-}
-
-.mobile-hero p {
-  font-size: 18px !important;
-  margin-bottom: 24px !important;
-  color: rgba(255,255,255,0.9) !important;
-}
-
-/* 技能卡片 */
-.mobile-skill-card {
-  background: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 8px !important;
-  padding: 16px !important;
-  margin-bottom: 12px !important;
-}
-
-.mobile-skill-title {
-  font-size: 18px !important;
-  font-weight: 600 !important;
-  color: #1e293b !important;
-  margin-bottom: 8px !important;
-}
-
-.mobile-skill-list {
-  list-style: none !important;
-  padding: 0 !important;
-}
-
-.mobile-skill-list li {
-  padding: 4px 0 !important;
-  color: #64748b !important;
-  font-size: 14px !important;
-}
-
-/* 项目卡片 */
-.mobile-project-card {
-  border: 1px solid #e5e7eb !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  margin-bottom: 20px !important;
-  background: white !important;
-}
-
-.mobile-project-header {
-  padding: 16px !important;
-  background: #f9fafb !important;
-  border-bottom: 1px solid #e5e7eb !important;
-}
-
-.mobile-project-title {
-  font-size: 18px !important;
-  font-weight: 600 !important;
-  color: #111827 !important;
-  margin-bottom: 8px !important;
-}
-
-.mobile-project-content {
-  padding: 16px !important;
-}
-
-/* 搜索框 */
-.mobile-search {
-  width: 100% !important;
-  padding: 12px 16px !important;
-  border: 2px solid #e5e7eb !important;
-  border-radius: 25px !important;
-  font-size: 16px !important;
-  margin-bottom: 20px !important;
-  background: white !important;
-}
-
-.mobile-search:focus {
-  outline: none !important;
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
-}
-
-/* 响应式图片 */
-img {
-  max-width: 100% !important;
-  height: auto !important;
-  border-radius: 8px !important;
-}
-
-/* 链接样式 */
-a {
-  color: #3b82f6 !important;
-  text-decoration: none !important;
-}
-
-a:hover {
-  text-decoration: underline !important;
-}
-
-/* 列表样式 */
-ul, ol {
-  padding-left: 20px !important;
-  margin-bottom: 16px !important;
-}
-
-li {
-  margin-bottom: 8px !important;
-  color: #374151 !important;
-}
-
-/* 表单元素 */
-input, textarea, select {
-  width: 100% !important;
-  padding: 12px !important;
-  border: 1px solid #d1d5db !important;
-  border-radius: 8px !important;
-  font-size: 16px !important;
-  margin-bottom: 16px !important;
-}
-
-/* 隐藏桌面端内容 */
+/* 移动端专用样式 - 只在屏幕宽度 ≤ 768px 时生效 */
 @media (max-width: 768px) {
-  .hidden-mobile {
-    display: none !important;
+  /* 基础重置和移动端优化 */
+  * {
+    box-sizing: border-box !important;
   }
-  
-  .desktop-only {
-    display: none !important;
-  }
-}
 
-/* 强制显示移动端内容 */
-@media (max-width: 768px) {
-  .mobile-only {
-    display: block !important;
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    -webkit-text-size-adjust: 100% !important;
+    -webkit-font-smoothing: antialiased !important;
   }
-  
-  .mobile-flex {
-    display: -webkit-box !important;
-    display: -webkit-flex !important;
-    display: -ms-flexbox !important;
+
+  /* 容器和布局 */
+  .mobile-container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 0 16px !important;
+    margin: 0 auto !important;
+  }
+
+  .mobile-section {
+    width: 100% !important;
+    padding: 32px 16px !important;
+    margin-bottom: 24px !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  }
+
+  /* 导航栏 */
+  nav {
+    width: 100% !important;
+    background: white !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    padding: 12px 16px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 50 !important;
     display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
-}
 
-/* CSS测试指示器 */
-.css-test-fallback {
-  background-color: #3b82f6 !important;
-  color: white !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  margin: 8px 0 !important;
-  font-weight: 600 !important;
-  text-align: center !important;
-}
+  .mobile-nav {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
 
-/* 确保基础布局在任何情况下都能工作 */
-body > div {
-  min-height: 100vh !important;
-}
+  .mobile-nav a {
+    padding: 6px 12px !important;
+    background: #f3f4f6 !important;
+    border-radius: 20px !important;
+    text-decoration: none !important;
+    color: #374151 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+  }
 
-/* 修复常见的移动端问题 */
-* {
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none !important;
-}
+  /* 标题样式 */
+  .mobile-title {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    line-height: 1.2 !important;
+  }
 
-/* 确保文本可读性 */
-p, span, div {
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-}
+  .mobile-subtitle {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .mobile-text {
+    font-size: 16px !important;
+    color: #6b7280 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 卡片布局 */
+  .mobile-card {
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  }
+
+  .mobile-card-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* 按钮样式 */
+  .mobile-button {
+    display: inline-block !important;
+    padding: 12px 24px !important;
+    background: #3b82f6 !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    margin: 8px 4px !important;
+  }
+
+  .mobile-button:hover {
+    background: #2563eb !important;
+  }
+
+  .mobile-button-secondary {
+    background: transparent !important;
+    color: #3b82f6 !important;
+    border: 2px solid #3b82f6 !important;
+  }
+
+  /* Hero区域 */
+  .mobile-hero {
+    text-align: center !important;
+    padding: 40px 20px !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    margin-bottom: 24px !important;
+  }
+
+  .mobile-hero h1 {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    margin-bottom: 16px !important;
+    color: white !important;
+  }
+
+  .mobile-hero p {
+    font-size: 18px !important;
+    margin-bottom: 24px !important;
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  /* 技能卡片 */
+  .mobile-skill-card {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .mobile-skill-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    margin-bottom: 8px !important;
+  }
+
+  .mobile-skill-list {
+    list-style: none !important;
+    padding: 0 !important;
+  }
+
+  .mobile-skill-list li {
+    padding: 4px 0 !important;
+    color: #64748b !important;
+    font-size: 14px !important;
+  }
+
+  /* 项目卡片 */
+  .mobile-project-card {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+    background: white !important;
+  }
+
+  .mobile-project-header {
+    padding: 16px !important;
+    background: #f9fafb !important;
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+
+  .mobile-project-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .mobile-project-content {
+    padding: 16px !important;
+  }
+
+  /* 搜索框 */
+  .mobile-search {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 25px !important;
+    font-size: 16px !important;
+    margin-bottom: 20px !important;
+    background: white !important;
+  }
+
+  .mobile-search:focus {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  }
+
+  /* 响应式图片 */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+  }
+
+  /* 链接样式 */
+  a {
+    color: #3b82f6 !important;
+    text-decoration: none !important;
+  }
+
+  a:hover {
+    text-decoration: underline !important;
+  }
+
+  /* 列表样式 */
+  ul, ol {
+    padding-left: 20px !important;
+    margin-bottom: 16px !important;
+  }
+
+  li {
+    margin-bottom: 8px !important;
+    color: #374151 !important;
+  }
+
+  /* 表单元素 */
+  input, textarea, select {
+    width: 100% !important;
+    padding: 12px !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* 强制布局类 */
+  .mobile-force-layout {
+    display: block !important;
+    width: 100% !important;
+    padding: 16px !important;
+  }
+
+  .mobile-force-flex {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* CSS测试指示器 */
+  .css-test-fallback {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 4px !important;
+    margin: 8px 0 !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+  }
+
+} /* 结束移动端媒体查询 - 确保桌面端不受影响 */

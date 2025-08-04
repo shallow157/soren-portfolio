@@ -16,22 +16,22 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* CSS回退系统 - 确保移动端样式加载 */}
         <link rel="stylesheet" href="/fallback-mobile.css" />
 
-        {/* 内联CSS测试 - 测试基础CSS是否工作 */}
+        {/* 内联CSS测试 - 只在移动端生效 */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            .css-test-inline {
-              background-color: #10b981 !important;
-              color: white !important;
-              padding: 8px 16px !important;
-              border-radius: 4px !important;
-              margin: 8px 0 !important;
-              font-weight: 600 !important;
-              text-align: center !important;
-              display: block !important;
-            }
-
-            /* 移动端强制样式 */
+            /* 移动端专用样式 - 确保不影响桌面端 */
             @media (max-width: 768px) {
+              .css-test-inline {
+                background-color: #10b981 !important;
+                color: white !important;
+                padding: 8px 16px !important;
+                border-radius: 4px !important;
+                margin: 8px 0 !important;
+                font-weight: 600 !important;
+                text-align: center !important;
+                display: block !important;
+              }
+
               body {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
                 background-color: #f9fafb !important;
