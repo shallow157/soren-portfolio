@@ -19,16 +19,35 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
 
+  // 平滑滚动函数
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   // 搜索功能
   const handleSearch = (query: string) => {
     console.log('搜索:', query)
-    // 这里可以实现搜索逻辑，比如滚动到相关部分或过滤内容
-    if (query.toLowerCase().includes('项目') || query.toLowerCase().includes('project')) {
-      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-    } else if (query.toLowerCase().includes('技能') || query.toLowerCase().includes('skill')) {
-      document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })
-    } else if (query.toLowerCase().includes('书') || query.toLowerCase().includes('book')) {
+    const lowerQuery = query.toLowerCase()
+
+    // 根据搜索内容滚动到相关部分
+    if (lowerQuery.includes('项目') || lowerQuery.includes('project')) {
+      scrollToSection('projects')
+    } else if (lowerQuery.includes('技能') || lowerQuery.includes('skill')) {
+      scrollToSection('skills')
+    } else if (lowerQuery.includes('书') || lowerQuery.includes('book') || lowerQuery.includes('阅读') || lowerQuery.includes('reading')) {
       document.querySelector('[data-bookshelf]')?.scrollIntoView({ behavior: 'smooth' })
+    } else if (lowerQuery.includes('关于') || lowerQuery.includes('about') || lowerQuery.includes('我')) {
+      scrollToSection('about')
+    } else if (lowerQuery.includes('联系') || lowerQuery.includes('contact')) {
+      scrollToSection('contact')
+    } else if (lowerQuery.includes('文章') || lowerQuery.includes('blog') || lowerQuery.includes('article')) {
+      scrollToSection('blog')
+    } else {
+      // 如果没有匹配，显示提示
+      console.log('未找到相关内容，请尝试搜索：项目、技能、书籍、关于我、联系我、文章')
     }
   }
 
@@ -722,22 +741,22 @@ export default function Home() {
               variants={fadeInUp}
               transition={fadeTransition}
             >
-              <motion.a
-                href="#projects"
+              <motion.button
+                onClick={() => scrollToSection('projects')}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {t('查看项目', 'View Projects')}
-              </motion.a>
-              <motion.a
-                href="#about"
+              </motion.button>
+              <motion.button
+                onClick={() => scrollToSection('about')}
                 className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 px-8 py-4 rounded-full transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {t('了解更多', 'Learn More')}
-              </motion.a>
+              </motion.button>
             </motion.div>
 
             {/* 搜索栏 */}
@@ -1644,7 +1663,8 @@ export default function Home() {
       <BookshelfSection />
 
       {/* Blog Section */}
-      <motion.section 
+      <motion.section
+        id="blog"
         className="mb-20 py-20 bg-gradient-to-br from-white via-gray-50 to-indigo-50 dark:from-gray-800 dark:via-gray-900 dark:to-indigo-900 relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
