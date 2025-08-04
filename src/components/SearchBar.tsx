@@ -14,7 +14,20 @@ export default function SearchBar({ onSearch, placeholder }: SearchBarProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSearch(query)
+    console.log('🔍 SearchBar handleSubmit 被调用, query:', query)
+    if (query.trim()) {
+      onSearch(query.trim())
+    } else {
+      console.log('⚠️ SearchBar: 查询为空，不执行搜索')
+    }
+  }
+
+  // 处理回车键
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      console.log('⌨️ 检测到回车键')
+      handleSubmit(e as any)
+    }
   }
 
   return (
@@ -32,6 +45,7 @@ export default function SearchBar({ onSearch, placeholder }: SearchBarProps) {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          onKeyDown={handleKeyDown}
           placeholder={placeholder || t('搜索项目、技能或文章...', 'Search projects, skills or articles...')}
           className={`w-full px-4 py-3 pl-12 pr-4 rounded-full border-2 transition-all duration-300 
             ${isFocused 

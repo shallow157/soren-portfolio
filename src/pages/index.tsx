@@ -66,25 +66,41 @@ export default function Home() {
 
   // 搜索功能
   const handleSearch = (query: string) => {
-    console.log('搜索:', query)
-    const lowerQuery = query.toLowerCase()
+    console.log('🔍 搜索被调用:', query)
+
+    // 如果查询为空，不执行搜索
+    if (!query || query.trim() === '') {
+      console.log('⚠️ 搜索查询为空')
+      return
+    }
+
+    const lowerQuery = query.toLowerCase().trim()
+    console.log('🔍 处理后的查询:', lowerQuery)
 
     // 根据搜索内容滚动到相关部分
     if (lowerQuery.includes('项目') || lowerQuery.includes('project')) {
+      console.log('📂 跳转到项目部分')
       scrollToSection('projects')
     } else if (lowerQuery.includes('技能') || lowerQuery.includes('skill')) {
+      console.log('🛠️ 跳转到技能部分')
       scrollToSection('skills')
     } else if (lowerQuery.includes('书') || lowerQuery.includes('book') || lowerQuery.includes('阅读') || lowerQuery.includes('reading')) {
+      console.log('📚 跳转到书架部分')
       document.querySelector('[data-bookshelf]')?.scrollIntoView({ behavior: 'smooth' })
     } else if (lowerQuery.includes('关于') || lowerQuery.includes('about') || lowerQuery.includes('我')) {
+      console.log('👤 跳转到关于我部分')
       scrollToSection('about')
     } else if (lowerQuery.includes('联系') || lowerQuery.includes('contact')) {
+      console.log('📞 跳转到联系我部分')
       scrollToSection('contact')
     } else if (lowerQuery.includes('文章') || lowerQuery.includes('blog') || lowerQuery.includes('article')) {
+      console.log('📝 跳转到文章部分')
       scrollToSection('blog')
     } else {
       // 如果没有匹配，显示提示
-      console.log('未找到相关内容，请尝试搜索：项目、技能、书籍、关于我、联系我、文章')
+      console.log('❌ 未找到相关内容，请尝试搜索：项目、技能、书籍、关于我、联系我、文章')
+      // 可以添加用户提示
+      alert('未找到相关内容，请尝试搜索：项目、技能、书籍、关于我、联系我、文章')
     }
   }
 
