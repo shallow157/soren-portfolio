@@ -19,11 +19,48 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
 
-  // 平滑滚动函数
+  // 平滑滚动函数 - 处理移动端和桌面端的ID冲突
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    // 获取所有匹配的元素
+    const elements = document.querySelectorAll(`#${sectionId}`)
+
+    if (elements.length > 0) {
+      // 找到当前显示的元素（不是hidden的）
+      let targetElement = null
+
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i] as HTMLElement
+        const computedStyle = window.getComputedStyle(element)
+
+        // 检查元素是否可见
+        if (computedStyle.display !== 'none' && computedStyle.visibility !== 'hidden') {
+          // 检查父容器是否可见（处理md:hidden和hidden md:block）
+          let parent = element.parentElement
+          let isVisible = true
+
+          while (parent && parent !== document.body) {
+            const parentStyle = window.getComputedStyle(parent)
+            if (parentStyle.display === 'none') {
+              isVisible = false
+              break
+            }
+            parent = parent.parentElement
+          }
+
+          if (isVisible) {
+            targetElement = element
+            break
+          }
+        }
+      }
+
+      // 如果找到可见元素，滚动到它
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        // 备用方案：使用第一个元素
+        elements[0].scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
     }
   }
 
