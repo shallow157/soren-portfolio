@@ -523,7 +523,7 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
       }
     }
 
-    const article = articles[articleId]
+    const article = articles[articleId as keyof typeof articles]
     if (article) {
       setArticleTitle(article.title)
       setArticleContent(article.content)
