@@ -1,8 +1,0 @@
-# SPA fallback for client-side routing
-/* /index.html 200
-
-# 重定向旧路径到新路径（如果有的话）
-# /old-path /new-path 301
-
-# 强制HTTPS
-http://soren-portfolio.pages.dev/* https://soren-portfolio.pages.dev/:splat 301

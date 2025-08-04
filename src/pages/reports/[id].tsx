@@ -482,7 +482,7 @@ export default function ReportPage() {
       }
     }
 
-    const report = reports[projectId as keyof typeof reports]
+    const report = reports[projectId]
     if (report) {
       setProjectTitle(report.title)
       setReportContent(report.content)

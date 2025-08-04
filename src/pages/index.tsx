@@ -210,20 +210,9 @@ export default function Home() {
   return (
     <Layout>
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
-      <div className="block md:hidden mobile-force-layout">
-        {/* CSS测试系统 - 三层测试确保样式加载 */}
-        <div className="css-test-inline">
-          🔴 内联CSS测试：绿色背景 - 测试基础CSS加载
-        </div>
-        <div className="css-test-fallback">
-          🔵 回退CSS测试：蓝色背景 - 测试独立CSS文件加载
-        </div>
-        <div className="bg-purple-500 text-white p-4 rounded mb-4 text-center font-semibold">
-          🟣 Tailwind测试：紫色背景 - 测试Tailwind CSS加载
-        </div>
-
+      <div className="block md:hidden">
         {/* 移动端Hero区域 - 改进版 */}
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 mobile-hero mobile-force-flex">
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 背景动画 */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
             <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
@@ -270,10 +259,10 @@ export default function Home() {
         </div>
 
         {/* 移动端技能部分 */}
-        <section id="skills" className="py-16 px-4 bg-white dark:bg-gray-900 mobile-section mobile-container">
-          <div className="max-w-4xl mx-auto mobile-force-layout">
+        <section id="skills" className="py-16 px-4 bg-white dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 mobile-title">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t('技能专长', 'Skills & Expertise')}
               </h2>
               <p className="text-gray-600 dark:text-gray-400">

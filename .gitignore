@@ -119,7 +119,7 @@ dist
 tmp/
 temp/
 
-# Local project folders (embedded git repos)
+# Local project files
 local_projrcts_tmp/
 
 # Editor directories and files
