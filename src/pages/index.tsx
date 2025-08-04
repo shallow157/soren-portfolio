@@ -213,19 +213,30 @@ export default function Home() {
       <div className="breakpoint-indicator"></div>
 
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
-      <div className="block md:hidden">
-        {/* 移动端CSS诊断系统 */}
-        <div className="mobile-css-test">
-          移动端CSS加载诊断
+      <div className="block md:hidden mobile-force-visible mobile-force-layout">
+        {/* 移动端内联CSS测试 - 最高优先级 */}
+        <div className="mobile-inline-test">
+          内联CSS测试
+        </div>
+
+        {/* 移动端CSS强制诊断系统 */}
+        <div className="mobile-css-test css-force-loaded">
+          🔴 移动端CSS强制加载诊断 - 如果看到红色背景说明强制CSS生效
         </div>
 
         <div className="mobile-css-loaded">
-          移动端CSS修复系统
+          ✅ 移动端CSS修复系统已激活
         </div>
 
         {/* 移动端样式隔离测试 */}
         <div className="isolation-test">
-          移动端样式隔离测试
+          🔵 移动端样式隔离测试
+        </div>
+
+        {/* 移动端内容强制显示 */}
+        <div className="mobile-force-spacing mobile-force-bg">
+          <h1 className="mobile-force-text">移动端内容测试</h1>
+          <p className="mobile-force-text">如果你能看到这段文字有正常的样式（不是纯文本），说明移动端CSS强制修复成功！</p>
         </div>
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
