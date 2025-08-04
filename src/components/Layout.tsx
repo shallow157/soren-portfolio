@@ -44,6 +44,23 @@ export default function Layout({ children }: LayoutProps) {
                   {item.name}
                 </a>
               ))}
+
+              {/* 主题切换按钮 */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg transition-colors text-gray-600 hover:bg-gray-100 dark:text-yellow-400 dark:hover:bg-gray-700"
+                aria-label={t('切换主题', 'Toggle theme')}
+              >
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </button>
+
+              {/* 语言切换按钮 */}
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-1 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 dark:border-gray-600"
+              >
+                {language === 'zh' ? 'EN' : '中文'}
+              </button>
             </div>
 
             {/* 移动端导航 */}
