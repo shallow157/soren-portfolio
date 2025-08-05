@@ -104,13 +104,107 @@ export default function Life() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <motion.div 
-        className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      {/* 移动端Hero Section */}
+      <div className="block md:hidden">
+        <motion.div
+          className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* 移动端背景装饰 */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800 rounded-full opacity-20 blur-2xl"
+              animate={{
+                x: [0, 30, -30, 0],
+                y: [0, -20, 20, 0],
+                scale: [1, 1.1, 0.9, 1],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div
+              className="absolute bottom-10 right-10 w-24 h-24 bg-gradient-to-r from-pink-200 to-orange-200 dark:from-pink-800 dark:to-orange-800 rounded-full opacity-20 blur-2xl"
+              animate={{
+                x: [0, -20, 20, 0],
+                y: [0, 10, -10, 0],
+                scale: [0.8, 1.2, 1, 0.8],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 3
+              }}
+            />
+          </div>
+
+          <div className="text-center relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <motion.h1
+                className="text-3xl font-bold mb-4 text-gray-900 dark:text-white"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <motion.span
+                  className="inline-block"
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  style={{
+                    background: "linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899, #3B82F6)",
+                    backgroundSize: "300% 300%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  📝 生活感悟
+                </motion.span>
+              </motion.h1>
+
+              <motion.div
+                className="w-16 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto mb-6 rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+              />
+
+              <motion.p
+                className="text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                记录思考与成长的点点滴滴
+              </motion.p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* 桌面端Hero Section */}
+      <div className="hidden md:block">
+        <motion.div
+          className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
         {/* 背景装饰 */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -197,8 +291,136 @@ export default function Life() {
           </motion.div>
         </div>
       </motion.div>
+      </div>
 
-      {/* 文章列表 - 纵向排列 */}
+      {/* 移动端文章列表 */}
+      <div className="block md:hidden">
+        <motion.div
+          className="px-4 py-12"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div
+            className="space-y-6"
+            variants={containerVariants}
+          >
+            {currentPosts.map((post, index) => (
+              <motion.article
+                key={post.id}
+                className="group bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
+                variants={itemVariants}
+                whileHover={{
+                  y: -2,
+                  scale: 1.005,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                {/* 移动端左侧装饰条 */}
+                <motion.div
+                  className={`absolute left-0 top-0 w-1 h-full bg-gradient-to-b ${getCategoryColor(post.category)}`}
+                  initial={{ scaleY: 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                />
+
+                <div className="p-6 pl-8 relative z-10">
+                  <motion.div
+                    className="flex flex-wrap items-center gap-2 mb-3"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.1 }}
+                  >
+                    <motion.span
+                      className={`px-2 py-1 text-xs rounded-full font-medium ${getCategoryBg(post.category)}`}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {post.category}
+                    </motion.span>
+                    <motion.span
+                      className="text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      📅 {post.date}
+                    </motion.span>
+                    <motion.span
+                      className="text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      ⏱️ {post.readTime}
+                    </motion.span>
+                  </motion.div>
+
+                  <Link href={`/life/${post.id}`}>
+                    <motion.h2
+                      className="text-lg font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors duration-300 line-clamp-2"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 + 0.2 }}
+                    >
+                      {post.title}
+                    </motion.h2>
+                  </Link>
+
+                  <motion.p
+                    className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed text-sm line-clamp-3"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  >
+                    {post.excerpt}
+                  </motion.p>
+
+                  <motion.div
+                    className="flex flex-wrap gap-1 mb-4"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    {post.tags?.slice(0, 3).map((tag) => (
+                      <motion.span
+                        key={tag}
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-md font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        #{tag}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+
+                  <Link href={`/life/${post.id}`}>
+                    <motion.button
+                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors duration-300"
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      阅读全文
+                      <motion.svg
+                        className="ml-1 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        whileHover={{ x: 2 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </motion.svg>
+                    </motion.button>
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* 桌面端文章列表 */}
+      <div className="hidden md:block">
+        {/* 文章列表 - 纵向排列 */}
       <motion.div 
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
         initial="hidden"
@@ -426,6 +648,7 @@ export default function Life() {
           </motion.div>
         )}
       </motion.div>
+      </div>
     </Layout>
   )
 }

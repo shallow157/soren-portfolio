@@ -111,13 +111,105 @@ export default function Projects() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <motion.div 
-        className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+      {/* 移动端Hero Section */}
+      <div className="block md:hidden">
+        <motion.div
+          className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* 移动端背景装饰 */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-10 left-10 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+              animate={{
+                x: [0, 50, 0],
+                y: [0, -50, 0],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div
+              className="absolute bottom-10 right-10 w-24 h-24 bg-purple-200 dark:bg-purple-800 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+              animate={{
+                x: [0, -30, 0],
+                y: [0, 30, 0],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 5
+              }}
+            />
+          </div>
+
+          <div className="text-center relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <motion.h1
+                className="text-3xl font-bold mb-4 text-gray-900 dark:text-white"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <motion.span
+                  className="inline-block"
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  style={{
+                    background: "linear-gradient(45deg, #3B82F6, #6366F1, #8B5CF6, #3B82F6)",
+                    backgroundSize: "300% 300%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  💼 项目作品
+                </motion.span>
+              </motion.h1>
+
+              <motion.div
+                className="w-16 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mb-6 rounded-full"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+              />
+
+              <motion.p
+                className="text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                数据分析与机器学习项目展示
+              </motion.p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* 桌面端Hero Section */}
+      <div className="hidden md:block">
+        <motion.div
+          className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
         {/* 背景装饰元素 */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -212,8 +304,142 @@ export default function Projects() {
           </motion.div>
         </div>
       </motion.div>
+      </div>
 
-      {/* 项目列表 */}
+      {/* 移动端项目列表 */}
+      <div className="block md:hidden">
+        <motion.div
+          className="px-4 py-12"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div
+            className="space-y-8"
+            variants={containerVariants}
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
+                variants={itemVariants}
+                whileHover={{
+                  y: -4,
+                  scale: 1.01,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                {/* 移动端项目头部 */}
+                <div className={`h-32 bg-gradient-to-r ${project.gradient} flex items-center justify-center relative`}>
+                  <div className="text-4xl text-white">{project.icon}</div>
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <motion.h3
+                    className="text-xl font-bold text-gray-900 dark:text-white mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+
+                  <motion.p
+                    className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed line-clamp-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.1 }}
+                  >
+                    {project.description}
+                  </motion.p>
+
+                  {/* 移动端技术标签 */}
+                  <motion.div
+                    className="flex flex-wrap gap-2 mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                  >
+                    {project.tech.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.tech.length > 4 && (
+                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full">
+                        +{project.tech.length - 4}
+                      </span>
+                    )}
+                  </motion.div>
+
+                  {/* 移动端项目亮点 */}
+                  <motion.div
+                    className="mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  >
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">项目亮点：</h4>
+                    <ul className="space-y-1">
+                      {project.highlights.slice(0, 2).map((highlight, hIndex) => (
+                        <li key={hIndex} className="text-xs text-gray-600 dark:text-gray-300 flex items-start">
+                          <span className="text-blue-500 mr-2 mt-0.5">•</span>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
+                  {/* 移动端操作按钮 */}
+                  <motion.div
+                    className="flex gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.4 }}
+                  >
+                    <Link href={`/reports/${project.id}`}>
+                      <motion.button
+                        className={`flex-1 bg-gradient-to-r ${project.gradient} text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300`}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        查看报告
+                      </motion.button>
+                    </Link>
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      GitHub
+                    </motion.a>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* 桌面端项目列表 */}
+      <div className="hidden md:block">
+        {/* 项目列表 */}
       <motion.div 
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
         initial="hidden"
@@ -454,6 +680,7 @@ export default function Projects() {
           ))}
         </motion.div>
       </motion.div>
+      </div>
     </Layout>
   )
 }

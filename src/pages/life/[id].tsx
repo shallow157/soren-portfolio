@@ -555,8 +555,89 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* 移动端布局 */}
+      <div className="block md:hidden">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+          <div className="px-4 py-8">
+            {/* 移动端返回按钮 */}
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link href="/life">
+                <motion.button
+                  className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
+                  whileHover={{ x: -4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  返回生活感悟
+                </motion.button>
+              </Link>
+            </motion.div>
+
+            {/* 移动端文章内容 */}
+            <motion.article
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* 移动端文章头部 */}
+              <div className="p-6 border-b border-gray-100 dark:border-gray-700">
+                <motion.div
+                  className="flex flex-wrap gap-2 mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm rounded-full">
+                    {articleMeta.category}
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-full">
+                    📅 {articleMeta.date}
+                  </span>
+                  <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-full">
+                    ⏱️ {articleMeta.readTime}
+                  </span>
+                </motion.div>
+
+                <motion.h1
+                  className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  {articleTitle}
+                </motion.h1>
+              </div>
+
+              {/* 移动端文章正文 */}
+              <motion.div
+                className="p-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <div className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-strong:text-gray-900 dark:prose-strong:text-white">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {articleContent}
+                  </ReactMarkdown>
+                </div>
+              </motion.div>
+            </motion.article>
+          </div>
+        </div>
+      </div>
+
+      {/* 桌面端布局 */}
+      <div className="hidden md:block">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* 返回按钮 */}
           <motion.div
             className="mb-8"
@@ -880,6 +961,7 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
             </motion.div>
           </motion.div>
         </div>
+      </div>
       </div>
     </Layout>
   )
