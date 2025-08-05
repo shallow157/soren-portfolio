@@ -9,8 +9,10 @@ import SearchBar from '../components/SearchBar'
 import BackToTop from '../components/BackToTop'
 import KeyboardShortcutsHelp from '../components/KeyboardShortcutsHelp'
 import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShortcuts'
+import { useBookStore } from '@/store/bookStore'
 export default function Home() {
   const { t } = useLanguage()
+  const { openBookModal } = useBookStore()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,332 +21,18 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
 
-  // 移动端书籍模态框状态
-  const [mobileBookModal, setMobileBookModal] = useState({
-    isOpen: false,
-    bookId: '',
-    scrollY: 0
-  })
 
-  // 打开移动端书籍模态框
-  const openMobileBookModal = (bookId: string) => {
-    setMobileBookModal({
-      isOpen: true,
-      bookId,
-      scrollY: 0
-    })
-    // 防止背景滚动
-    document.body.style.overflow = 'hidden'
-  }
 
-  // 关闭移动端书籍模态框
-  const closeMobileBookModal = () => {
-    setMobileBookModal({
-      isOpen: false,
-      bookId: '',
-      scrollY: 0
-    })
-    // 恢复背景滚动
-    document.body.style.overflow = 'unset'
-  }
+  // 直接使用电脑端的书籍数据和分类
+  const { books, categories } = useBookStore()
 
-  // 书籍数据
-  const bookData: Record<string, { title: string; author: string; tags: string[]; notes: string }> = {
-    vegetarian: {
-      title: '素食者',
-      author: '韩江',
-      tags: ['女性主义', '韩国文学', '诺贝尔文学奖'],
-      notes: `这是一部深刻探讨女性自主意识觉醒的作品。
+  // 按分类分组书籍
+  const booksByCategory = categories.map(category => ({
+    ...category,
+    books: books.filter(book => book.category === category.name)
+  }))
 
-## 主要思考
 
-韩江通过英惠这个角色，展现了一个女性在父权社会中寻求自我解放的痛苦历程。素食不仅仅是饮食选择，更是对既定社会秩序的反抗。
-
-## 印象深刻的片段
-
-"我做了一个梦，梦见我站在一棵大树下..."
-
-这个梦境象征着英惠内心深处对自由的渴望，对回归自然状态的向往。
-
-## 个人感悟
-
-这本书让我思考：
-- 个体自由与社会规范的冲突
-- 女性在传统社会中的处境
-- 精神自由的代价
-
-作者用极其细腻的笔触，描绘了一个女性精神世界的崩塌与重建。虽然结局令人心痛，但英惠的选择体现了对自我的坚持。`
-    },
-    solitude: {
-      title: '百年孤独',
-      author: '马尔克斯',
-      tags: ['魔幻现实', '拉美文学', '家族史'],
-      notes: `马尔克斯的这部巨作，用魔幻现实主义的手法，讲述了布恩迪亚家族七代人的兴衰史。
-
-## 核心主题
-
-孤独是这部作品的核心主题。每个人物都被困在自己的孤独中，无法真正理解和沟通。
-
-## 写作技巧
-
-- 循环往复的叙事结构
-- 魔幻与现实的完美融合
-- 象征主义的运用
-
-## 深刻印象
-
-"多年以后，面对行刑队，奥雷里亚诺·布恩迪亚上校将会回想起父亲带他去见识冰块的那个遥远的下午。"
-
-这个开头堪称经典，时间的跳跃和回环，奠定了整部作品的基调。
-
-## 个人思考
-
-这本书让我明白，孤独是人类的宿命，但正是在孤独中，我们才能真正认识自己，创造属于自己的世界。`
-    },
-    '1984': {
-      title: '1984',
-      author: '乔治·奥威尔',
-      tags: ['反乌托邦', '政治', '极权主义'],
-      notes: `奥威尔的这部预言性作品，描绘了一个极权主义社会的恐怖图景。
-
-## 核心概念
-
-- **老大哥**：无处不在的监控
-- **双重思想**：同时接受两个矛盾的观念
-- **新话**：通过语言控制思想
-
-## 现实意义
-
-虽然写于1948年，但书中描述的很多现象在今天仍然具有警示意义：
-- 信息监控
-- 历史篡改
-- 思想控制
-
-## 经典语句
-
-"战争即和平，自由即奴役，无知即力量。"
-
-这句话完美诠释了极权社会的逻辑颠倒。
-
-## 个人反思
-
-这本书提醒我们要时刻警惕权力的滥用，保护个人自由和独立思考的能力。在信息时代，这种警醒尤为重要。`
-    },
-    norwegian: {
-      title: '挪威的森林',
-      author: '村上春树',
-      tags: ['青春', '日本文学', '成长'],
-      notes: `村上春树的这部青春小说，以细腻的笔触描绘了青春期的迷茫与成长。
-
-## 故事背景
-
-1960年代的日本，学生运动的时代背景下，主人公渡边彻的大学生活。
-
-## 主要人物
-
-- **渡边彻**：叙述者，理性而敏感
-- **直子**：美丽而脆弱，最终选择了死亡
-- **绿子**：活泼开朗，代表着生命力
-
-## 主题探讨
-
-### 死亡与生存
-直子的死亡和绿子的生命力形成鲜明对比，象征着主人公在死亡与生存之间的选择。
-
-### 青春的迷茫
-每个人在青春期都会经历的困惑和选择，书中有很好的体现。
-
-## 印象深刻的段落
-
-"死不是生的对立面，而作为生的一部分永存。"
-
-这句话深刻地表达了作者对生死的理解。
-
-## 个人感悟
-
-这本书让我重新思考青春、爱情和成长。每个人都要在人生的十字路口做出选择，而这些选择将决定我们成为什么样的人。`
-    },
-    threebody: {
-      title: '三体',
-      author: '刘慈欣',
-      tags: ['硬科幻', '宇宙', '文明'],
-      notes: `刘慈欣的科幻巨作，展现了宏大的宇宙观和深刻的哲学思考。
-
-## 科学概念
-
-### 三体问题
-三个质量相当的天体在相互引力作用下的运动规律，这是一个经典的物理学难题。
-
-### 降维打击
-高维文明对低维文明的毁灭性打击，体现了技术差距的绝对性。
-
-## 哲学思考
-
-### 黑暗森林理论
-宇宙就像一座黑暗森林，每个文明都是带枪的猎人。
-
-### 文明的选择
-面对生存威胁时，文明会做出什么样的选择？
-
-## 人物分析
-
-- **叶文洁**：复杂的人物，既是受害者也是背叛者
-- **汪淼**：科学家的理性与人性的冲突
-- **史强**：代表着人类的坚韧和智慧
-
-## 个人思考
-
-这本书让我重新思考人类在宇宙中的位置。我们既渺小又伟大，既脆弱又坚强。科技的发展带来希望，也带来威胁。
-
-最重要的是，无论面对什么困难，人类都不应该放弃希望和尊严。`
-    },
-    foundation: {
-      title: '基地',
-      author: '阿西莫夫',
-      tags: ['太空歌剧', '心理史学', '银河帝国'],
-      notes: `阿西莫夫的基地系列是科幻文学的经典之作，构建了一个宏大的银河帝国世界。
-
-## 核心概念
-
-### 心理史学
-通过数学方法预测大规模人群的行为，这是一个fascinating的概念。
-
-### 基地计划
-在银河帝国衰落时期，建立两个基地来缩短黑暗时代。
-
-## 科幻设定
-
-- 银河帝国的兴衰
-- 科技与社会的关系
-- 预言与自由意志的矛盾
-
-## 哲学思考
-
-### 历史的必然性
-历史是否有其必然的发展规律？个人在历史洪流中的作用是什么？
-
-### 科学与预言
-科学能否预测未来？预言本身是否会改变未来？
-
-## 个人感悟
-
-这个系列让我思考：
-- 文明的发展规律
-- 个人与历史的关系
-- 科学理性的力量和局限
-
-阿西莫夫用严谨的逻辑和宏大的想象力，创造了一个令人信服的未来世界。`
-    },
-    sapiens: {
-      title: '人类简史',
-      author: '尤瓦尔·赫拉利',
-      tags: ['历史', '人类学', '社会学'],
-      notes: `赫拉利的这部作品，从宏观角度审视了人类文明的发展历程。
-
-## 三大革命
-
-### 认知革命
-7万年前，智人开始能够谈论虚构的事物，这是人类文明的起点。
-
-### 农业革命
-1.2万年前，人类开始种植作物，从此改变了生活方式。
-
-### 科学革命
-500年前开始，人类开始承认自己的无知，开始寻求新知识。
-
-## 核心观点
-
-### 虚构的力量
-人类能够相信共同的虚构故事（如宗教、国家、公司），这是大规模合作的基础。
-
-### 进步的代价
-每一次进步都有其代价，农业革命让人类更加辛苦，工业革命带来了环境问题。
-
-## 对未来的思考
-
-### 生物技术革命
-基因工程、人工智能等技术将如何改变人类？
-
-### 智人的未来
-我们可能正在进化成一个新的物种——神人。
-
-## 个人反思
-
-这本书让我重新思考：
-- 什么是进步？
-- 人类的未来在哪里？
-- 我们应该如何面对技术变革？
-
-赫拉利提出的问题比答案更有价值，它们促使我们思考人类的本质和未来。`
-    },
-    thinking: {
-      title: '思考，快与慢',
-      author: '丹尼尔·卡尼曼',
-      tags: ['心理学', '认知', '行为经济学'],
-      notes: `卡尼曼的这部作品揭示了人类思维的两套系统，改变了我们对理性的理解。
-
-## 两套思维系统
-
-### 系统1：快思考
-- 自动化、直觉性
-- 快速但容易出错
-- 基于经验和情感
-
-### 系统2：慢思考
-- 需要努力、逻辑性
-- 慢但相对准确
-- 基于分析和推理
-
-## 认知偏误
-
-### 可得性启发式
-我们倾向于根据容易想到的例子来判断概率。
-
-### 锚定效应
-第一印象会影响后续的判断。
-
-### 损失厌恶
-损失带来的痛苦比同等收益带来的快乐更强烈。
-
-## 实际应用
-
-### 决策制定
-了解认知偏误有助于做出更好的决策。
-
-### 风险评估
-我们往往高估小概率事件，低估大概率事件。
-
-## 个人收获
-
-这本书让我明白：
-- 人类并非完全理性
-- 直觉有时很准确，有时会误导我们
-- 重要决策需要慢思考
-
-最重要的是，认识到自己思维的局限性，这是智慧的开始。`
-    }
-  }
-
-  // 获取书籍信息的辅助函数
-  const getBookTitle = (bookId: string) => bookData[bookId]?.title || ''
-  const getBookAuthor = (bookId: string) => bookData[bookId]?.author || ''
-  const getBookTags = (bookId: string) => bookData[bookId]?.tags || []
-  const getBookNotes = (bookId: string) => {
-    const notes = bookData[bookId]?.notes || ''
-    return notes.split('\n').map((line, index) => {
-      if (line.startsWith('## ')) {
-        return <h3 key={index} className="mobile-book-notes-h3">{line.replace('## ', '')}</h3>
-      } else if (line.startsWith('### ')) {
-        return <h4 key={index} className="mobile-book-notes-h4">{line.replace('### ', '')}</h4>
-      } else if (line.startsWith('- ')) {
-        return <li key={index} className="mobile-book-notes-li">{line.replace('- ', '')}</li>
-      } else if (line.trim() === '') {
-        return <br key={index} />
-      } else {
-        return <p key={index} className="mobile-book-notes-p">{line}</p>
-      }
-    })
-  }
 
   // 平滑滚动函数 - 处理移动端和桌面端的ID冲突
   const scrollToSection = (sectionId: string) => {
@@ -836,189 +524,84 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 移动端书架区域 - 专门的移动端设计 */}
+        {/* 移动端书架区域 - 使用真实书籍数据 */}
         <section className="py-16 px-4 bg-white dark:bg-gray-900">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               📚 我的书架
             </h2>
             <p className="text-gray-600 dark:text-gray-400">
-              分享一些读过的好书和思考
+              点击书籍查看读书笔记
             </p>
           </div>
 
-          {/* 移动端书籍网格 */}
+          {/* 移动端书籍网格 - 按分类展示，一排两本书 */}
           <div className="mobile-bookshelf-grid">
-            {/* 文学类 */}
-            <div className="mobile-book-category">
-              <h3 className="mobile-category-title">📖 文学</h3>
-              <div className="mobile-books-row">
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('vegetarian')}>
-                  <div className="mobile-book-cover vegetarian">素食者</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">素食者</div>
-                    <div className="mobile-book-author">韩江</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#女性主义</span>
-                      <span className="mobile-book-tag">#韩国文学</span>
-                    </div>
-                  </div>
+            {booksByCategory.map((category, categoryIndex) => (
+              <div key={category.name} className="mobile-book-category">
+                <div className="flex items-center mb-6">
+                  <div
+                    className="w-4 h-4 rounded-full mr-3"
+                    style={{ backgroundColor: category.color }}
+                  />
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    {category.name}
+                  </h3>
                 </div>
 
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('solitude')}>
-                  <div className="mobile-book-cover solitude">百年孤独</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">百年孤独</div>
-                    <div className="mobile-book-author">马尔克斯</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#魔幻现实</span>
-                      <span className="mobile-book-tag">#拉美文学</span>
-                    </div>
-                  </div>
-                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {category.books.map((book) => (
+                    <div
+                      key={book.id}
+                      className="mobile-book-item cursor-pointer"
+                      onClick={() => openBookModal(book)}
+                    >
+                      {/* 书籍封面 */}
+                      <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg mb-3">
+                        <img
+                          src={book.coverUrl}
+                          alt={book.title}
+                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
 
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('1984')}>
-                  <div className="mobile-book-cover orwell">1984</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">1984</div>
-                    <div className="mobile-book-author">乔治·奥威尔</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#反乌托邦</span>
-                      <span className="mobile-book-tag">#政治</span>
-                    </div>
-                  </div>
-                </div>
+                        {/* 悬浮时的遮罩 */}
+                        <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="bg-white/90 dark:bg-gray-800/90 px-3 py-1 rounded-full text-sm font-medium text-gray-900 dark:text-white">
+                            点击阅读
+                          </div>
+                        </div>
+                      </div>
 
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('norwegian')}>
-                  <div className="mobile-book-cover norwegian">挪威的森林</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">挪威的森林</div>
-                    <div className="mobile-book-author">村上春树</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#青春</span>
-                      <span className="mobile-book-tag">#日本文学</span>
+                      {/* 书籍信息 */}
+                      <div className="text-center">
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-2 line-clamp-2">
+                          {book.title}
+                        </h4>
+                        <div className="flex flex-wrap gap-1 justify-center">
+                          {book.tags.slice(0, 2).map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            {/* 科幻类 */}
-            <div className="mobile-book-category">
-              <h3 className="mobile-category-title">🚀 科幻</h3>
-              <div className="mobile-books-row">
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('threebody')}>
-                  <div className="mobile-book-cover threebody">三体</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">三体</div>
-                    <div className="mobile-book-author">刘慈欣</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#硬科幻</span>
-                      <span className="mobile-book-tag">#宇宙</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('foundation')}>
-                  <div className="mobile-book-cover foundation">基地</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">基地</div>
-                    <div className="mobile-book-author">阿西莫夫</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#太空歌剧</span>
-                      <span className="mobile-book-tag">#心理史学</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 成长类 */}
-            <div className="mobile-book-category">
-              <h3 className="mobile-category-title">🌱 成长</h3>
-              <div className="mobile-books-row">
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('sapiens')}>
-                  <div className="mobile-book-cover sapiens">人类简史</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">人类简史</div>
-                    <div className="mobile-book-author">尤瓦尔·赫拉利</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#历史</span>
-                      <span className="mobile-book-tag">#人类学</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mobile-book-item" onClick={() => openMobileBookModal('thinking')}>
-                  <div className="mobile-book-cover thinking">思考，快与慢</div>
-                  <div className="mobile-book-info">
-                    <div className="mobile-book-title">思考，快与慢</div>
-                    <div className="mobile-book-author">丹尼尔·卡尼曼</div>
-                    <div className="mobile-book-tags">
-                      <span className="mobile-book-tag">#心理学</span>
-                      <span className="mobile-book-tag">#认知</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div className="mobile-bookshelf-tip">
-            <p>📖 点击书籍查看完整读书笔记</p>
+          <div className="text-center mt-8">
+            <p className="text-gray-600 dark:text-gray-400">
+              📖 点击书籍查看完整读书笔记
+            </p>
           </div>
         </section>
 
-        {/* 移动端书籍模态框 */}
-        {mobileBookModal.isOpen && (
-          <div className="mobile-book-modal-overlay" onClick={closeMobileBookModal}>
-            <div className="mobile-book-modal" onClick={(e) => e.stopPropagation()}>
-              {/* 模态框头部 - 会随着滚动变化 */}
-              <div
-                className="mobile-book-modal-header"
-                style={{
-                  transform: `scale(${Math.max(0.6, 1 - mobileBookModal.scrollY * 0.001)})`,
-                  opacity: Math.max(0.3, 1 - mobileBookModal.scrollY * 0.002)
-                }}
-              >
-                <button className="mobile-book-modal-close" onClick={closeMobileBookModal}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                <div className="mobile-book-modal-cover">
-                  <div className={`mobile-book-cover ${mobileBookModal.bookId}`}>
-                    {getBookTitle(mobileBookModal.bookId)}
-                  </div>
-                </div>
-
-                <div className="mobile-book-modal-info">
-                  <h2 className="mobile-book-modal-title">{getBookTitle(mobileBookModal.bookId)}</h2>
-                  <p className="mobile-book-modal-author">{getBookAuthor(mobileBookModal.bookId)}</p>
-                  <div className="mobile-book-modal-tags">
-                    {getBookTags(mobileBookModal.bookId).map((tag, index) => (
-                      <span key={index} className="mobile-book-tag">#{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* 模态框内容 - 可滚动的笔记内容 */}
-              <div
-                className="mobile-book-modal-content"
-                onScroll={(e) => {
-                  const scrollY = e.currentTarget.scrollTop
-                  setMobileBookModal(prev => ({ ...prev, scrollY }))
-                }}
-              >
-                <div className="mobile-book-notes">
-                  {getBookNotes(mobileBookModal.bookId)}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* 移动端最新文章部分 */}
         <section className="py-16 px-4 bg-white dark:bg-gray-900">
