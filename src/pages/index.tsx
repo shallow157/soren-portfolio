@@ -500,6 +500,18 @@ export default function Home() {
 
       {/* 桌面端版本 - 使用CSS媒体查询控制显示 */}
       <div className="hidden md:block">
+        {/* 桌面端样式隔离测试 */}
+        <div className="isolation-test">
+          桌面端样式隔离测试
+        </div>
+
+        {/* Hero Section with animated background */}
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+          {/* 背景动画 */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-200 dark:bg-purple-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+          </div>
 
           <div className="relative z-10 text-center max-w-lg">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
