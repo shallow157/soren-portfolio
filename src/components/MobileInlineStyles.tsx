@@ -329,6 +329,75 @@ const MobileInlineStyles: React.FC = () => {
             text-align: center !important;
           }
 
+          /* 移动端技能卡片样式 */
+          .mobile-skill-card {
+            background-color: #ffffff !important;
+            border-radius: 16px !important;
+            padding: 20px !important;
+            margin-bottom: 20px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+            border: 1px solid #e9ecef !important;
+          }
+
+          .mobile-skill-header {
+            display: flex !important;
+            align-items: center !important;
+            margin-bottom: 12px !important;
+          }
+
+          .mobile-skill-icon {
+            font-size: 24px !important;
+            margin-right: 12px !important;
+          }
+
+          .mobile-skill-card-title {
+            font-size: 18px !important;
+            font-weight: bold !important;
+            color: #333333 !important;
+            margin: 0 !important;
+          }
+
+          .mobile-skill-desc {
+            font-size: 14px !important;
+            color: #666666 !important;
+            line-height: 1.5 !important;
+            margin-bottom: 16px !important;
+          }
+
+          .mobile-skill-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+          }
+
+          .mobile-skill-tag {
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+          }
+
+          .mobile-skill-tag.sky {
+            background-color: #e0f2fe !important;
+            color: #0277bd !important;
+          }
+
+          .mobile-skill-tag.emerald {
+            background-color: #ecfdf5 !important;
+            color: #047857 !important;
+          }
+
+          .mobile-skill-tag.violet {
+            background-color: #f3e8ff !important;
+            color: #7c3aed !important;
+          }
+
+          .mobile-skill-tag.rose {
+            background-color: #fdf2f8 !important;
+            color: #e11d48 !important;
+          }
+
           .mobile-skills-grid {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
@@ -384,7 +453,7 @@ const MobileInlineStyles: React.FC = () => {
             border-color: #f8bbd9 !important;
           }
 
-          /* 移动端项目卡片样式 */
+          /* 移动端项目卡片样式 - 桌面端风格 */
           .mobile-projects-container {
             padding: 20px !important;
             background-color: #ffffff !important;
@@ -393,41 +462,122 @@ const MobileInlineStyles: React.FC = () => {
             box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
           }
 
-          .mobile-project-card {
-            background-color: #f8f9fa !important;
-            border-radius: 12px !important;
-            padding: 16px !important;
-            margin-bottom: 16px !important;
+          .mobile-project-card-desktop {
+            background-color: #ffffff !important;
+            border-radius: 20px !important;
+            margin-bottom: 24px !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
             border: 1px solid #e9ecef !important;
+            overflow: hidden !important;
           }
 
-          .mobile-project-title {
-            font-size: 18px !important;
+          .mobile-project-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+            padding: 20px !important;
+            position: relative !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+          }
+
+          .mobile-project-header.green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+          }
+
+          .mobile-project-icon {
+            font-size: 40px !important;
+            color: white !important;
+          }
+
+          .mobile-project-category {
+            background-color: rgba(255,255,255,0.2) !important;
+            color: white !important;
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+          }
+
+          .mobile-project-content {
+            padding: 20px !important;
+          }
+
+          .mobile-project-title-desktop {
+            font-size: 20px !important;
             font-weight: bold !important;
             color: #333333 !important;
-            margin-bottom: 8px !important;
-          }
-
-          .mobile-project-desc {
-            font-size: 14px !important;
-            color: #666666 !important;
-            line-height: 1.5 !important;
             margin-bottom: 12px !important;
           }
 
-          .mobile-project-tags {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 6px !important;
+          .mobile-project-desc-desktop {
+            font-size: 14px !important;
+            color: #666666 !important;
+            line-height: 1.6 !important;
+            margin-bottom: 16px !important;
           }
 
-          .mobile-project-tag {
-            padding: 4px 8px !important;
-            background-color: #e3f2fd !important;
-            color: #1976d2 !important;
-            border-radius: 12px !important;
-            font-size: 10px !important;
-            font-weight: 500 !important;
+          .mobile-project-tech-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin-bottom: 20px !important;
+          }
+
+          .mobile-tech-tag {
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+          }
+
+          .mobile-tech-tag.blue {
+            background-color: #dbeafe !important;
+            color: #1e40af !important;
+          }
+
+          .mobile-tech-tag.green {
+            background-color: #dcfce7 !important;
+            color: #166534 !important;
+          }
+
+          .mobile-project-actions {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+          }
+
+          .mobile-project-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 20px !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+          }
+
+          .mobile-project-btn.green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+          }
+
+          .mobile-project-github {
+            width: 40px !important;
+            height: 40px !important;
+            background-color: #f3f4f6 !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-decoration: none !important;
+            color: #6b7280 !important;
+          }
+
+          .mobile-github-icon {
+            width: 20px !important;
+            height: 20px !important;
           }
 
           /* 移动端图书馆样式 */

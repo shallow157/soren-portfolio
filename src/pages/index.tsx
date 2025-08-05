@@ -286,90 +286,113 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 移动端技能模块 - 优化布局 */}
+        {/* 移动端技能模块 - 3个卡片3排 */}
         <div className="mobile-skills-container mobile-section">
           <h2 className="mobile-skills-title">🚀 技能专长</h2>
 
-          {/* Python & 机器学习 */}
-          <h3 style={{fontSize: '18px', fontWeight: '600', color: '#333', marginBottom: '12px'}}>
-            Python & 机器学习
-          </h3>
-          <div className="mobile-skills-grid">
-            <div className="mobile-skill-tag python">Python</div>
-            <div className="mobile-skill-tag python">Pandas</div>
-            <div className="mobile-skill-tag ml">XGBoost</div>
-            <div className="mobile-skill-tag ml">Scikit-learn</div>
-            <div className="mobile-skill-tag ml">TensorFlow</div>
-            <div className="mobile-skill-tag ml">PyTorch</div>
+          {/* 数据处理与分析 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">📊</span>
+              <h3 className="mobile-skill-card-title">数据处理与分析</h3>
+            </div>
+            <p className="mobile-skill-desc">熟练使用多种数据处理工具进行数据清洗、分析和建模</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">Python</span>
+              <span className="mobile-skill-tag emerald">R</span>
+              <span className="mobile-skill-tag violet">SQL</span>
+              <span className="mobile-skill-tag rose">SPSS</span>
+            </div>
           </div>
 
-          {/* Web开发 */}
-          <h3 style={{fontSize: '18px', fontWeight: '600', color: '#333', marginBottom: '12px', marginTop: '20px'}}>
-            Web开发
-          </h3>
-          <div className="mobile-skills-grid-3">
-            <div className="mobile-skill-tag web">React</div>
-            <div className="mobile-skill-tag web">Next.js</div>
-            <div className="mobile-skill-tag web">TypeScript</div>
-            <div className="mobile-skill-tag web">Node.js</div>
-            <div className="mobile-skill-tag web">Tailwind</div>
-            <div className="mobile-skill-tag web">JavaScript</div>
+          {/* 数据可视化 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">📈</span>
+              <h3 className="mobile-skill-card-title">数据可视化</h3>
+            </div>
+            <p className="mobile-skill-desc">创建直观的数据可视化图表和交互式仪表板</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">PowerBI</span>
+              <span className="mobile-skill-tag emerald">Tableau</span>
+              <span className="mobile-skill-tag violet">Excel</span>
+              <span className="mobile-skill-tag rose">Matplotlib</span>
+            </div>
           </div>
 
-          {/* 工具 & 其他 */}
-          <h3 style={{fontSize: '18px', fontWeight: '600', color: '#333', marginBottom: '12px', marginTop: '20px'}}>
-            工具 & 其他
-          </h3>
-          <div className="mobile-skills-grid">
-            <div className="mobile-skill-tag tool">Git</div>
-            <div className="mobile-skill-tag tool">Docker</div>
-            <div className="mobile-skill-tag tool">AWS</div>
-            <div className="mobile-skill-tag tool">Linux</div>
-            <div className="mobile-skill-tag tool">SQL</div>
-            <div className="mobile-skill-tag tool">MongoDB</div>
+          {/* 机器学习 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">🤖</span>
+              <h3 className="mobile-skill-card-title">机器学习</h3>
+            </div>
+            <p className="mobile-skill-desc">构建和优化机器学习模型，解决实际业务问题</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">XGBoost</span>
+              <span className="mobile-skill-tag emerald">Scikit-learn</span>
+              <span className="mobile-skill-tag violet">TensorFlow</span>
+              <span className="mobile-skill-tag rose">PyTorch</span>
+            </div>
           </div>
         </div>
 
-        {/* 移动端精选项目模块 */}
+        {/* 移动端精选项目模块 - 参考桌面端样式 */}
         <div className="mobile-projects-container mobile-section">
           <h2 className="mobile-skills-title">💼 精选项目</h2>
 
-          <div className="mobile-project-card">
-            <h3 className="mobile-project-title">智能数据分析平台</h3>
-            <p className="mobile-project-desc">
-              基于Python和机器学习的数据分析平台，支持多种算法模型和可视化展示。
-            </p>
-            <div className="mobile-project-tags">
-              <span className="mobile-project-tag">Python</span>
-              <span className="mobile-project-tag">XGBoost</span>
-              <span className="mobile-project-tag">Pandas</span>
-              <span className="mobile-project-tag">Flask</span>
+          {/* 项目1：酒店预订取消率分析 */}
+          <div className="mobile-project-card-desktop">
+            <div className="mobile-project-header">
+              <span className="mobile-project-icon">🏨</span>
+              <span className="mobile-project-category">机器学习</span>
+            </div>
+            <div className="mobile-project-content">
+              <h3 className="mobile-project-title-desktop">酒店预订取消率分析</h3>
+              <p className="mobile-project-desc-desktop">
+                基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。
+              </p>
+              <div className="mobile-project-tech-tags">
+                <span className="mobile-tech-tag blue">Python</span>
+                <span className="mobile-tech-tag blue">XGBoost</span>
+                <span className="mobile-tech-tag blue">SQL</span>
+                <span className="mobile-tech-tag blue">PowerBI</span>
+              </div>
+              <div className="mobile-project-actions">
+                <a href="/reports/1" className="mobile-project-btn">查看项目</a>
+                <a href="https://github.com/shallow157/data_analysis_hotel_booking" className="mobile-project-github">
+                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="mobile-project-card">
-            <h3 className="mobile-project-title">全栈Web应用</h3>
-            <p className="mobile-project-desc">
-              现代化的全栈Web应用，采用React + Next.js构建，支持响应式设计。
-            </p>
-            <div className="mobile-project-tags">
-              <span className="mobile-project-tag">React</span>
-              <span className="mobile-project-tag">Next.js</span>
-              <span className="mobile-project-tag">TypeScript</span>
-              <span className="mobile-project-tag">Tailwind</span>
+          {/* 项目2：淘宝用户行为分析 */}
+          <div className="mobile-project-card-desktop">
+            <div className="mobile-project-header green">
+              <span className="mobile-project-icon">🛒</span>
+              <span className="mobile-project-category">数据分析</span>
             </div>
-          </div>
-
-          <div className="mobile-project-card">
-            <h3 className="mobile-project-title">云端部署方案</h3>
-            <p className="mobile-project-desc">
-              基于Docker和AWS的云端部署解决方案，支持自动化CI/CD流程。
-            </p>
-            <div className="mobile-project-tags">
-              <span className="mobile-project-tag">Docker</span>
-              <span className="mobile-project-tag">AWS</span>
-              <span className="mobile-project-tag">CI/CD</span>
-              <span className="mobile-project-tag">Linux</span>
+            <div className="mobile-project-content">
+              <h3 className="mobile-project-title-desktop">淘宝用户行为分析</h3>
+              <p className="mobile-project-desc-desktop">
+                分析淘宝用户行为数据，构建用户画像和购买预测模型。使用Python进行数据清洗和特征工程，Tableau创建交互式仪表板。
+              </p>
+              <div className="mobile-project-tech-tags">
+                <span className="mobile-tech-tag green">Python</span>
+                <span className="mobile-tech-tag green">Pandas</span>
+                <span className="mobile-tech-tag green">Tableau</span>
+                <span className="mobile-tech-tag green">MySQL</span>
+              </div>
+              <div className="mobile-project-actions">
+                <a href="/reports/2" className="mobile-project-btn green">查看项目</a>
+                <a href="https://github.com/shallow157/data_analysis_taobao_user_behavior" className="mobile-project-github">
+                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -446,8 +469,29 @@ export default function Home() {
               📖 点击书籍查看读书笔记 (功能开发中)
             </p>
           </div>
+
+          {/* 移动端页脚 */}
+          <div className="mobile-footer-inline">
+            <div className="mobile-footer-links">
+              <a href="#" className="mobile-footer-link">关于我</a>
+              <a href="#" className="mobile-footer-link">项目</a>
+              <a href="#" className="mobile-footer-link">联系</a>
+            </div>
+            <p className="mobile-footer-text">
+              © 2024 个人作品集. 使用内联CSS完美适配移动端.
+            </p>
+          </div>
         </div>
-        {/* 移动端Hero区域 - 改进版 */}
+      </div>
+
+      {/* 桌面端版本 - 使用CSS媒体查询控制显示 */}
+      <div className="hidden md:block">
+        {/* 桌面端样式隔离测试 */}
+        <div className="isolation-test">
+          桌面端样式隔离测试
+        </div>
+
+        {/* Hero Section with animated background */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 背景动画 */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
