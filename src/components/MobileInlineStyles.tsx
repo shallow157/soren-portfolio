@@ -311,6 +311,199 @@ const MobileInlineStyles: React.FC = () => {
             margin-bottom: 20px !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
           }
+
+          /* 移动端技能标签样式 */
+          .mobile-skills-container {
+            padding: 20px !important;
+            background-color: #ffffff !important;
+            border-radius: 16px !important;
+            margin: 16px !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+          }
+
+          .mobile-skills-title {
+            font-size: 24px !important;
+            font-weight: bold !important;
+            color: #333333 !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+          }
+
+          .mobile-skills-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 12px !important;
+            margin-bottom: 20px !important;
+          }
+
+          .mobile-skills-grid-3 {
+            grid-template-columns: 1fr 1fr 1fr !important;
+            gap: 8px !important;
+          }
+
+          .mobile-skill-tag {
+            display: inline-block !important;
+            padding: 8px 12px !important;
+            background-color: #e3f2fd !important;
+            color: #1976d2 !important;
+            border-radius: 20px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            border: 1px solid #bbdefb !important;
+            transition: all 0.2s ease !important;
+          }
+
+          .mobile-skill-tag:hover {
+            background-color: #1976d2 !important;
+            color: white !important;
+            transform: translateY(-1px) !important;
+          }
+
+          .mobile-skill-tag.python {
+            background-color: #fff3e0 !important;
+            color: #f57c00 !important;
+            border-color: #ffcc02 !important;
+          }
+
+          .mobile-skill-tag.ml {
+            background-color: #f3e5f5 !important;
+            color: #7b1fa2 !important;
+            border-color: #ce93d8 !important;
+          }
+
+          .mobile-skill-tag.web {
+            background-color: #e8f5e8 !important;
+            color: #388e3c !important;
+            border-color: #a5d6a7 !important;
+          }
+
+          .mobile-skill-tag.tool {
+            background-color: #fce4ec !important;
+            color: #c2185b !important;
+            border-color: #f8bbd9 !important;
+          }
+
+          /* 移动端项目卡片样式 */
+          .mobile-projects-container {
+            padding: 20px !important;
+            background-color: #ffffff !important;
+            border-radius: 16px !important;
+            margin: 16px !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+          }
+
+          .mobile-project-card {
+            background-color: #f8f9fa !important;
+            border-radius: 12px !important;
+            padding: 16px !important;
+            margin-bottom: 16px !important;
+            border: 1px solid #e9ecef !important;
+          }
+
+          .mobile-project-title {
+            font-size: 18px !important;
+            font-weight: bold !important;
+            color: #333333 !important;
+            margin-bottom: 8px !important;
+          }
+
+          .mobile-project-desc {
+            font-size: 14px !important;
+            color: #666666 !important;
+            line-height: 1.5 !important;
+            margin-bottom: 12px !important;
+          }
+
+          .mobile-project-tags {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+          }
+
+          .mobile-project-tag {
+            padding: 4px 8px !important;
+            background-color: #e3f2fd !important;
+            color: #1976d2 !important;
+            border-radius: 12px !important;
+            font-size: 10px !important;
+            font-weight: 500 !important;
+          }
+
+          /* 移动端图书馆样式 */
+          .mobile-library-container {
+            padding: 20px !important;
+            background-color: #ffffff !important;
+            border-radius: 16px !important;
+            margin: 16px !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+          }
+
+          .mobile-library-title {
+            font-size: 24px !important;
+            font-weight: bold !important;
+            color: #333333 !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+          }
+
+          .mobile-books-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 16px !important;
+          }
+
+          .mobile-book-card {
+            background-color: #f8f9fa !important;
+            border-radius: 12px !important;
+            padding: 16px !important;
+            text-align: center !important;
+            border: 1px solid #e9ecef !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+          }
+
+          .mobile-book-card:hover {
+            background-color: #e9ecef !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+          }
+
+          .mobile-book-cover {
+            width: 60px !important;
+            height: 80px !important;
+            background-color: #007bff !important;
+            border-radius: 6px !important;
+            margin: 0 auto 12px auto !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: white !important;
+            font-size: 12px !important;
+            font-weight: bold !important;
+          }
+
+          .mobile-book-title {
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            color: #333333 !important;
+            margin-bottom: 4px !important;
+            line-height: 1.3 !important;
+          }
+
+          .mobile-book-author {
+            font-size: 12px !important;
+            color: #666666 !important;
+          }
+
+          /* 移动端段落间距优化 */
+          .mobile-section {
+            margin-bottom: 32px !important;
+          }
+
+          .mobile-section:last-child {
+            margin-bottom: 0 !important;
+          }
           
         }
       `}</style>
