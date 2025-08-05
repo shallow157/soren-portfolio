@@ -286,38 +286,220 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 移动端卡片示例 */}
-        <div className="mobile-card-inline mobile-slide-up">
-          <h3 className="mobile-card-title">功能特性</h3>
-          <p className="mobile-card-text">
-            ✅ 内联CSS确保样式加载<br/>
-            ✅ 响应式设计适配移动端<br/>
-            ✅ 优化的触摸交互体验<br/>
-            ✅ 快速加载和流畅动画
+        {/* 移动端技能专长部分 - 参考桌面端设计 */}
+        <div className="mobile-skills-container mobile-section">
+          <h2 className="mobile-skills-title">🚀 技能专长</h2>
+          <p style={{
+            textAlign: 'center',
+            color: '#666666',
+            fontSize: '16px',
+            marginBottom: '32px',
+            lineHeight: '1.6'
+          }}>
+            专注于数据分析与商业智能技术栈
           </p>
-          <button className="mobile-card-button">了解更多</button>
+
+          {/* 数据处理与分析 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">📊</span>
+              <h3 className="mobile-skill-card-title">数据处理与分析</h3>
+            </div>
+            <p className="mobile-skill-desc">熟练使用多种数据处理工具进行数据清洗、分析和建模</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">Python</span>
+              <span className="mobile-skill-tag emerald">R</span>
+              <span className="mobile-skill-tag violet">SQL</span>
+              <span className="mobile-skill-tag rose">SPSS</span>
+            </div>
+          </div>
+
+          {/* 数据可视化 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">📈</span>
+              <h3 className="mobile-skill-card-title">数据可视化</h3>
+            </div>
+            <p className="mobile-skill-desc">创建直观的数据可视化图表和交互式仪表板</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">PowerBI</span>
+              <span className="mobile-skill-tag emerald">Tableau</span>
+              <span className="mobile-skill-tag violet">Excel</span>
+              <span className="mobile-skill-tag rose">Matplotlib</span>
+            </div>
+          </div>
+
+          {/* 机器学习 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">🤖</span>
+              <h3 className="mobile-skill-card-title">机器学习</h3>
+            </div>
+            <p className="mobile-skill-desc">构建和优化机器学习模型，解决实际业务问题</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">XGBoost</span>
+              <span className="mobile-skill-tag emerald">Scikit-learn</span>
+              <span className="mobile-skill-tag violet">TensorFlow</span>
+              <span className="mobile-skill-tag rose">PyTorch</span>
+            </div>
+          </div>
         </div>
 
-        {/* 移动端表单示例 */}
-        <div className="mobile-form-inline">
-          <h3 className="mobile-form-title">联系我们</h3>
-          <div className="mobile-form-group">
-            <label className="mobile-form-label">姓名</label>
-            <input type="text" className="mobile-form-input" placeholder="请输入您的姓名" />
+        {/* 移动端精选项目部分 - 参考桌面端设计 */}
+        <div className="mobile-projects-container mobile-section">
+          <h2 className="mobile-skills-title">💼 精选项目</h2>
+          <p style={{
+            textAlign: 'center',
+            color: '#666666',
+            fontSize: '16px',
+            marginBottom: '32px',
+            lineHeight: '1.6'
+          }}>
+            展示我在数据分析和机器学习领域的实践成果
+          </p>
+
+          {/* 项目1：酒店预订取消率分析 */}
+          <div className="mobile-project-card-desktop">
+            <div className="mobile-project-header">
+              <span className="mobile-project-icon">🏨</span>
+              <span className="mobile-project-category">机器学习</span>
+            </div>
+            <div className="mobile-project-content">
+              <h3 className="mobile-project-title-desktop">酒店预订取消率分析</h3>
+              <p className="mobile-project-desc-desktop">
+                基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。
+              </p>
+              <div className="mobile-project-tech-tags">
+                <span className="mobile-tech-tag blue">Python</span>
+                <span className="mobile-tech-tag blue">XGBoost</span>
+                <span className="mobile-tech-tag blue">SQL</span>
+                <span className="mobile-tech-tag blue">PowerBI</span>
+              </div>
+              <div className="mobile-project-actions">
+                <a href="/reports/1" className="mobile-project-btn">查看项目</a>
+                <a href="https://github.com/shallow157/data_analysis_hotel_booking" className="mobile-project-github">
+                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="mobile-form-group">
-            <label className="mobile-form-label">邮箱</label>
-            <input type="email" className="mobile-form-input" placeholder="请输入您的邮箱" />
+
+          {/* 项目2：淘宝用户行为分析 */}
+          <div className="mobile-project-card-desktop">
+            <div className="mobile-project-header green">
+              <span className="mobile-project-icon">🛒</span>
+              <span className="mobile-project-category">数据分析</span>
+            </div>
+            <div className="mobile-project-content">
+              <h3 className="mobile-project-title-desktop">淘宝用户行为分析</h3>
+              <p className="mobile-project-desc-desktop">
+                分析淘宝用户行为数据，构建用户画像和购买预测模型。使用Python进行数据清洗和特征工程，Tableau创建交互式仪表板。
+              </p>
+              <div className="mobile-project-tech-tags">
+                <span className="mobile-tech-tag green">Python</span>
+                <span className="mobile-tech-tag green">Pandas</span>
+                <span className="mobile-tech-tag green">Tableau</span>
+                <span className="mobile-tech-tag green">MySQL</span>
+              </div>
+              <div className="mobile-project-actions">
+                <a href="/reports/2" className="mobile-project-btn green">查看项目</a>
+                <a href="https://github.com/shallow157/data_analysis_taobao_user_behavior" className="mobile-project-github">
+                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <button className="mobile-form-button">提交</button>
         </div>
-        {/* 移动端Hero区域 - 改进版 */}
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-          {/* 背景动画 */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-200 dark:bg-purple-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+
+        {/* 移动端书架部分 - 参考桌面端设计 */}
+        <div className="mobile-library-container mobile-section">
+          <h2 className="mobile-library-title">📚 我的书架</h2>
+          <p style={{
+            textAlign: 'center',
+            color: '#666666',
+            fontSize: '16px',
+            marginBottom: '32px',
+            lineHeight: '1.6'
+          }}>
+            分享一些读过的好书和思考
+          </p>
+
+          <div className="mobile-books-grid">
+            <div className="mobile-book-card">
+              <div className="mobile-book-cover">素食者</div>
+              <div className="mobile-book-title">素食者</div>
+              <div className="mobile-book-author">韩江</div>
+            </div>
+
+            <div className="mobile-book-card">
+              <div className="mobile-book-cover">百年孤独</div>
+              <div className="mobile-book-title">百年孤独</div>
+              <div className="mobile-book-author">马尔克斯</div>
+            </div>
+
+            <div className="mobile-book-card">
+              <div className="mobile-book-cover">1984</div>
+              <div className="mobile-book-title">1984</div>
+              <div className="mobile-book-author">乔治·奥威尔</div>
+            </div>
+
+            <div className="mobile-book-card">
+              <div className="mobile-book-cover">三体</div>
+              <div className="mobile-book-title">三体</div>
+              <div className="mobile-book-author">刘慈欣</div>
+            </div>
+
+            <div className="mobile-book-card">
+              <div className="mobile-book-cover">挪威的森林</div>
+              <div className="mobile-book-title">挪威的森林</div>
+              <div className="mobile-book-author">村上春树</div>
+            </div>
+
+            <div className="mobile-book-card">
+              <div className="mobile-book-cover">人类简史</div>
+              <div className="mobile-book-title">人类简史</div>
+              <div className="mobile-book-author">尤瓦尔·赫拉利</div>
+            </div>
           </div>
+
+          <div style={{
+            textAlign: 'center',
+            marginTop: '24px',
+            padding: '16px',
+            backgroundColor: '#f8f9fa',
+            borderRadius: '12px',
+            border: '1px solid #e9ecef'
+          }}>
+            <p style={{
+              color: '#666666',
+              fontSize: '14px',
+              margin: '0',
+              lineHeight: '1.5'
+            }}>
+              📖 点击书籍查看读书笔记和思考感悟
+            </p>
+          </div>
+
+          {/* 移动端页脚 */}
+          <div className="mobile-footer-inline">
+            <div className="mobile-footer-links">
+              <a href="#" className="mobile-footer-link">关于我</a>
+              <a href="#" className="mobile-footer-link">项目</a>
+              <a href="#" className="mobile-footer-link">联系</a>
+            </div>
+            <p className="mobile-footer-text">
+              © 2024 个人作品集. 移动端完美适配.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* 桌面端版本 - 使用CSS媒体查询控制显示 */}
+      <div className="hidden md:block">
 
           <div className="relative z-10 text-center max-w-lg">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
