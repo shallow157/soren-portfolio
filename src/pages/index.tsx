@@ -286,159 +286,30 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 移动端技能专长模块 */}
-        <div className="mobile-skills-container mobile-section">
-          <h2 className="mobile-skills-title">🚀 技能专长</h2>
-
-          {/* 数据处理与分析 */}
-          <div className="mobile-skill-card">
-            <div className="mobile-skill-header">
-              <span className="mobile-skill-icon">📊</span>
-              <h3 className="mobile-skill-card-title">数据处理与分析</h3>
-            </div>
-            <p className="mobile-skill-desc">熟练使用多种数据处理工具进行数据清洗、分析和建模</p>
-            <div className="mobile-skill-tags">
-              <span className="mobile-skill-tag sky">Python</span>
-              <span className="mobile-skill-tag emerald">R</span>
-              <span className="mobile-skill-tag violet">SQL</span>
-              <span className="mobile-skill-tag rose">SPSS</span>
-            </div>
-          </div>
-
-          {/* 数据可视化 */}
-          <div className="mobile-skill-card">
-            <div className="mobile-skill-header">
-              <span className="mobile-skill-icon">📈</span>
-              <h3 className="mobile-skill-card-title">数据可视化</h3>
-            </div>
-            <p className="mobile-skill-desc">创建直观的数据可视化图表和交互式仪表板</p>
-            <div className="mobile-skill-tags">
-              <span className="mobile-skill-tag sky">PowerBI</span>
-              <span className="mobile-skill-tag emerald">Tableau</span>
-              <span className="mobile-skill-tag violet">Excel</span>
-              <span className="mobile-skill-tag rose">Matplotlib</span>
-            </div>
-          </div>
-
-          {/* 机器学习 */}
-          <div className="mobile-skill-card">
-            <div className="mobile-skill-header">
-              <span className="mobile-skill-icon">🤖</span>
-              <h3 className="mobile-skill-card-title">机器学习</h3>
-            </div>
-            <p className="mobile-skill-desc">构建和优化机器学习模型，解决实际业务问题</p>
-            <div className="mobile-skill-tags">
-              <span className="mobile-skill-tag sky">XGBoost</span>
-              <span className="mobile-skill-tag emerald">Scikit-learn</span>
-              <span className="mobile-skill-tag violet">TensorFlow</span>
-              <span className="mobile-skill-tag rose">PyTorch</span>
-            </div>
-          </div>
+        {/* 移动端卡片示例 */}
+        <div className="mobile-card-inline mobile-slide-up">
+          <h3 className="mobile-card-title">功能特性</h3>
+          <p className="mobile-card-text">
+            ✅ 内联CSS确保样式加载<br/>
+            ✅ 响应式设计适配移动端<br/>
+            ✅ 优化的触摸交互体验<br/>
+            ✅ 快速加载和流畅动画
+          </p>
+          <button className="mobile-card-button">了解更多</button>
         </div>
 
-        {/* 移动端精选项目模块 */}
-        <div className="mobile-projects-container mobile-section">
-          <h2 className="mobile-skills-title">💼 精选项目</h2>
-
-          {/* 项目1：酒店预订取消率分析 */}
-          <div className="mobile-project-card-desktop">
-            <div className="mobile-project-header">
-              <span className="mobile-project-icon">🏨</span>
-              <span className="mobile-project-category">机器学习</span>
-            </div>
-            <div className="mobile-project-content">
-              <h3 className="mobile-project-title-desktop">酒店预订取消率分析</h3>
-              <p className="mobile-project-desc-desktop">
-                基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。
-              </p>
-              <div className="mobile-project-tech-tags">
-                <span className="mobile-tech-tag blue">Python</span>
-                <span className="mobile-tech-tag blue">XGBoost</span>
-                <span className="mobile-tech-tag blue">SQL</span>
-                <span className="mobile-tech-tag blue">PowerBI</span>
-              </div>
-            </div>
+        {/* 移动端表单示例 */}
+        <div className="mobile-form-inline">
+          <h3 className="mobile-form-title">联系我们</h3>
+          <div className="mobile-form-group">
+            <label className="mobile-form-label">姓名</label>
+            <input type="text" className="mobile-form-input" placeholder="请输入您的姓名" />
           </div>
-
-          {/* 项目2：淘宝用户行为分析 */}
-          <div className="mobile-project-card-desktop">
-            <div className="mobile-project-header green">
-              <span className="mobile-project-icon">🛒</span>
-              <span className="mobile-project-category">数据分析</span>
-            </div>
-            <div className="mobile-project-content">
-              <h3 className="mobile-project-title-desktop">淘宝用户行为分析</h3>
-              <p className="mobile-project-desc-desktop">
-                分析淘宝用户行为数据，构建用户画像和购买预测模型。
-              </p>
-              <div className="mobile-project-tech-tags">
-                <span className="mobile-tech-tag green">Python</span>
-                <span className="mobile-tech-tag green">Pandas</span>
-                <span className="mobile-tech-tag green">Tableau</span>
-                <span className="mobile-tech-tag green">MySQL</span>
-              </div>
-            </div>
+          <div className="mobile-form-group">
+            <label className="mobile-form-label">邮箱</label>
+            <input type="email" className="mobile-form-input" placeholder="请输入您的邮箱" />
           </div>
-        </div>
-
-        {/* 移动端书架模块 */}
-        <div className="mobile-library-container mobile-section">
-          <h2 className="mobile-library-title">📚 我的书架</h2>
-
-          <div className="mobile-books-grid">
-            <div className="mobile-book-card">
-              <div className="mobile-book-cover">素食者</div>
-              <div className="mobile-book-title">素食者</div>
-              <div className="mobile-book-author">韩江</div>
-            </div>
-
-            <div className="mobile-book-card">
-              <div className="mobile-book-cover">百年孤独</div>
-              <div className="mobile-book-title">百年孤独</div>
-              <div className="mobile-book-author">马尔克斯</div>
-            </div>
-
-            <div className="mobile-book-card">
-              <div className="mobile-book-cover">1984</div>
-              <div className="mobile-book-title">1984</div>
-              <div className="mobile-book-author">乔治·奥威尔</div>
-            </div>
-
-            <div className="mobile-book-card">
-              <div className="mobile-book-cover">三体</div>
-              <div className="mobile-book-title">三体</div>
-              <div className="mobile-book-author">刘慈欣</div>
-            </div>
-
-            <div className="mobile-book-card">
-              <div className="mobile-book-cover">挪威的森林</div>
-              <div className="mobile-book-title">挪威的森林</div>
-              <div className="mobile-book-author">村上春树</div>
-            </div>
-
-            <div className="mobile-book-card">
-              <div className="mobile-book-cover">人类简史</div>
-              <div className="mobile-book-title">人类简史</div>
-              <div className="mobile-book-author">尤瓦尔·赫拉利</div>
-            </div>
-          </div>
-
-          <div style={{
-            textAlign: 'center',
-            marginTop: '24px',
-            padding: '16px',
-            backgroundColor: '#f8f9fa',
-            borderRadius: '12px',
-            border: '1px solid #e9ecef'
-          }}>
-            <p style={{
-              color: '#666666',
-              fontSize: '14px',
-              margin: '0'
-            }}>
-              📖 点击书籍查看读书笔记
-            </p>
-          </div>
+          <button className="mobile-form-button">提交</button>
         </div>
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
