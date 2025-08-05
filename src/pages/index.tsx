@@ -358,175 +358,156 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 移动端技能部分 */}
-        <section id="skills" className="py-16 px-4 bg-white dark:bg-gray-900">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                {t('技能专长', 'Skills & Expertise')}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                {t('专注于数据分析与商业智能技术栈', 'Focused on data analysis and business intelligence technologies')}
-              </p>
+        {/* 移动端技能专长模块 - 更好看的版本 */}
+        <div className="mobile-skills-container mobile-section">
+          <h2 className="mobile-skills-title">🚀 技能专长</h2>
+          <p style={{
+            textAlign: 'center',
+            color: '#666666',
+            fontSize: '16px',
+            marginBottom: '32px',
+            lineHeight: '1.6'
+          }}>
+            专注于数据分析与商业智能技术栈
+          </p>
+
+          {/* 数据处理与分析 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">📊</span>
+              <h3 className="mobile-skill-card-title">数据处理与分析</h3>
             </div>
+            <p className="mobile-skill-desc">熟练使用多种数据处理工具进行数据清洗、分析和建模</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">Python</span>
+              <span className="mobile-skill-tag emerald">R</span>
+              <span className="mobile-skill-tag violet">SQL</span>
+              <span className="mobile-skill-tag rose">SPSS</span>
+            </div>
+          </div>
 
-            <div className="space-y-6">
-              {/* 数据处理与分析 */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                <div className="flex items-center mb-4">
-                  <div className="text-2xl mr-3">📊</div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {t('数据处理与分析', 'Data Processing & Analysis')}
-                  </h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                  {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['Python', 'R', 'SQL', 'SPSS'].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-800 dark:text-sky-200 text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+          {/* 数据可视化 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">📈</span>
+              <h3 className="mobile-skill-card-title">数据可视化</h3>
+            </div>
+            <p className="mobile-skill-desc">创建直观的数据可视化图表和交互式仪表板</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">PowerBI</span>
+              <span className="mobile-skill-tag emerald">Tableau</span>
+              <span className="mobile-skill-tag violet">Excel</span>
+              <span className="mobile-skill-tag rose">Matplotlib</span>
+            </div>
+          </div>
+
+          {/* 机器学习 */}
+          <div className="mobile-skill-card">
+            <div className="mobile-skill-header">
+              <span className="mobile-skill-icon">🤖</span>
+              <h3 className="mobile-skill-card-title">机器学习</h3>
+            </div>
+            <p className="mobile-skill-desc">构建和优化机器学习模型，解决实际业务问题</p>
+            <div className="mobile-skill-tags">
+              <span className="mobile-skill-tag sky">XGBoost</span>
+              <span className="mobile-skill-tag emerald">Scikit-learn</span>
+              <span className="mobile-skill-tag violet">TensorFlow</span>
+              <span className="mobile-skill-tag rose">PyTorch</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 移动端精选项目模块 - 更好看的版本 */}
+        <div className="mobile-projects-container mobile-section">
+          <h2 className="mobile-skills-title">💼 精选项目</h2>
+          <p style={{
+            textAlign: 'center',
+            color: '#666666',
+            fontSize: '16px',
+            marginBottom: '32px',
+            lineHeight: '1.6'
+          }}>
+            展示我在数据分析和机器学习领域的实践成果
+          </p>
+
+          {/* 项目1：酒店预订取消率分析 */}
+          <div className="mobile-project-card-desktop">
+            <div className="mobile-project-header">
+              <span className="mobile-project-icon">🏨</span>
+              <span className="mobile-project-category">机器学习</span>
+            </div>
+            <div className="mobile-project-content">
+              <h3 className="mobile-project-title-desktop">酒店预订取消率分析</h3>
+              <p className="mobile-project-desc-desktop">
+                基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。
+              </p>
+              <div className="mobile-project-tech-tags">
+                <span className="mobile-tech-tag blue">Python</span>
+                <span className="mobile-tech-tag blue">XGBoost</span>
+                <span className="mobile-tech-tag blue">SQL</span>
+                <span className="mobile-tech-tag blue">PowerBI</span>
               </div>
-
-              {/* 数据可视化 */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                <div className="flex items-center mb-4">
-                  <div className="text-2xl mr-3">📈</div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {t('数据可视化', 'Data Visualization')}
-                  </h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                  {t('创建直观美观的数据图表和交互式仪表板', 'Create intuitive and beautiful data charts and interactive dashboards')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['Tableau', 'Power BI', 'Matplotlib', 'Seaborn'].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* 数据库与工具 */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
-                <div className="flex items-center mb-4">
-                  <div className="text-2xl mr-3">🗄️</div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {t('数据库与工具', 'Database & Tools')}
-                  </h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                  {t('熟练掌握多种数据库系统和开发工具', 'Proficient in various database systems and development tools')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {['MySQL', 'PostgreSQL', 'MongoDB', 'Jupyter'].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-200 text-sm rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              <div className="mobile-project-actions">
+                <a href="/reports/1" className="mobile-project-btn">查看项目</a>
+                <a href="https://github.com/shallow157/data_analysis_hotel_booking" className="mobile-project-github">
+                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
-        </section>
 
-        {/* 移动端精选项目部分 */}
-        <section id="projects" className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                {t('精选项目', 'Featured Projects')}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                {t('展示我在数据分析和机器学习领域的实践成果', 'Showcasing my practical achievements in data analysis and machine learning')}
+          {/* 项目2：淘宝用户行为分析 */}
+          <div className="mobile-project-card-desktop">
+            <div className="mobile-project-header green">
+              <span className="mobile-project-icon">🛒</span>
+              <span className="mobile-project-category">数据分析</span>
+            </div>
+            <div className="mobile-project-content">
+              <h3 className="mobile-project-title-desktop">淘宝用户行为分析</h3>
+              <p className="mobile-project-desc-desktop">
+                处理1亿条用户行为数据，构建完整的用户行为分析框架，RFM模型实现精准用户分群，Tableau可视化仪表板展示核心指标。
               </p>
-            </div>
-
-            <div className="space-y-6">
-              {/* 项目1：酒店预订取消率分析 */}
-              <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
-                <div className="h-32 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative">
-                  <div className="text-4xl text-white">🏨</div>
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
-                      {t('机器学习', 'Machine Learning')}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    {t('酒店预订取消率分析', 'Hotel Booking Cancellation Analysis')}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                    {t('基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。', 'Built XGBoost prediction model with 87% accuracy using Kaggle hotel booking dataset. Combined with SQL database design and PowerBI dashboard.')}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {['Python', 'XGBoost', 'SQL', 'PowerBI'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm rounded-full">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href="/reports/1"
-                    className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:from-blue-600 hover:to-purple-700 transition-colors"
-                  >
-                    {t('查看项目', 'View Project')}
-                  </a>
-                </div>
+              <div className="mobile-project-tech-tags">
+                <span className="mobile-tech-tag green">MySQL</span>
+                <span className="mobile-tech-tag green">Tableau</span>
+                <span className="mobile-tech-tag green">Python</span>
+                <span className="mobile-tech-tag green">RFM模型</span>
               </div>
-
-              {/* 项目2：淘宝用户行为分析 */}
-              <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
-                <div className="h-32 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center relative">
-                  <div className="text-4xl text-white">🛒</div>
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
-                      {t('数据挖掘', 'Data Mining')}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    {t('淘宝用户行为分析', 'Taobao User Behavior Analysis')}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                    {t('处理1亿条用户行为数据，构建完整的用户行为分析框架，RFM模型实现精准用户分群，Tableau可视化仪表板展示核心指标。', 'Processed 100M user behavior records, built comprehensive analysis framework, RFM model for user segmentation, Tableau dashboard for key metrics.')}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {['MySQL', 'Tableau', 'Python', 'RFM模型'].map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 text-sm rounded-full">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href="/reports/2"
-                    className="inline-block bg-gradient-to-r from-green-500 to-teal-600 text-white px-4 py-2 rounded-lg text-sm hover:from-green-600 hover:to-teal-700 transition-colors"
-                  >
-                    {t('查看项目', 'View Project')}
-                  </a>
-                </div>
+              <div className="mobile-project-actions">
+                <a href="/reports/2" className="mobile-project-btn green">查看项目</a>
+                <a href="https://github.com/shallow157/data_analysis_taobao_user_behavior" className="mobile-project-github">
+                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
               </div>
-            </div>
-
-            <div className="text-center mt-8">
-              <Link
-                href="/projects"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-              >
-                {t('查看所有项目', 'View All Projects')}
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
           </div>
-        </section>
+
+          <div style={{
+            textAlign: 'center',
+            marginTop: '24px'
+          }}>
+            <a href="/projects" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '12px 24px',
+              backgroundColor: '#3b82f6',
+              color: 'white',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontSize: '16px',
+              fontWeight: '500'
+            }}>
+              查看所有项目
+              <svg style={{marginLeft: '8px', width: '16px', height: '16px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
 
         {/* 移动端书架区域 */}
         <section className="py-16 px-4 bg-white dark:bg-gray-900">
