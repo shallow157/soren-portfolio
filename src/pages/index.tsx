@@ -28,11 +28,28 @@ export default function Home() {
   const [markdownContentMobile, setMarkdownContentMobile] = useState('')
   const [loadingMobile, setLoadingMobile] = useState(false)
 
-  // 移动端检测 - 修复React错误
+  // 移动端检测 - 使用更可靠的检测方法
   useEffect(() => {
     const checkMobile = () => {
       if (typeof window !== 'undefined') {
-        setIsMobile(window.innerWidth < 768)
+        // 多重检测确保准确性
+        const screenWidth = window.innerWidth;
+        const userAgent = window.navigator.userAgent;
+        const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+        const isMobileWidth = screenWidth <= 768;
+
+        // 优先使用User Agent检测，其次使用宽度
+        const isMobileDevice = isMobileUA || isMobileWidth;
+
+        console.log('移动端检测详情:', {
+          screenWidth,
+          userAgent,
+          isMobileUA,
+          isMobileWidth,
+          finalResult: isMobileDevice
+        });
+
+        setIsMobile(isMobileDevice);
       }
     }
 
@@ -581,8 +598,13 @@ export default function Home() {
             </p>
 
             {/* 移动端测试指示器 */}
-            <div className="bg-red-500 text-white p-4 rounded-lg mt-4 text-center">
-              🔴 移动端书架测试区域 - isMobile: {isMobile ? 'true' : 'false'}
+            <div className="bg-red-500 text-white p-4 rounded-lg mt-4 text-center text-sm">
+              🔴 移动端书架测试区域<br/>
+              isMobile: {isMobile ? 'true' : 'false'}<br/>
+              UserAgent: {typeof window !== 'undefined' ? (
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent) ? '移动设备' : '桌面设备'
+              ) : '未知'}<br/>
+              宽度: {typeof window !== 'undefined' ? window.innerWidth : '未知'}
             </div>
           </div>
 
@@ -605,28 +627,23 @@ export default function Home() {
                     <button
                       key={book.id}
                       className="mobile-book-item w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl p-0 text-left"
-                      onClick={() => {
+                      onClick={(e) => {
+                        // 阻止事件冒泡和默认行为
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // 立即显示alert确认点击
+                        alert(`点击了书籍: ${book.title}`);
+
                         try {
                           // 强制日志（必触发）
                           console.log('【强制日志】点击了书籍:', book.title);
+                          console.log('书籍对象:', book);
 
-                          // 安全的窗口宽度检测
-                          const currentWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
-                          console.log('当前窗口宽度:', currentWidth);
-                          console.log('isMobile状态:', isMobile);
+                          // 直接使用移动端专用函数（不再检测设备类型）
+                          console.log('直接调用移动端专用函数');
+                          openBookModalMobile(book);
 
-                          // 强制移动端检测
-                          const isCurrentlyMobile = currentWidth < 768;
-                          console.log('实时移动端检测:', isCurrentlyMobile);
-
-                          // 移动端使用专用函数
-                          if (isCurrentlyMobile) {
-                            console.log('移动端：使用专用函数');
-                            openBookModalMobile(book);
-                          } else {
-                            console.log('桌面端：使用useBookStore');
-                            openBookModal(book);
-                          }
                         } catch (error) {
                           console.error('点击事件错误:', error);
                           alert('点击事件出错: ' + (error instanceof Error ? error.message : String(error)));
@@ -677,41 +694,41 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-400">
               📖 点击书籍查看完整读书笔记
             </p>
-            {/* 测试按钮 */}
+            {/* 最简单的测试按钮 */}
             <button
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
-              onClick={() => {
-                console.log('测试按钮点击');
-                console.log('books数量:', books.length);
-                console.log('openBookModal函数:', typeof openBookModal);
+              className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                alert('最简单的测试按钮被点击了！');
+                console.log('最简单的测试按钮点击');
+
                 if (books.length > 0) {
-                  console.log('测试打开第一本书:', books[0]);
-                  openBookModal(books[0]);
-                  // 延迟检查状态
-                  setTimeout(() => {
-                    const store = useBookStore.getState();
-                    console.log('测试按钮 - BookModal状态:', {
-                      selectedBook: store.selectedBook?.title,
-                      isModalOpen: store.isModalOpen
-                    });
-                  }, 100);
+                  console.log('尝试打开第一本书:', books[0]);
+                  openBookModalMobile(books[0]);
                 }
               }}
             >
-              测试打开第一本书
+              🟢 最简单测试
             </button>
 
-            {/* 强制显示测试 */}
+            {/* 强制显示移动端模态框 */}
             <button
-              className="mt-2 px-4 py-2 bg-red-500 text-white rounded-lg"
-              onClick={() => {
-                const { setSelectedBook, setIsModalOpen } = useBookStore.getState();
-                setSelectedBook(books[0]);
-                setIsModalOpen(true);
-                console.log('强制设置BookModal状态');
+              className="mt-2 px-4 py-2 bg-purple-500 text-white rounded-lg"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                alert('强制显示移动端模态框');
+                console.log('强制显示移动端模态框');
+
+                if (books.length > 0) {
+                  setSelectedBookMobile(books[0]);
+                  setIsModalOpenMobile(true);
+                  setMarkdownContentMobile('测试内容：这是强制显示的移动端模态框');
+                }
               }}
             >
-              强制打开BookModal
+              🟣 强制显示模态框
             </button>
           </div>
         </section>
