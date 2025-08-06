@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
 import BookshelfSection from '../components/BookshelfSection'
@@ -20,8 +20,17 @@ export default function Home() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
-
+  // 移动端检测
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // 直接使用电脑端的书籍数据和分类
   const { books, categories, openBookModal } = useBookStore()
@@ -531,7 +540,10 @@ export default function Home() {
               📚 我的书架
             </h2>
             <p className="text-gray-600 dark:text-gray-400">
-              点击书籍查看读书笔记
+              点击书籍查看读书笔记 {isMobile ? '(移动端)' : '(桌面端)'}
+            </p>
+            <p className="text-sm text-blue-500 mt-2">
+              调试信息: 书籍数量 {books.length}, 分类数量 {categories.length}
             </p>
           </div>
 
@@ -551,14 +563,16 @@ export default function Home() {
 
                 <div className="grid grid-cols-2 gap-4">
                   {category.books.map((book) => (
-                    <div
+                    <button
                       key={book.id}
-                      className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                      className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl p-0 text-left"
                       onClick={() => {
+                        alert(`点击了书籍: ${book.title}`);
                         console.log('移动端点击书籍:', book.title, book);
                         console.log('openBookModal函数:', typeof openBookModal);
                         openBookModal(book);
                       }}
+                      type="button"
                     >
                       {/* 书籍封面 */}
                       <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg mb-3">
@@ -592,7 +606,7 @@ export default function Home() {
                           ))}
                         </div>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>

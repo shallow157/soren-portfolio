@@ -655,40 +655,25 @@ const MobileInlineStyles: React.FC = () => {
             margin-bottom: 0 !important;
           }
 
-          /* 移动端书架网格样式 */
+          /* 移动端书架网格样式 - 简化版本 */
           .mobile-bookshelf-grid {
             padding: 0 !important;
-            position: relative !important;
-            z-index: 1 !important;
           }
 
           .mobile-book-category {
             margin-bottom: 32px !important;
-            position: relative !important;
-            z-index: 2 !important;
           }
 
-          .mobile-book-item {
-            background-color: #ffffff !important;
-            border-radius: 12px !important;
-            padding: 12px !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-            border: 1px solid #e9ecef !important;
-            transition: all 0.3s ease !important;
-            cursor: pointer !important;
-            pointer-events: auto !important;
-            position: relative !important;
-            z-index: 10 !important;
-          }
-
-          .mobile-book-item:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
-          }
-
-          .mobile-book-item:active {
-            transform: translateY(0px) !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+          /* 确保移动端书籍可点击 */
+          @media (max-width: 768px) {
+            .mobile-book-item {
+              pointer-events: auto !important;
+              cursor: pointer !important;
+              touch-action: manipulation !important;
+              user-select: none !important;
+              -webkit-touch-callout: none !important;
+              -webkit-user-select: none !important;
+            }
           }
 
         }
