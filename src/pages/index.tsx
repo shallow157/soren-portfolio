@@ -13,7 +13,6 @@ import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShor
 import { useBookStore } from '@/store/bookStore'
 export default function Home() {
   const { t } = useLanguage()
-  const { openBookModal } = useBookStore()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,7 +24,7 @@ export default function Home() {
 
 
   // 直接使用电脑端的书籍数据和分类
-  const { books, categories } = useBookStore()
+  const { books, categories, openBookModal } = useBookStore()
 
   // 按分类分组书籍
   const booksByCategory = categories.map(category => ({
