@@ -591,13 +591,19 @@ export default function Home() {
                   {category.books.map((book) => (
                     <button
                       key={book.id}
-                      className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl p-0 text-left"
+                      className="mobile-book-item w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl p-0 text-left"
                       onClick={() => {
                         // 强制日志（必触发）
                         console.log('【强制日志】点击了书籍:', book.title);
+                        console.log('当前窗口宽度:', window.innerWidth);
+                        console.log('isMobile状态:', isMobile);
+
+                        // 强制移动端检测
+                        const isCurrentlyMobile = window.innerWidth < 768;
+                        console.log('实时移动端检测:', isCurrentlyMobile);
 
                         // 移动端使用专用函数
-                        if (isMobile) {
+                        if (isCurrentlyMobile) {
                           console.log('移动端：使用专用函数');
                           openBookModalMobile(book);
                         } else {
