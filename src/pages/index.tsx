@@ -72,24 +72,31 @@ export default function Home() {
     books: books.filter(book => book.category === category.name)
   }))
 
-  // 移动端专用的openBookModal函数
-  const openBookModalMobile = async (book: any) => {
-    console.log('移动端专用openBookModal:', book.title);
+  // 移动端专用的openBookModal函数 - 简化版本
+  const openBookModalMobile = (book: any) => {
+    console.log('移动端专用openBookModal开始:', book.title);
+
+    // 立即设置状态
     setSelectedBookMobile(book);
     setIsModalOpenMobile(true);
-    setLoadingMobile(true);
+    setMarkdownContentMobile('正在加载读书笔记...');
+    setLoadingMobile(false);
 
-    try {
-      const response = await fetch(book.markdownPath);
-      const content = await response.text();
-      setMarkdownContentMobile(content);
-      setLoadingMobile(false);
-      console.log('移动端读书笔记加载成功');
-    } catch (error) {
-      console.error('移动端读书笔记加载失败:', error);
-      setMarkdownContentMobile('加载失败，请稍后重试。');
-      setLoadingMobile(false);
-    }
+    console.log('移动端状态设置完成');
+
+    // 延迟加载内容（避免阻塞渲染）
+    setTimeout(async () => {
+      try {
+        console.log('开始加载markdown内容:', book.markdownPath);
+        const response = await fetch(book.markdownPath);
+        const content = await response.text();
+        setMarkdownContentMobile(content);
+        console.log('移动端读书笔记加载成功');
+      } catch (error) {
+        console.error('移动端读书笔记加载失败:', error);
+        setMarkdownContentMobile('加载失败，请稍后重试。');
+      }
+    }, 100);
   }
 
 
@@ -2953,8 +2960,27 @@ export default function Home() {
       {/* 书籍模态框 */}
       <BookModal />
 
-      {/* 移动端专用模态框 */}
-      {isModalOpenMobile && selectedBookMobile && (
+      {/* 永远显示的测试模态框 - 验证渲染 */}
+      <div
+        style={{
+          position: 'fixed',
+          top: '10px',
+          right: '10px',
+          zIndex: 10001,
+          backgroundColor: 'red',
+          color: 'white',
+          padding: '10px',
+          borderRadius: '5px',
+          fontSize: '12px'
+        }}
+      >
+        测试模态框渲染<br/>
+        isModalOpenMobile: {isModalOpenMobile ? 'true' : 'false'}<br/>
+        selectedBookMobile: {selectedBookMobile ? selectedBookMobile.title : 'null'}
+      </div>
+
+      {/* 移动端专用模态框 - 强制显示测试 */}
+      {(isModalOpenMobile && selectedBookMobile) && (
         <div
           style={{
             position: 'fixed',
