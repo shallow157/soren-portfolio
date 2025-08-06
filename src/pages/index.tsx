@@ -560,7 +560,7 @@ export default function Home() {
         </div>
 
         {/* 移动端书架区域 - 使用真实书籍数据 */}
-        <section className="py-16 px-4 bg-white dark:bg-gray-900">
+        <section className="py-16 px-4 bg-white dark:bg-gray-900 block md:hidden">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               📚 我的书架
@@ -571,6 +571,11 @@ export default function Home() {
             <p className="text-sm text-blue-500 mt-2">
               调试信息: 书籍数量 {books.length}, 分类数量 {categories.length}
             </p>
+
+            {/* 移动端测试指示器 */}
+            <div className="bg-red-500 text-white p-4 rounded-lg mt-4 text-center">
+              🔴 移动端书架测试区域 - 窗口宽度: {typeof window !== 'undefined' ? window.innerWidth : 'unknown'}
+            </div>
           </div>
 
           {/* 移动端书籍网格 - 按分类展示，一排两本书 */}
@@ -1972,8 +1977,10 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 3D书架部分 */}
-      <BookshelfSection />
+      {/* 3D书架部分 - 只在桌面端显示 */}
+      <div className="hidden md:block">
+        <BookshelfSection />
+      </div>
 
       {/* Blog Section */}
       <motion.section
