@@ -5,6 +5,7 @@ import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
 import BookshelfSection from '../components/BookshelfSection'
+import BookModal from '../components/BookModal'
 import SearchBar from '../components/SearchBar'
 import BackToTop from '../components/BackToTop'
 import KeyboardShortcutsHelp from '../components/KeyboardShortcutsHelp'
@@ -537,7 +538,7 @@ export default function Home() {
 
           {/* 移动端书籍网格 - 按分类展示，一排两本书 */}
           <div className="mobile-bookshelf-grid">
-            {booksByCategory.map((category, categoryIndex) => (
+            {booksByCategory.map((category) => (
               <div key={category.name} className="mobile-book-category">
                 <div className="flex items-center mb-6">
                   <div
@@ -2816,6 +2817,9 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* 书籍模态框 */}
+      <BookModal />
 
       {/* 返回顶部按钮 */}
       <BackToTop />

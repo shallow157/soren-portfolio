@@ -64,7 +64,7 @@ export default function BookModal() {
 
           {/* 模态框内容 */}
           <motion.div
-            className="relative w-full max-w-5xl max-h-[95vh] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-5xl max-h-[95vh] bg-white dark:bg-gray-800 rounded-2xl md:rounded-2xl rounded-t-2xl shadow-2xl overflow-hidden flex flex-col mx-4 md:mx-0"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -89,7 +89,7 @@ export default function BookModal() {
             <div className="flex flex-col md:flex-row flex-1 min-h-0">
               {/* 左侧：书籍封面和信息 */}
               <motion.div
-                className="md:w-1/3 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 flex-shrink-0"
+                className="md:w-1/3 p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 flex-shrink-0"
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
@@ -97,7 +97,7 @@ export default function BookModal() {
                 <div className="text-center">
                   {/* 书籍封面 */}
                   <motion.div
-                    className="relative w-48 h-64 mx-auto mb-4 rounded-lg overflow-hidden shadow-lg"
+                    className="relative w-32 h-44 md:w-48 md:h-64 mx-auto mb-4 rounded-lg overflow-hidden shadow-lg"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -106,13 +106,13 @@ export default function BookModal() {
                       alt={selectedBook.title}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 192px"
+                      sizes="(max-width: 768px) 128px, 192px"
                     />
                   </motion.div>
 
                   {/* 书籍标题 */}
-                  <motion.h2 
-                    className="text-2xl font-bold text-gray-900 dark:text-white mb-2"
+                  <motion.h2
+                    className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white mb-2"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -162,16 +162,16 @@ export default function BookModal() {
                 transition={{ delay: 0.3 }}
               >
                 {/* 内容标题区域 */}
-                <div className="p-6 pb-0 flex-shrink-0">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                <div className="p-4 md:p-6 pb-0 flex-shrink-0">
+                  <h2 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white mb-2 md:hidden">
                     {selectedBook.title}
                   </h2>
                   <div className="flex items-center justify-between">
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      读书笔记
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base">
+                      📖 读书笔记
                     </p>
                     <motion.div
-                      className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1"
+                      className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1 hidden md:flex"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.8 }}
@@ -185,7 +185,7 @@ export default function BookModal() {
                 </div>
 
                 {/* 可滚动的内容区域 */}
-                <div className="flex-1 overflow-y-auto px-6 pb-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500">
+                <div className="flex-1 overflow-y-auto px-4 md:px-6 pb-4 md:pb-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500">
                   {loading ? (
                     <div className="flex items-center justify-center h-64">
                       <motion.div
@@ -196,36 +196,61 @@ export default function BookModal() {
                     </div>
                   ) : (
                     <motion.div
-                      className="prose prose-gray dark:prose-invert max-w-none"
+                      className="prose prose-sm md:prose-gray dark:prose-invert max-w-none"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.4 }}
                     >
-                    <ReactMarkdown 
+                    <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{
                         h1: ({ children }) => (
-                          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                          <h1 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4">
                             {children}
                           </h1>
                         ),
                         h2: ({ children }) => (
-                          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                          <h2 className="text-base md:text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 md:mb-3">
                             {children}
                           </h2>
                         ),
+                        h3: ({ children }) => (
+                          <h3 className="text-sm md:text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                            {children}
+                          </h3>
+                        ),
                         p: ({ children }) => (
-                          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                          <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4">
                             {children}
                           </p>
                         ),
                         blockquote: ({ children }) => (
-                          <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-600 dark:text-gray-400 my-4">
+                          <blockquote className="border-l-4 border-blue-500 pl-3 md:pl-4 italic text-gray-600 dark:text-gray-400 my-3 md:my-4 text-sm md:text-base">
                             {children}
                           </blockquote>
                         ),
+                        ul: ({ children }) => (
+                          <ul className="list-disc list-inside space-y-1 md:space-y-2 my-3 md:my-4 text-sm md:text-base">
+                            {children}
+                          </ul>
+                        ),
+                        ol: ({ children }) => (
+                          <ol className="list-decimal list-inside space-y-1 md:space-y-2 my-3 md:my-4 text-sm md:text-base">
+                            {children}
+                          </ol>
+                        ),
+                        li: ({ children }) => (
+                          <li className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
+                            {children}
+                          </li>
+                        ),
+                        strong: ({ children }) => (
+                          <strong className="font-semibold text-gray-900 dark:text-white">
+                            {children}
+                          </strong>
+                        ),
                         code: ({ children }) => (
-                          <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm">
+                          <code className="bg-gray-100 dark:bg-gray-700 px-1 md:px-2 py-1 rounded text-xs md:text-sm font-mono">
                             {children}
                           </code>
                         )
