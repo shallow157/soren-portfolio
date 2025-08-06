@@ -51,7 +51,19 @@ export default function MobileBookshelf() {
                     onClick={() => {
                       console.log('移动端书架点击:', book.title);
                       alert(`点击了书籍: ${book.title}`);
+
+                      // 调用openBookModal
                       openBookModal(book);
+
+                      // 延迟检查状态
+                      setTimeout(() => {
+                        const store = useBookStore.getState();
+                        console.log('点击后状态检查:', {
+                          selectedBook: store.selectedBook?.title,
+                          isModalOpen: store.isModalOpen
+                        });
+                        alert(`状态检查: 选中书籍=${store.selectedBook?.title}, 模态框打开=${store.isModalOpen}`);
+                      }, 500);
                     }}
                   >
                     {/* 书籍封面 */}
