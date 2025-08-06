@@ -306,138 +306,65 @@ export default function Projects() {
       </motion.div>
       </div>
 
-      {/* 移动端项目列表 */}
+      {/* 移动端项目列表 - 完全模仿首页设计 */}
       <div className="block md:hidden">
-        <motion.div
-          className="px-4 py-12"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <motion.div
-            className="space-y-8"
-            variants={containerVariants}
-          >
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
-                variants={itemVariants}
-                whileHover={{
-                  y: -4,
-                  scale: 1.01,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                {/* 移动端项目头部 */}
-                <div className={`h-32 bg-gradient-to-r ${project.gradient} flex items-center justify-center relative`}>
-                  <div className="text-4xl text-white">{project.icon}</div>
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
+        <div className="mobile-projects-container mobile-section">
+          <h2 className="mobile-skills-title">💼 项目作品集</h2>
+          <p style={{
+            textAlign: 'center',
+            color: '#666666',
+            fontSize: '16px',
+            marginBottom: '32px',
+            lineHeight: '1.6'
+          }}>
+            数据分析与商业智能项目的完整展示
+          </p>
 
-                <div className="p-6">
-                  <motion.h3
-                    className="text-xl font-bold text-gray-900 dark:text-white mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-
-                  <motion.p
-                    className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed line-clamp-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.1 }}
-                  >
-                    {project.description}
-                  </motion.p>
-
-                  {/* 移动端技术标签 */}
-                  <motion.div
-                    className="flex flex-wrap gap-2 mb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                  >
-                    {project.tech.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs rounded-full font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 4 && (
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full">
-                        +{project.tech.length - 4}
-                      </span>
-                    )}
-                  </motion.div>
-
-                  {/* 移动端项目亮点 */}
-                  <motion.div
-                    className="mb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                  >
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">项目亮点：</h4>
-                    <ul className="space-y-1">
-                      {project.highlights.slice(0, 2).map((highlight, hIndex) => (
-                        <li key={hIndex} className="text-xs text-gray-600 dark:text-gray-300 flex items-start">
-                          <span className="text-blue-500 mr-2 mt-0.5">•</span>
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-
-                  {/* 移动端操作按钮 */}
-                  <motion.div
-                    className="flex gap-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.4 }}
-                  >
-                    <Link href={`/reports/${project.id}`}>
-                      <motion.button
-                        className={`flex-1 bg-gradient-to-r ${project.gradient} text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300`}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        查看项目
-                      </motion.button>
-                    </Link>
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 flex items-center justify-center"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+          {projects.map((project) => (
+            <div key={project.id} className="mobile-project-card-desktop">
+              <div className={`mobile-project-header ${project.gradient.includes('green') ? 'green' : ''}`}>
+                <span className="mobile-project-icon">{project.icon}</span>
+                <span className="mobile-project-category">{project.category}</span>
+              </div>
+              <div className="mobile-project-content">
+                <h3 className="mobile-project-title-desktop">{project.title}</h3>
+                <p className="mobile-project-desc-desktop">
+                  {project.description}
+                </p>
+                <div className="mobile-project-tech-tags">
+                  {project.tech.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className={`mobile-tech-tag ${project.gradient.includes('green') ? 'green' : 'blue'}`}
                     >
-                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                      </svg>
-                      GitHub
-                    </motion.a>
-                  </motion.div>
+                      {tech}
+                    </span>
+                  ))}
+                  {project.tech.length > 4 && (
+                    <span className="mobile-tech-tag blue">+{project.tech.length - 4}</span>
+                  )}
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+                <div className="mobile-project-actions">
+                  <Link href={`/reports/${project.id}`}>
+                    <a className={`mobile-project-btn ${project.gradient.includes('green') ? 'green' : ''}`}>
+                      查看项目
+                    </a>
+                  </Link>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mobile-project-github"
+                  >
+                    <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* 桌面端项目列表 */}
