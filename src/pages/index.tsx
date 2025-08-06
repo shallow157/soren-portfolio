@@ -22,6 +22,10 @@ export default function Home() {
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
+  // 本地状态测试 - 绕过useBookStore
+  const [isModalOpenLocal, setIsModalOpenLocal] = useState(false)
+  const [selectedBookLocal, setSelectedBookLocal] = useState<any>(null)
+
   // 移动端检测
   useEffect(() => {
     const checkMobile = () => {
@@ -567,18 +571,30 @@ export default function Home() {
                       key={book.id}
                       className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl p-0 text-left"
                       onClick={() => {
+                        // 强制日志（必触发）
+                        console.log('【强制日志】点击了书籍:', book.title);
                         alert(`点击了书籍: ${book.title}`);
-                        console.log('移动端点击书籍:', book.title, book);
+
+                        // 测试1：使用useBookStore
+                        console.log('测试1：使用useBookStore');
                         console.log('openBookModal函数:', typeof openBookModal);
-                        console.log('调用openBookModal前的状态');
                         openBookModal(book);
-                        console.log('调用openBookModal后');
+
+                        // 测试2：使用本地状态（绕过useBookStore）
+                        console.log('测试2：使用本地状态');
+                        setSelectedBookLocal(book);
+                        setIsModalOpenLocal(true);
+
                         // 延迟检查状态
                         setTimeout(() => {
                           const store = useBookStore.getState();
-                          console.log('BookModal状态检查:', {
+                          console.log('useBookStore状态检查:', {
                             selectedBook: store.selectedBook?.title,
                             isModalOpen: store.isModalOpen
+                          });
+                          console.log('本地状态检查:', {
+                            selectedBookLocal: selectedBookLocal?.title,
+                            isModalOpenLocal: isModalOpenLocal
                           });
                         }, 100);
                       }}
@@ -2883,6 +2899,69 @@ export default function Home() {
 
       {/* 书籍模态框 */}
       <BookModal />
+
+      {/* 本地状态测试模态框 */}
+      {isModalOpenLocal && selectedBookLocal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 10000,
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+          onClick={() => {
+            setIsModalOpenLocal(false);
+            setSelectedBookLocal(null);
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '20px',
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              overflow: 'auto'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px' }}>
+              📖 {selectedBookLocal.title}
+            </h2>
+            <p style={{ color: '#666', marginBottom: '15px' }}>
+              本地状态测试模态框 - 如果您看到这个，说明本地状态正常工作
+            </p>
+            <img
+              src={selectedBookLocal.coverUrl}
+              alt={selectedBookLocal.title}
+              style={{ width: '100px', height: '130px', objectFit: 'cover', marginBottom: '15px' }}
+            />
+            <button
+              style={{
+                backgroundColor: '#ef4444',
+                color: 'white',
+                padding: '8px 16px',
+                borderRadius: '6px',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                setIsModalOpenLocal(false);
+                setSelectedBookLocal(null);
+              }}
+            >
+              关闭
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* 返回顶部按钮 */}
       <BackToTop />
