@@ -570,7 +570,17 @@ export default function Home() {
                         alert(`点击了书籍: ${book.title}`);
                         console.log('移动端点击书籍:', book.title, book);
                         console.log('openBookModal函数:', typeof openBookModal);
+                        console.log('调用openBookModal前的状态');
                         openBookModal(book);
+                        console.log('调用openBookModal后');
+                        // 延迟检查状态
+                        setTimeout(() => {
+                          const store = useBookStore.getState();
+                          console.log('BookModal状态检查:', {
+                            selectedBook: store.selectedBook?.title,
+                            isModalOpen: store.isModalOpen
+                          });
+                        }, 100);
                       }}
                       type="button"
                     >
@@ -627,10 +637,31 @@ export default function Home() {
                 if (books.length > 0) {
                   console.log('测试打开第一本书:', books[0]);
                   openBookModal(books[0]);
+                  // 延迟检查状态
+                  setTimeout(() => {
+                    const store = useBookStore.getState();
+                    console.log('测试按钮 - BookModal状态:', {
+                      selectedBook: store.selectedBook?.title,
+                      isModalOpen: store.isModalOpen
+                    });
+                  }, 100);
                 }
               }}
             >
               测试打开第一本书
+            </button>
+
+            {/* 强制显示测试 */}
+            <button
+              className="mt-2 px-4 py-2 bg-red-500 text-white rounded-lg"
+              onClick={() => {
+                const { setSelectedBook, setIsModalOpen } = useBookStore.getState();
+                setSelectedBook(books[0]);
+                setIsModalOpen(true);
+                console.log('强制设置BookModal状态');
+              }}
+            >
+              强制打开BookModal
             </button>
           </div>
         </section>
