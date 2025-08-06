@@ -557,7 +557,7 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
     <Layout>
       {/* 移动端布局 */}
       <div className="block md:hidden">
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 pb-8">
           <div className="px-4 py-8">
             {/* 移动端返回按钮 */}
             <motion.div
@@ -623,13 +623,87 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <div className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-strong:text-gray-900 dark:prose-strong:text-white">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <div className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-strong:text-gray-900 dark:prose-strong:text-white prose-ul:space-y-2 prose-li:text-gray-600 dark:prose-li:text-gray-300">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      h1: ({children}) => (
+                        <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-6 first:mt-0">
+                          {children}
+                        </h1>
+                      ),
+                      h2: ({children}) => (
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 mt-6 flex items-center">
+                          <span className="w-1 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3" />
+                          {children}
+                        </h2>
+                      ),
+                      h3: ({children}) => (
+                        <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2 mt-4">
+                          {children}
+                        </h3>
+                      ),
+                      blockquote: ({children}) => (
+                        <blockquote className="border-l-4 border-blue-500 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 my-4 rounded-r-lg">
+                          <div className="italic text-blue-900 dark:text-blue-100 text-sm">
+                            {children}
+                          </div>
+                        </blockquote>
+                      ),
+                      p: ({children}) => (
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-sm">
+                          {children}
+                        </p>
+                      ),
+                      strong: ({children}) => (
+                        <strong className="font-semibold text-gray-900 dark:text-white bg-gradient-to-r from-yellow-200 to-yellow-300 dark:from-yellow-800 dark:to-yellow-700 px-1 rounded">
+                          {children}
+                        </strong>
+                      ),
+                      ul: ({children}) => (
+                        <ul className="space-y-2 my-4 ml-4">
+                          {children}
+                        </ul>
+                      ),
+                      li: ({children}) => (
+                        <li className="flex items-start text-gray-700 dark:text-gray-300 text-sm">
+                          <span className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 mr-3 flex-shrink-0" />
+                          <span>{children}</span>
+                        </li>
+                      ),
+                      code: ({children}) => (
+                        <code className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 px-2 py-1 rounded text-xs font-mono border border-gray-200 dark:border-gray-600">
+                          {children}
+                        </code>
+                      )
+                    }}
+                  >
                     {articleContent}
                   </ReactMarkdown>
                 </div>
               </motion.div>
             </motion.article>
+
+            {/* 移动端底部导航 */}
+            <motion.div
+              className="mt-8 flex items-center justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <Link href="/life">
+                <motion.div
+                  className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  返回列表
+                </motion.div>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>

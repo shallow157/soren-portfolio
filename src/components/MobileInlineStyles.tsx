@@ -654,7 +654,30 @@ const MobileInlineStyles: React.FC = () => {
           .mobile-section:last-child {
             margin-bottom: 0 !important;
           }
-          
+
+          /* 移动端书架网格样式 */
+          .mobile-bookshelf-grid {
+            padding: 0 !important;
+          }
+
+          .mobile-book-category {
+            margin-bottom: 32px !important;
+          }
+
+          .mobile-book-item {
+            background-color: #ffffff !important;
+            border-radius: 12px !important;
+            padding: 12px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            border: 1px solid #e9ecef !important;
+            transition: all 0.3s ease !important;
+          }
+
+          .mobile-book-item:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+          }
+
         }
       `}</style>
     </>

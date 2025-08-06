@@ -375,7 +375,7 @@ export default function Life() {
                   </motion.p>
 
                   <motion.div
-                    className="flex flex-wrap gap-1 mb-4"
+                    className="flex flex-wrap gap-2 mb-4"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -393,12 +393,12 @@ export default function Life() {
                   </motion.div>
 
                   <Link href={`/life/${post.id}`}>
-                    <motion.button
+                    <motion.div
                       className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors duration-300"
                       whileHover={{ x: 4 }}
                       transition={{ duration: 0.2 }}
                     >
-                      阅读全文
+                      <span>阅读全文</span>
                       <motion.svg
                         className="ml-1 w-4 h-4"
                         fill="none"
@@ -409,7 +409,7 @@ export default function Life() {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </motion.svg>
-                    </motion.button>
+                    </motion.div>
                   </Link>
                 </div>
               </motion.article>
@@ -541,7 +541,7 @@ export default function Life() {
                     whileInView="visible"
                     viewport={{ once: true }}
                   >
-                    {post.tags?.map((tag, tagIndex) => (
+                    {post.tags?.map((tag) => (
                       <motion.span
                         key={tag}
                         className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-md font-medium"
