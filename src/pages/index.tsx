@@ -22,9 +22,11 @@ export default function Home() {
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
-  // 本地状态测试 - 绕过useBookStore
-  const [isModalOpenLocal, setIsModalOpenLocal] = useState(false)
-  const [selectedBookLocal, setSelectedBookLocal] = useState<any>(null)
+  // 移动端专用状态 - 替代useBookStore（仅移动端使用）
+  const [isModalOpenMobile, setIsModalOpenMobile] = useState(false)
+  const [selectedBookMobile, setSelectedBookMobile] = useState<any>(null)
+  const [markdownContentMobile, setMarkdownContentMobile] = useState('')
+  const [loadingMobile, setLoadingMobile] = useState(false)
 
   // 移动端检测
   useEffect(() => {
@@ -44,6 +46,26 @@ export default function Home() {
     ...category,
     books: books.filter(book => book.category === category.name)
   }))
+
+  // 移动端专用的openBookModal函数
+  const openBookModalMobile = async (book: any) => {
+    console.log('移动端专用openBookModal:', book.title);
+    setSelectedBookMobile(book);
+    setIsModalOpenMobile(true);
+    setLoadingMobile(true);
+
+    try {
+      const response = await fetch(book.markdownPath);
+      const content = await response.text();
+      setMarkdownContentMobile(content);
+      setLoadingMobile(false);
+      console.log('移动端读书笔记加载成功');
+    } catch (error) {
+      console.error('移动端读书笔记加载失败:', error);
+      setMarkdownContentMobile('加载失败，请稍后重试。');
+      setLoadingMobile(false);
+    }
+  }
 
 
 
@@ -573,30 +595,15 @@ export default function Home() {
                       onClick={() => {
                         // 强制日志（必触发）
                         console.log('【强制日志】点击了书籍:', book.title);
-                        alert(`点击了书籍: ${book.title}`);
 
-                        // 测试1：使用useBookStore
-                        console.log('测试1：使用useBookStore');
-                        console.log('openBookModal函数:', typeof openBookModal);
-                        openBookModal(book);
-
-                        // 测试2：使用本地状态（绕过useBookStore）
-                        console.log('测试2：使用本地状态');
-                        setSelectedBookLocal(book);
-                        setIsModalOpenLocal(true);
-
-                        // 延迟检查状态
-                        setTimeout(() => {
-                          const store = useBookStore.getState();
-                          console.log('useBookStore状态检查:', {
-                            selectedBook: store.selectedBook?.title,
-                            isModalOpen: store.isModalOpen
-                          });
-                          console.log('本地状态检查:', {
-                            selectedBookLocal: selectedBookLocal?.title,
-                            isModalOpenLocal: isModalOpenLocal
-                          });
-                        }, 100);
+                        // 移动端使用专用函数
+                        if (isMobile) {
+                          console.log('移动端：使用专用函数');
+                          openBookModalMobile(book);
+                        } else {
+                          console.log('桌面端：使用useBookStore');
+                          openBookModal(book);
+                        }
                       }}
                       type="button"
                     >
@@ -2900,8 +2907,8 @@ export default function Home() {
       {/* 书籍模态框 */}
       <BookModal />
 
-      {/* 本地状态测试模态框 */}
-      {isModalOpenLocal && selectedBookLocal && (
+      {/* 移动端专用模态框 */}
+      {isModalOpenMobile && selectedBookMobile && (
         <div
           style={{
             position: 'fixed',
@@ -2917,8 +2924,9 @@ export default function Home() {
             padding: '20px'
           }}
           onClick={() => {
-            setIsModalOpenLocal(false);
-            setSelectedBookLocal(null);
+            setIsModalOpenMobile(false);
+            setSelectedBookMobile(null);
+            setMarkdownContentMobile('');
           }}
         >
           <div
@@ -2932,17 +2940,46 @@ export default function Home() {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px' }}>
-              📖 {selectedBookLocal.title}
-            </h2>
-            <p style={{ color: '#666', marginBottom: '15px' }}>
-              本地状态测试模态框 - 如果您看到这个，说明本地状态正常工作
-            </p>
-            <img
-              src={selectedBookLocal.coverUrl}
-              alt={selectedBookLocal.title}
-              style={{ width: '100px', height: '130px', objectFit: 'cover', marginBottom: '15px' }}
-            />
+            <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '15px' }}>
+              <img
+                src={selectedBookMobile.coverUrl}
+                alt={selectedBookMobile.title}
+                style={{ width: '80px', height: '110px', objectFit: 'cover', marginRight: '15px', borderRadius: '6px' }}
+              />
+              <div>
+                <h2 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+                  📖 {selectedBookMobile.title}
+                </h2>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {selectedBookMobile.tags?.slice(0, 3).map((tag: string) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontSize: '11px',
+                        backgroundColor: '#f3f4f6',
+                        color: '#6b7280',
+                        padding: '2px 6px',
+                        borderRadius: '10px'
+                      }}
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ maxHeight: '400px', overflow: 'auto', marginBottom: '15px', padding: '10px', backgroundColor: '#f9fafb', borderRadius: '8px' }}>
+              {loadingMobile ? (
+                <div style={{ textAlign: 'center', padding: '20px' }}>
+                  <div style={{ fontSize: '14px', color: '#666' }}>加载读书笔记中...</div>
+                </div>
+              ) : (
+                <div style={{ fontSize: '14px', lineHeight: '1.6', color: '#333', whiteSpace: 'pre-wrap' }}>
+                  {markdownContentMobile || '暂无读书笔记内容'}
+                </div>
+              )}
+            </div>
             <button
               style={{
                 backgroundColor: '#ef4444',
@@ -2953,8 +2990,9 @@ export default function Home() {
                 cursor: 'pointer'
               }}
               onClick={() => {
-                setIsModalOpenLocal(false);
-                setSelectedBookLocal(null);
+                setIsModalOpenMobile(false);
+                setSelectedBookMobile(null);
+                setMarkdownContentMobile('');
               }}
             >
               关闭
