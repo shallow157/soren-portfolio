@@ -28,14 +28,22 @@ export default function Home() {
   const [markdownContentMobile, setMarkdownContentMobile] = useState('')
   const [loadingMobile, setLoadingMobile] = useState(false)
 
-  // 移动端检测
+  // 移动端检测 - 修复React错误
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 768)
+      }
     }
+
+    // 初始检测
     checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+
+    // 添加resize监听器
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkMobile)
+      return () => window.removeEventListener('resize', checkMobile)
+    }
   }, [])
 
   // 直接使用电脑端的书籍数据和分类
@@ -574,7 +582,7 @@ export default function Home() {
 
             {/* 移动端测试指示器 */}
             <div className="bg-red-500 text-white p-4 rounded-lg mt-4 text-center">
-              🔴 移动端书架测试区域 - 窗口宽度: {typeof window !== 'undefined' ? window.innerWidth : 'unknown'}
+              🔴 移动端书架测试区域 - isMobile: {isMobile ? 'true' : 'false'}
             </div>
           </div>
 
@@ -598,22 +606,30 @@ export default function Home() {
                       key={book.id}
                       className="mobile-book-item w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl p-0 text-left"
                       onClick={() => {
-                        // 强制日志（必触发）
-                        console.log('【强制日志】点击了书籍:', book.title);
-                        console.log('当前窗口宽度:', window.innerWidth);
-                        console.log('isMobile状态:', isMobile);
+                        try {
+                          // 强制日志（必触发）
+                          console.log('【强制日志】点击了书籍:', book.title);
 
-                        // 强制移动端检测
-                        const isCurrentlyMobile = window.innerWidth < 768;
-                        console.log('实时移动端检测:', isCurrentlyMobile);
+                          // 安全的窗口宽度检测
+                          const currentWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
+                          console.log('当前窗口宽度:', currentWidth);
+                          console.log('isMobile状态:', isMobile);
 
-                        // 移动端使用专用函数
-                        if (isCurrentlyMobile) {
-                          console.log('移动端：使用专用函数');
-                          openBookModalMobile(book);
-                        } else {
-                          console.log('桌面端：使用useBookStore');
-                          openBookModal(book);
+                          // 强制移动端检测
+                          const isCurrentlyMobile = currentWidth < 768;
+                          console.log('实时移动端检测:', isCurrentlyMobile);
+
+                          // 移动端使用专用函数
+                          if (isCurrentlyMobile) {
+                            console.log('移动端：使用专用函数');
+                            openBookModalMobile(book);
+                          } else {
+                            console.log('桌面端：使用useBookStore');
+                            openBookModal(book);
+                          }
+                        } catch (error) {
+                          console.error('点击事件错误:', error);
+                          alert('点击事件出错: ' + (error instanceof Error ? error.message : String(error)));
                         }
                       }}
                       type="button"
