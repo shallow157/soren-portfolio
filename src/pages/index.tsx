@@ -555,7 +555,25 @@ export default function Home() {
                     <div
                       key={book.id}
                       className="mobile-book-item cursor-pointer"
-                      onClick={() => openBookModal(book)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('点击书籍:', book.title);
+                        openBookModal(book);
+                      }}
+                      onTouchEnd={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('触摸书籍:', book.title);
+                        openBookModal(book);
+                      }}
+                      style={{
+                        cursor: 'pointer',
+                        pointerEvents: 'auto',
+                        position: 'relative',
+                        zIndex: 10,
+                        touchAction: 'manipulation'
+                      }}
                     >
                       {/* 书籍封面 */}
                       <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg mb-3">

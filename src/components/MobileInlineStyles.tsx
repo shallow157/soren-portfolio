@@ -658,10 +658,14 @@ const MobileInlineStyles: React.FC = () => {
           /* 移动端书架网格样式 */
           .mobile-bookshelf-grid {
             padding: 0 !important;
+            position: relative !important;
+            z-index: 1 !important;
           }
 
           .mobile-book-category {
             margin-bottom: 32px !important;
+            position: relative !important;
+            z-index: 2 !important;
           }
 
           .mobile-book-item {
@@ -671,11 +675,20 @@ const MobileInlineStyles: React.FC = () => {
             box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
             border: 1px solid #e9ecef !important;
             transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            pointer-events: auto !important;
+            position: relative !important;
+            z-index: 10 !important;
           }
 
           .mobile-book-item:hover {
             transform: translateY(-2px) !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+          }
+
+          .mobile-book-item:active {
+            transform: translateY(0px) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
           }
 
         }
