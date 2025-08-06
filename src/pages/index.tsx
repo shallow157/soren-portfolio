@@ -553,25 +553,11 @@ export default function Home() {
                   {category.books.map((book) => (
                     <div
                       key={book.id}
-                      className="mobile-book-item cursor-pointer"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('点击书籍:', book.title);
+                      className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                      onClick={() => {
+                        console.log('移动端点击书籍:', book.title, book);
+                        console.log('openBookModal函数:', typeof openBookModal);
                         openBookModal(book);
-                      }}
-                      onTouchEnd={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        console.log('触摸书籍:', book.title);
-                        openBookModal(book);
-                      }}
-                      style={{
-                        cursor: 'pointer',
-                        pointerEvents: 'auto',
-                        position: 'relative',
-                        zIndex: 10,
-                        touchAction: 'manipulation'
                       }}
                     >
                       {/* 书籍封面 */}
@@ -617,6 +603,21 @@ export default function Home() {
             <p className="text-gray-600 dark:text-gray-400">
               📖 点击书籍查看完整读书笔记
             </p>
+            {/* 测试按钮 */}
+            <button
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg"
+              onClick={() => {
+                console.log('测试按钮点击');
+                console.log('books数量:', books.length);
+                console.log('openBookModal函数:', typeof openBookModal);
+                if (books.length > 0) {
+                  console.log('测试打开第一本书:', books[0]);
+                  openBookModal(books[0]);
+                }
+              }}
+            >
+              测试打开第一本书
+            </button>
           </div>
         </section>
 

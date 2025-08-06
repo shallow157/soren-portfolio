@@ -41,7 +41,12 @@ export default function BookModal() {
     return lines.slice(1).join('\n').trim()
   }
 
-  if (!selectedBook) return null
+  if (!selectedBook) {
+    console.log('BookModal: selectedBook为空')
+    return null
+  }
+
+  console.log('BookModal渲染:', { selectedBook: selectedBook.title, isModalOpen })
 
   return (
     <AnimatePresence>
