@@ -522,198 +522,215 @@ export default function ReportPage() {
     <Layout>
       {/* 移动端布局 */}
       <div className="block md:hidden">
-        <div className="px-4 py-8">
-          {/* 移动端返回按钮 */}
-          <motion.div
-            className="mb-6"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href="/projects">
-              <motion.button
-                className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
-                whileHover={{ x: -4 }}
-                transition={{ duration: 0.2 }}
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                返回项目列表
-              </motion.button>
-            </Link>
-          </motion.div>
-
-          {/* 移动端项目报告内容 */}
-          <motion.div
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* 移动端项目头部 */}
-            <div className={`h-32 bg-gradient-to-r ${reportData?.gradient || 'from-blue-500 to-purple-600'} flex items-center justify-center relative`}>
-              <div className="text-4xl text-white">{reportData?.icon}</div>
-              <div className="absolute top-3 right-3">
-                <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
-                  {reportData?.category}
-                </span>
-              </div>
-            </div>
-
-            <div className="p-6">
-              <motion.h1
-                className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {reportData?.title}
-              </motion.h1>
-
-              <motion.p
-                className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-sm"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                {reportData?.description}
-              </motion.p>
-
-              {/* 移动端技术标签 */}
-              <motion.div
-                className="flex flex-wrap gap-2 mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                {reportData?.tags?.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </motion.div>
-
-              {/* 移动端项目报告正文 */}
-              <motion.div
-                className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-strong:text-gray-900 dark:prose-strong:text-white prose-ul:space-y-2 prose-li:text-gray-600 dark:prose-li:text-gray-300"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h1: ({children}) => (
-                      <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-6 first:mt-0 pb-2 border-b border-gray-200 dark:border-gray-700">
-                        {children}
-                      </h1>
-                    ),
-                    h2: ({children}) => (
-                      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 mt-6 flex items-center">
-                        <span className="w-1 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3" />
-                        {children}
-                      </h2>
-                    ),
-                    h3: ({children}) => (
-                      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2 mt-4">
-                        {children}
-                      </h3>
-                    ),
-                    h4: ({children}) => (
-                      <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2 mt-3">
-                        {children}
-                      </h4>
-                    ),
-                    blockquote: ({children}) => (
-                      <blockquote className="border-l-4 border-blue-500 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 my-4 rounded-r-lg">
-                        <div className="italic text-blue-900 dark:text-blue-100 text-sm">
-                          {children}
-                        </div>
-                      </blockquote>
-                    ),
-                    p: ({children}) => (
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-sm">
-                        {children}
-                      </p>
-                    ),
-                    strong: ({children}) => (
-                      <strong className="font-semibold text-gray-900 dark:text-white bg-gradient-to-r from-yellow-200 to-yellow-300 dark:from-yellow-800 dark:to-yellow-700 px-1 rounded">
-                        {children}
-                      </strong>
-                    ),
-                    ul: ({children}) => (
-                      <ul className="space-y-2 my-4 ml-4">
-                        {children}
-                      </ul>
-                    ),
-                    ol: ({children}) => (
-                      <ol className="space-y-2 my-4 ml-4 list-decimal">
-                        {children}
-                      </ol>
-                    ),
-                    li: ({children}) => (
-                      <li className="flex items-start text-gray-700 dark:text-gray-300 text-sm">
-                        <span className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                        <span>{children}</span>
-                      </li>
-                    ),
-                    table: ({children}) => (
-                      <div className="overflow-x-auto my-4">
-                        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg text-xs">
-                          {children}
-                        </table>
-                      </div>
-                    ),
-                    th: ({children}) => (
-                      <th className="px-3 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                        {children}
-                      </th>
-                    ),
-                    td: ({children}) => (
-                      <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900 dark:text-gray-300">
-                        {children}
-                      </td>
-                    ),
-                    code: ({children}) => (
-                      <code className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 px-2 py-1 rounded text-xs font-mono border border-gray-200 dark:border-gray-600">
-                        {children}
-                      </code>
-                    )
-                  }}
+        <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+          <div className="px-4 py-8">
+            {/* 移动端返回按钮 */}
+            <motion.div
+              className="mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Link href="/projects">
+                <motion.button
+                  className="flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
+                  whileHover={{ x: -4 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {reportContent}
-                </ReactMarkdown>
-              </motion.div>
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  返回项目列表
+                </motion.button>
+              </Link>
+            </motion.div>
 
-              {/* 移动端GitHub链接 */}
-              {reportData?.github && (
-                <motion.div
-                  className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700"
+            {/* 移动端项目报告内容 */}
+            <motion.div
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* 移动端项目头部 */}
+              <div className={`h-32 bg-gradient-to-r ${reportData?.gradient || 'from-blue-500 to-purple-600'} flex items-center justify-center relative`}>
+                <div className="text-4xl text-white">{reportData?.icon}</div>
+                <div className="absolute top-3 right-3">
+                  <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs rounded-full">
+                    {reportData?.category}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-6">
+                <motion.h1
+                  className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <motion.a
-                    href={reportData.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    查看源码
-                  </motion.a>
+                  {reportData?.title}
+                </motion.h1>
+
+                {/* 移动端技术标签 */}
+                <motion.div
+                  className="flex flex-wrap gap-2 mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  {reportData?.tags?.map((tag: string) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-xs rounded-full font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </motion.div>
-              )}
-            </div>
-          </motion.div>
+
+                {/* 移动端项目报告正文 - 参考电脑端配置 */}
+                <motion.div
+                  className="prose prose-sm dark:prose-invert max-w-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      h1: ({children}) => (
+                        <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-6 first:mt-0 pb-2 border-b border-gray-200 dark:border-gray-700">
+                          {children}
+                        </h1>
+                      ),
+                      h2: ({children}) => (
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mt-8 mb-3">
+                          {children}
+                        </h2>
+                      ),
+                      h3: ({children}) => (
+                        <h3 className="text-base font-semibold text-gray-900 dark:text-white mt-6 mb-2">
+                          {children}
+                        </h3>
+                      ),
+                      h4: ({children}) => (
+                        <h4 className="text-sm font-semibold text-gray-900 dark:text-white mt-4 mb-2">
+                          {children}
+                        </h4>
+                      ),
+                      blockquote: ({children}) => (
+                        <blockquote className="border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 p-4 my-4 italic">
+                          <div className="text-blue-900 dark:text-blue-100 text-sm">
+                            {children}
+                          </div>
+                        </blockquote>
+                      ),
+                      table: ({children}) => (
+                        <div className="overflow-x-auto my-4">
+                          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg text-xs">
+                            {children}
+                          </table>
+                        </div>
+                      ),
+                      th: ({children}) => (
+                        <th className="px-3 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                          {children}
+                        </th>
+                      ),
+                      td: ({children}) => (
+                        <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900 dark:text-gray-300">
+                          {children}
+                        </td>
+                      ),
+                      code: ({children}) => (
+                        <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-xs font-mono">
+                          {children}
+                        </code>
+                      ),
+                      ul: ({children}) => (
+                        <ul className="list-disc list-inside space-y-2 my-4">
+                          {children}
+                        </ul>
+                      ),
+                      ol: ({children}) => (
+                        <ol className="list-decimal list-inside space-y-2 my-4">
+                          {children}
+                        </ol>
+                      ),
+                      li: ({children}) => (
+                        <li className="text-gray-700 dark:text-gray-300 text-sm">
+                          {children}
+                        </li>
+                      ),
+                      p: ({children}) => (
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 text-sm">
+                          {children}
+                        </p>
+                      ),
+                      strong: ({children}) => (
+                        <strong className="font-semibold text-gray-900 dark:text-white">
+                          {children}
+                        </strong>
+                      ),
+                      em: ({children}) => (
+                        <em className="italic text-gray-800 dark:text-gray-200">
+                          {children}
+                        </em>
+                      )
+                    }}
+                  >
+                    {reportContent}
+                  </ReactMarkdown>
+                </motion.div>
+
+                {/* 移动端GitHub链接 */}
+                {reportData?.github && (
+                  <motion.div
+                    className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <motion.a
+                      href={reportData.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      查看源码
+                    </motion.a>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+
+            {/* 移动端底部导航 */}
+            <motion.div
+              className="mt-8 flex items-center justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <Link href="/projects">
+                <motion.div
+                  className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  返回项目列表
+                </motion.div>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </div>
 

@@ -557,7 +557,7 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
     <Layout>
       {/* 移动端布局 */}
       <div className="block md:hidden">
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 pb-8">
+        <div className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
           <div className="px-4 py-8">
             {/* 移动端返回按钮 */}
             <motion.div
@@ -582,7 +582,7 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
 
             {/* 移动端文章内容 */}
             <motion.article
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -616,36 +616,41 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
                 </motion.h1>
               </div>
 
-              {/* 移动端文章正文 */}
+              {/* 移动端文章正文 - 参考电脑端配置 */}
               <motion.div
                 className="p-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <div className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-strong:text-gray-900 dark:prose-strong:text-white prose-ul:space-y-2 prose-li:text-gray-600 dark:prose-li:text-gray-300">
+                <div className="prose prose-sm dark:prose-invert max-w-none">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
                       h1: ({children}) => (
-                        <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-6 first:mt-0">
+                        <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-6 first:mt-0 pb-2 border-b border-gray-200 dark:border-gray-700">
                           {children}
                         </h1>
                       ),
                       h2: ({children}) => (
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 mt-6 flex items-center">
+                        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 mt-8 flex items-center">
                           <span className="w-1 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3" />
                           {children}
                         </h2>
                       ),
                       h3: ({children}) => (
-                        <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2 mt-4">
+                        <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2 mt-6">
                           {children}
                         </h3>
                       ),
+                      h4: ({children}) => (
+                        <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2 mt-4">
+                          {children}
+                        </h4>
+                      ),
                       blockquote: ({children}) => (
-                        <blockquote className="border-l-4 border-blue-500 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 my-4 rounded-r-lg">
-                          <div className="italic text-blue-900 dark:text-blue-100 text-sm">
+                        <blockquote className="border-l-4 border-blue-500 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 my-4 rounded-r-lg italic">
+                          <div className="text-blue-900 dark:text-blue-100 text-sm">
                             {children}
                           </div>
                         </blockquote>
@@ -660,21 +665,47 @@ AI是我们的工具，不是我们的替代者。让我们一起在这个激动
                           {children}
                         </strong>
                       ),
+                      em: ({children}) => (
+                        <em className="italic text-gray-800 dark:text-gray-200">
+                          {children}
+                        </em>
+                      ),
                       ul: ({children}) => (
-                        <ul className="space-y-2 my-4 ml-4">
+                        <ul className="list-disc list-inside space-y-2 my-4">
                           {children}
                         </ul>
                       ),
+                      ol: ({children}) => (
+                        <ol className="list-decimal list-inside space-y-2 my-4">
+                          {children}
+                        </ol>
+                      ),
                       li: ({children}) => (
-                        <li className="flex items-start text-gray-700 dark:text-gray-300 text-sm">
-                          <span className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          <span>{children}</span>
+                        <li className="text-gray-700 dark:text-gray-300 text-sm">
+                          {children}
                         </li>
                       ),
                       code: ({children}) => (
-                        <code className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 px-2 py-1 rounded text-xs font-mono border border-gray-200 dark:border-gray-600">
+                        <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-xs font-mono">
                           {children}
                         </code>
+                      ),
+                      table: ({children}) => (
+                        <div className="overflow-x-auto my-4">
+                          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg text-xs">
+                            {children}
+                          </table>
+                        </div>
+                      ),
+                      th: ({children}) => (
+                        <th className="px-3 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                          {children}
+                        </th>
+                      ),
+                      td: ({children}) => (
+                        <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900 dark:text-gray-300">
+                          {children}
+                        </td>
                       )
                     }}
                   >
