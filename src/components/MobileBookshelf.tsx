@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useBookStore } from '@/store/bookStore'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useLanguage } from '@/contexts/LanguageContext'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -8,6 +9,7 @@ import remarkGfm from 'remark-gfm'
 export default function MobileBookshelf() {
   const { books, categories } = useBookStore()
   const { theme } = useTheme()
+  const { t } = useLanguage()
 
   // 本地状态管理
   const [showModal, setShowModal] = useState(false)
@@ -51,7 +53,7 @@ export default function MobileBookshelf() {
   const openModal = async (book: any) => {
     setSelectedBook(book)
     setShowModal(true)
-    setContent('正在加载读书笔记...')
+    setContent(t('正在加载读书笔记...', 'Loading reading notes...'))
     setTags([])
 
     try {
@@ -61,7 +63,7 @@ export default function MobileBookshelf() {
       setTags(extractedTags)
       setContent(mainContent)
     } catch (error) {
-      setContent('加载失败，请稍后重试。')
+      setContent(t('加载失败，请稍后重试。', 'Failed to load, please try again later.'))
     }
   }
 
@@ -77,15 +79,11 @@ export default function MobileBookshelf() {
         {/* 标题区域 */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            📚 我的书架
+            📚 {t('我的书架', 'My Bookshelf')}
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
-            记录阅读足迹，分享读书心得
+            {t('记录阅读足迹，分享读书心得', 'Recording reading journey, sharing insights')}
           </p>
-          {/* 调试信息 */}
-          <div className="mt-4 p-2 bg-blue-100 text-blue-800 rounded text-sm">
-            📱 移动端书架组件已加载 - 书籍数量: {books.length}
-          </div>
         </div>
 
         {/* 书籍分类网格 */}
@@ -146,7 +144,7 @@ export default function MobileBookshelf() {
         {/* 底部提示 */}
         <div className="text-center mt-12">
           <p className="text-gray-600 dark:text-gray-400">
-            📖 点击书籍查看完整读书笔记
+            📖 {t('点击书籍查看完整读书笔记', 'Click books to view complete reading notes')}
           </p>
         </div>
       </div>
