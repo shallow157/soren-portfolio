@@ -271,81 +271,81 @@ export default function Home() {
         </div>
 
         {/* 移动端技能专长模块 */}
-        <div className="py-16 px-4 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
+        <div className="mobile-skills-container py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
+            <h2 className="mobile-skills-title text-3xl font-bold text-center mb-4">
               🚀 {t('技能专长', 'Skills & Expertise')}
             </h2>
-            <p className="text-center text-gray-600 dark:text-white text-lg mb-8 leading-relaxed">
+            <p className="text-center text-lg mb-8 leading-relaxed mobile-skill-desc">
               {t('专注于数据分析与商业智能技术栈', 'Focused on data analysis and business intelligence tech stack')}
             </p>
 
             {/* 数据处理与分析 */}
-            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
+            <div className="mobile-skill-card group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📊</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据处理与分析', 'Data Processing & Analysis')}
                 </h3>
               </div>
 
-              <p className="text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-skill-desc mb-6 relative z-10 leading-relaxed">
                 {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
               </p>
 
               <div className="flex flex-wrap gap-2 relative z-10">
-                <span className="px-3 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-800 dark:text-sky-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Python</span>
-                <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">R</span>
-                <span className="px-3 py-1 bg-violet-100 dark:bg-violet-900/50 text-violet-800 dark:text-violet-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">SQL</span>
-                <span className="px-3 py-1 bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">SPSS</span>
+                <span className="mobile-skill-tag sky px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Python</span>
+                <span className="mobile-skill-tag emerald px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">R</span>
+                <span className="mobile-skill-tag violet px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">SQL</span>
+                <span className="mobile-skill-tag rose px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">SPSS</span>
               </div>
             </div>
 
             {/* 数据可视化 */}
-            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
+            <div className="mobile-skill-card group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📈</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据可视化', 'Data Visualization')}
                 </h3>
               </div>
 
-              <p className="text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-skill-desc mb-6 relative z-10 leading-relaxed">
                 {t('创建直观美观的数据图表和交互式仪表板', 'Create intuitive and beautiful data charts and interactive dashboards')}
               </p>
 
               <div className="flex flex-wrap gap-2 relative z-10">
-                <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Tableau</span>
-                <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Power BI</span>
-                <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Matplotlib</span>
-                <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-800 dark:text-pink-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Seaborn</span>
+                <span className="mobile-skill-tag sky px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Tableau</span>
+                <span className="mobile-skill-tag emerald px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Power BI</span>
+                <span className="mobile-skill-tag violet px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Matplotlib</span>
+                <span className="mobile-skill-tag rose px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Seaborn</span>
               </div>
             </div>
 
             {/* 数据库与工具 */}
-            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
+            <div className="mobile-skill-card group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">🗄️</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据库与工具', 'Database & Tools')}
                 </h3>
               </div>
 
-              <p className="text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-skill-desc mb-6 relative z-10 leading-relaxed">
                 {t('熟练掌握多种数据库系统和开发工具', 'Proficient in various database systems and development tools')}
               </p>
 
               <div className="flex flex-wrap gap-2 relative z-10">
-                <span className="px-3 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-800 dark:text-sky-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">MySQL</span>
-                <span className="px-3 py-1 bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">PostgreSQL</span>
-                <span className="px-3 py-1 bg-slate-100 dark:bg-slate-900/50 text-slate-800 dark:text-slate-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">MongoDB</span>
-                <span className="px-3 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Jupyter</span>
+                <span className="mobile-skill-tag sky px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">MySQL</span>
+                <span className="mobile-skill-tag emerald px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">PostgreSQL</span>
+                <span className="mobile-skill-tag violet px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">MongoDB</span>
+                <span className="mobile-skill-tag rose px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Jupyter</span>
               </div>
             </div>
           </div>
