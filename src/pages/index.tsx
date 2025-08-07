@@ -271,7 +271,7 @@ export default function Home() {
         </div>
 
         {/* 移动端技能专长模块 */}
-        <div className="mobile-skills-container py-16 px-4">
+        <div className="mobile-skills-container py-16 px-4 pb-24">
           <div className="max-w-4xl mx-auto">
             <h2 className="mobile-skills-title text-3xl font-bold text-center mb-4">
               🚀 {t('技能专长', 'Skills & Expertise')}
@@ -281,21 +281,19 @@ export default function Home() {
             </p>
 
             {/* 数据处理与分析 */}
-            <div className="mobile-skill-card group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 relative overflow-hidden mb-6">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <div className="flex items-center mb-4 relative z-10">
+            <div className="mobile-skill-card group transition-all duration-300">
+              <div className="flex items-center mb-4">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📊</div>
                 <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据处理与分析', 'Data Processing & Analysis')}
                 </h3>
               </div>
 
-              <p className="mobile-skill-desc mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-skill-desc mb-6 leading-relaxed">
                 {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
               </p>
 
-              <div className="flex flex-wrap gap-2 relative z-10">
+              <div className="flex flex-wrap gap-2">
                 <span className="mobile-skill-tag sky px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Python</span>
                 <span className="mobile-skill-tag emerald px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">R</span>
                 <span className="mobile-skill-tag violet px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">SQL</span>
@@ -304,21 +302,19 @@ export default function Home() {
             </div>
 
             {/* 数据可视化 */}
-            <div className="mobile-skill-card group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 relative overflow-hidden mb-6">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <div className="flex items-center mb-4 relative z-10">
+            <div className="mobile-skill-card group transition-all duration-300">
+              <div className="flex items-center mb-4">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📈</div>
                 <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据可视化', 'Data Visualization')}
                 </h3>
               </div>
 
-              <p className="mobile-skill-desc mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-skill-desc mb-6 leading-relaxed">
                 {t('创建直观美观的数据图表和交互式仪表板', 'Create intuitive and beautiful data charts and interactive dashboards')}
               </p>
 
-              <div className="flex flex-wrap gap-2 relative z-10">
+              <div className="flex flex-wrap gap-2">
                 <span className="mobile-skill-tag sky px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Tableau</span>
                 <span className="mobile-skill-tag emerald px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Power BI</span>
                 <span className="mobile-skill-tag violet px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">Matplotlib</span>
@@ -327,21 +323,19 @@ export default function Home() {
             </div>
 
             {/* 数据库与工具 */}
-            <div className="mobile-skill-card group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 relative overflow-hidden mb-6">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <div className="flex items-center mb-4 relative z-10">
+            <div className="mobile-skill-card group transition-all duration-300">
+              <div className="flex items-center mb-4">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">🗄️</div>
                 <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据库与工具', 'Database & Tools')}
                 </h3>
               </div>
 
-              <p className="mobile-skill-desc mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-skill-desc mb-6 leading-relaxed">
                 {t('熟练掌握多种数据库系统和开发工具', 'Proficient in various database systems and development tools')}
               </p>
 
-              <div className="flex flex-wrap gap-2 relative z-10">
+              <div className="flex flex-wrap gap-2">
                 <span className="mobile-skill-tag sky px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">MySQL</span>
                 <span className="mobile-skill-tag emerald px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">PostgreSQL</span>
                 <span className="mobile-skill-tag violet px-3 py-1 text-sm rounded-full font-medium hover:scale-105 transition-transform duration-200">MongoDB</span>
