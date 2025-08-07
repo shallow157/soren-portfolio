@@ -345,66 +345,60 @@ export default function Home() {
             </p>
 
             {/* 项目1：酒店预订取消率分析 */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-lg mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center">
-                  <span className="text-2xl mr-3">🏨</span>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm">
-                    {t('机器学习', 'Machine Learning')}
-                  </span>
+            <div className="mobile-project-card-desktop">
+              <div className="mobile-project-header">
+                <span className="mobile-project-icon">🏨</span>
+                <span className="mobile-project-category">{t('机器学习', 'Machine Learning')}</span>
+              </div>
+              <div className="mobile-project-content">
+                <h3 className="mobile-project-title-desktop">{t('酒店预订取消率分析', 'Hotel Booking Cancellation Analysis')}</h3>
+                <p className="mobile-project-desc-desktop">
+                  {t('基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。', 'Built XGBoost prediction model with 87% accuracy using Kaggle hotel booking dataset. Combined with SQL database design and PowerBI visualization dashboard.')}
+                </p>
+                <div className="mobile-project-tech-tags">
+                  <span className="mobile-tech-tag blue">Python</span>
+                  <span className="mobile-tech-tag blue">XGBoost</span>
+                  <span className="mobile-tech-tag blue">SQL</span>
+                  <span className="mobile-tech-tag blue">PowerBI</span>
                 </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                {t('酒店预订取消率分析', 'Hotel Booking Cancellation Analysis')}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                {t('基于Kaggle酒店预订数据集，构建XGBoost机器学习预测模型，准确率达到87%。结合SQL数据库设计和PowerBI可视化仪表板。', 'Built XGBoost prediction model with 87% accuracy using Kaggle hotel booking dataset. Combined with SQL database design and PowerBI visualization dashboard.')}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm">Python</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm">XGBoost</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm">SQL</span>
-                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm">PowerBI</span>
-              </div>
-              <div className="flex gap-3">
-                <a href="/reports/1" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
-                  {t('查看项目', 'View Project')}
-                </a>
-                <a href="https://github.com/shallow157/data_analysis_hotel_booking" className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                  </svg>
-                </a>
+                <div className="mobile-project-actions">
+                  <a href="/reports/1" className="mobile-project-btn">{t('查看项目', 'View Project')}</a>
+                  <a href="https://github.com/shallow157/data_analysis_hotel_booking" className="mobile-project-github">
+                    <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* 项目2：淘宝用户行为分析 */}
-          <div className="mobile-project-card-desktop">
-            <div className="mobile-project-header green">
-              <span className="mobile-project-icon">🛒</span>
-              <span className="mobile-project-category">数据分析</span>
-            </div>
-            <div className="mobile-project-content">
-              <h3 className="mobile-project-title-desktop">淘宝用户行为分析</h3>
-              <p className="mobile-project-desc-desktop">
-                处理1亿条用户行为数据，构建完整的用户行为分析框架，RFM模型实现精准用户分群，Tableau可视化仪表板展示核心指标。
-              </p>
-              <div className="mobile-project-tech-tags">
-                <span className="mobile-tech-tag green">MySQL</span>
-                <span className="mobile-tech-tag green">Tableau</span>
-                <span className="mobile-tech-tag green">Python</span>
-                <span className="mobile-tech-tag green">RFM模型</span>
+            <div className="mobile-project-card-desktop">
+              <div className="mobile-project-header green">
+                <span className="mobile-project-icon">🛒</span>
+                <span className="mobile-project-category">{t('数据分析', 'Data Analysis')}</span>
               </div>
-              <div className="mobile-project-actions">
-                <a href="/reports/2" className="mobile-project-btn green">查看项目</a>
-                <a href="https://github.com/shallow157/data_analysis_taobao_user_behavior" className="mobile-project-github">
-                  <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                  </svg>
-                </a>
+              <div className="mobile-project-content">
+                <h3 className="mobile-project-title-desktop">{t('淘宝用户行为分析', 'Taobao User Behavior Analysis')}</h3>
+                <p className="mobile-project-desc-desktop">
+                  {t('处理1亿条用户行为数据，构建完整的用户行为分析框架，RFM模型实现精准用户分群，Tableau可视化仪表板展示核心指标。', 'Processed 100 million user behavior records, built comprehensive analysis framework, implemented RFM model for precise user segmentation, and created Tableau dashboard for key metrics.')}
+                </p>
+                <div className="mobile-project-tech-tags">
+                  <span className="mobile-tech-tag green">MySQL</span>
+                  <span className="mobile-tech-tag green">Tableau</span>
+                  <span className="mobile-tech-tag green">Python</span>
+                  <span className="mobile-tech-tag green">{t('RFM模型', 'RFM Model')}</span>
+                </div>
+                <div className="mobile-project-actions">
+                  <a href="/reports/2" className="mobile-project-btn green">{t('查看项目', 'View Project')}</a>
+                  <a href="https://github.com/shallow157/data_analysis_taobao_user_behavior" className="mobile-project-github">
+                    <svg className="mobile-github-icon" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
           <div style={{
             textAlign: 'center',
@@ -421,7 +415,7 @@ export default function Home() {
               fontSize: '16px',
               fontWeight: '500'
             }}>
-              查看所有项目
+              {t('查看所有项目', 'View All Projects')}
               <svg style={{marginLeft: '8px', width: '16px', height: '16px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
