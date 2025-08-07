@@ -1,8 +1,29 @@
+import { useState, useEffect } from 'react'
 import { useBookStore } from '@/store/bookStore'
 
-// 移动端书架组件 - 基于BookGrid但适配移动端
+// 移动端书架组件 - 内嵌简单模态框
 export default function MobileBookshelf() {
-  const { books, categories, openBookModal } = useBookStore()
+  const { books, categories } = useBookStore()
+
+  // 简单的本地状态管理
+  const [showModal, setShowModal] = useState(false)
+  const [selectedBook, setSelectedBook] = useState<any>(null)
+  const [content, setContent] = useState('')
+
+  // 简单的打开模态框函数
+  const openModal = async (book: any) => {
+    setSelectedBook(book)
+    setShowModal(true)
+    setContent('正在加载...')
+
+    try {
+      const response = await fetch(book.markdownPath)
+      const text = await response.text()
+      setContent(text)
+    } catch (error) {
+      setContent('加载失败')
+    }
+  }
 
   // 按分类分组书籍
   const booksByCategory = categories.map(category => ({
@@ -48,51 +69,7 @@ export default function MobileBookshelf() {
                   <div
                     key={book.id}
                     className="group cursor-pointer bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      console.log('移动端书架点击(click):', book.title);
-
-                      // 调用openBookModal
-                      openBookModal(book);
-
-                      // 强制重渲染 - 解决手机端状态更新后未重渲染问题
-                      setTimeout(() => {
-                        window.dispatchEvent(new Event('resize'));
-                      }, 50);
-
-                      // 延迟检查状态
-                      setTimeout(() => {
-                        const store = useBookStore.getState();
-                        console.log('点击后状态检查:', {
-                          selectedBook: store.selectedBook?.title,
-                          isModalOpen: store.isModalOpen
-                        });
-                        alert(`状态检查: 选中书籍=${store.selectedBook?.title}, 模态框打开=${store.isModalOpen}`);
-                      }, 500);
-                    }}
-                    onTouchEnd={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault(); // 防止触摸后的click事件
-                      console.log('移动端书架点击(touch):', book.title);
-
-                      // 调用openBookModal
-                      openBookModal(book);
-
-                      // 强制重渲染 - 解决手机端状态更新后未重渲染问题
-                      setTimeout(() => {
-                        window.dispatchEvent(new Event('resize'));
-                      }, 50);
-
-                      // 延迟检查状态
-                      setTimeout(() => {
-                        const store = useBookStore.getState();
-                        console.log('触摸后状态检查:', {
-                          selectedBook: store.selectedBook?.title,
-                          isModalOpen: store.isModalOpen
-                        });
-                        alert(`触摸状态检查: 选中书籍=${store.selectedBook?.title}, 模态框打开=${store.isModalOpen}`);
-                      }, 500);
-                    }}
+                    onClick={() => openModal(book)}
                   >
                     {/* 书籍封面 */}
                     <div className="relative aspect-[3/4] rounded-lg overflow-hidden">
@@ -133,6 +110,74 @@ export default function MobileBookshelf() {
           </p>
         </div>
       </div>
+
+      {/* 简单的移动端模态框 */}
+      {showModal && selectedBook && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            zIndex: 10000,
+            padding: '20px',
+            overflow: 'auto'
+          }}
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              padding: '20px',
+              maxWidth: '100%',
+              margin: '0 auto'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
+              <img
+                src={selectedBook.coverUrl}
+                alt={selectedBook.title}
+                style={{ width: '60px', height: '80px', objectFit: 'cover', marginRight: '15px' }}
+              />
+              <div>
+                <h2 style={{ fontSize: '18px', fontWeight: 'bold', margin: '0 0 5px 0' }}>
+                  {selectedBook.title}
+                </h2>
+                <button
+                  style={{
+                    backgroundColor: '#ef4444',
+                    color: 'white',
+                    border: 'none',
+                    padding: '5px 10px',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setShowModal(false)}
+                >
+                  关闭
+                </button>
+              </div>
+            </div>
+
+            <div style={{
+              maxHeight: '400px',
+              overflow: 'auto',
+              padding: '10px',
+              backgroundColor: '#f9f9f9',
+              borderRadius: '5px',
+              fontSize: '14px',
+              lineHeight: '1.5',
+              whiteSpace: 'pre-wrap'
+            }}>
+              {content}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
