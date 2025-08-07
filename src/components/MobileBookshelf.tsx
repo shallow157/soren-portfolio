@@ -48,12 +48,17 @@ export default function MobileBookshelf() {
                   <div
                     key={book.id}
                     className="group cursor-pointer bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                    onClick={() => {
-                      console.log('移动端书架点击:', book.title);
-                      alert(`点击了书籍: ${book.title}`);
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      console.log('移动端书架点击(click):', book.title);
 
                       // 调用openBookModal
                       openBookModal(book);
+
+                      // 强制重渲染 - 解决手机端状态更新后未重渲染问题
+                      setTimeout(() => {
+                        window.dispatchEvent(new Event('resize'));
+                      }, 50);
 
                       // 延迟检查状态
                       setTimeout(() => {
@@ -63,6 +68,29 @@ export default function MobileBookshelf() {
                           isModalOpen: store.isModalOpen
                         });
                         alert(`状态检查: 选中书籍=${store.selectedBook?.title}, 模态框打开=${store.isModalOpen}`);
+                      }, 500);
+                    }}
+                    onTouchEnd={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault(); // 防止触摸后的click事件
+                      console.log('移动端书架点击(touch):', book.title);
+
+                      // 调用openBookModal
+                      openBookModal(book);
+
+                      // 强制重渲染 - 解决手机端状态更新后未重渲染问题
+                      setTimeout(() => {
+                        window.dispatchEvent(new Event('resize'));
+                      }, 50);
+
+                      // 延迟检查状态
+                      setTimeout(() => {
+                        const store = useBookStore.getState();
+                        console.log('触摸后状态检查:', {
+                          selectedBook: store.selectedBook?.title,
+                          isModalOpen: store.isModalOpen
+                        });
+                        alert(`触摸状态检查: 选中书籍=${store.selectedBook?.title}, 模态框打开=${store.isModalOpen}`);
                       }, 500);
                     }}
                   >

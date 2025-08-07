@@ -61,9 +61,11 @@ export default function BookModal() {
             bottom: 0,
             zIndex: 9999,
             backgroundColor: 'rgba(0,0,0,0.5)',
-            display: 'flex',
+            display: 'flex !important', // 强制显示，防止被手机端样式隐藏
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            opacity: 1, // 强制不透明
+            visibility: 'visible' // 强制可见
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

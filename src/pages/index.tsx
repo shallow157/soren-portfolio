@@ -7,7 +7,6 @@ import { motion } from 'framer-motion'
 import BookshelfSection from '../components/BookshelfSection'
 import MobileBookshelf from '../components/MobileBookshelf'
 import BookModal from '../components/BookModal'
-import MobileBookModal from '../components/MobileBookModal'
 import SearchBar from '../components/SearchBar'
 import BackToTop from '../components/BackToTop'
 import KeyboardShortcutsHelp from '../components/KeyboardShortcutsHelp'
@@ -2734,11 +2733,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 书籍模态框 */}
+      {/* 书籍模态框 - 统一处理桌面端和移动端 */}
       <BookModal />
-
-      {/* 移动端专用书籍模态框 */}
-      <MobileBookModal />
 
 
 
