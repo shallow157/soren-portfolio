@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useBookStore } from '@/store/bookStore'
 
-// 超级简化版移动端BookModal
+// 诊断版移动端BookModal
 export default function MobileBookModal() {
   const { selectedBook, isModalOpen, closeBookModal } = useBookStore()
   const [markdownContent, setMarkdownContent] = useState('')
@@ -24,31 +24,29 @@ export default function MobileBookModal() {
 
   console.log('MobileBookModal渲染:', { selectedBook: selectedBook?.title, isModalOpen })
 
-  if (!selectedBook || !isModalOpen) {
-    return null
-  }
-
   return (
-    <>
-      {/* 只在移动端显示 */}
-      <div className="md:hidden">
-        {/* 状态指示器 */}
-        <div
-          style={{
-            position: 'fixed',
-            top: '50px',
-            left: '10px',
-            zIndex: 10001,
-            backgroundColor: 'blue',
-            color: 'white',
-            padding: '5px',
-            fontSize: '12px'
-          }}
-        >
-          状态: OPEN
-        </div>
+    <div className="md:hidden">
+      {/* 永远显示的组件状态指示器 */}
+      <div
+        style={{
+          position: 'fixed',
+          top: '10px',
+          right: '10px',
+          zIndex: 10002,
+          backgroundColor: 'green',
+          color: 'white',
+          padding: '5px',
+          fontSize: '12px',
+          border: '2px solid white'
+        }}
+      >
+        📱 MobileBookModal已渲染<br/>
+        selectedBook: {selectedBook?.title || 'null'}<br/>
+        isModalOpen: {isModalOpen ? 'true' : 'false'}
+      </div>
 
-        {/* 超级明显的模态框 */}
+      {/* 条件显示的模态框 */}
+      {selectedBook && isModalOpen && (
         <div
           style={{
             position: 'fixed',
@@ -96,14 +94,14 @@ export default function MobileBookModal() {
             </button>
 
             <div style={{ marginTop: '20px' }}>
-              <h2>书籍: {selectedBook.title}</h2>
+              <h2>书籍: {selectedBook?.title}</h2>
               <div style={{ marginTop: '10px', maxHeight: '300px', overflow: 'auto' }}>
                 {markdownContent || '正在加载...'}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   )
 }
