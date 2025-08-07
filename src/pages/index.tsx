@@ -412,23 +412,13 @@ export default function Home() {
               </div>
             </div>
 
-          <div style={{
-            textAlign: 'center',
-            marginTop: '24px'
-          }}>
-            <a href="/projects" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '12px 24px',
-              backgroundColor: '#3b82f6',
-              color: 'white',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontSize: '16px',
-              fontWeight: '500'
-            }}>
+          <div className="text-center mt-6">
+            <a
+              href="/projects"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-base font-medium transition-colors duration-200 shadow-lg hover:shadow-xl"
+            >
               {t('查看所有项目', 'View All Projects')}
-              <svg style={{marginLeft: '8px', width: '16px', height: '16px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>

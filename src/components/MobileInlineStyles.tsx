@@ -398,6 +398,60 @@ const MobileInlineStyles: React.FC = () => {
             color: #e11d48 !important;
           }
 
+          /* 技能部分夜间模式适配 */
+          [data-theme="dark"] .mobile-skills-container,
+          .dark .mobile-skills-container {
+            background-color: #1f2937 !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+          }
+
+          [data-theme="dark"] .mobile-skills-title,
+          .dark .mobile-skills-title {
+            color: #f9fafb !important;
+          }
+
+          [data-theme="dark"] .mobile-skill-card,
+          .dark .mobile-skill-card {
+            background-color: #374151 !important;
+            border: 1px solid #4b5563 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+          }
+
+          [data-theme="dark"] .mobile-skill-card-title,
+          .dark .mobile-skill-card-title {
+            color: #f9fafb !important;
+          }
+
+          [data-theme="dark"] .mobile-skill-desc,
+          .dark .mobile-skill-desc {
+            color: #d1d5db !important;
+          }
+
+          /* 技能标签夜间模式 */
+          [data-theme="dark"] .mobile-skill-tag.sky,
+          .dark .mobile-skill-tag.sky {
+            background-color: #0c4a6e !important;
+            color: #bae6fd !important;
+          }
+
+          [data-theme="dark"] .mobile-skill-tag.emerald,
+          .dark .mobile-skill-tag.emerald {
+            background-color: #064e3b !important;
+            color: #a7f3d0 !important;
+          }
+
+          [data-theme="dark"] .mobile-skill-tag.violet,
+          .dark .mobile-skill-tag.violet {
+            background-color: #581c87 !important;
+            color: #ddd6fe !important;
+          }
+
+          [data-theme="dark"] .mobile-skill-tag.rose,
+          .dark .mobile-skill-tag.rose {
+            background-color: #881337 !important;
+            color: #fecdd3 !important;
+          }
+
           .mobile-skills-grid {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
@@ -471,6 +525,20 @@ const MobileInlineStyles: React.FC = () => {
             overflow: hidden !important;
           }
 
+          /* 夜间模式适配 */
+          [data-theme="dark"] .mobile-projects-container,
+          .dark .mobile-projects-container {
+            background-color: #1f2937 !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+          }
+
+          [data-theme="dark"] .mobile-project-card-desktop,
+          .dark .mobile-project-card-desktop {
+            background-color: #374151 !important;
+            border: 1px solid #4b5563 !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+          }
+
           .mobile-project-header {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
             padding: 20px !important;
@@ -517,6 +585,17 @@ const MobileInlineStyles: React.FC = () => {
             margin-bottom: 16px !important;
           }
 
+          /* 项目标题和描述夜间模式 */
+          [data-theme="dark"] .mobile-project-title-desktop,
+          .dark .mobile-project-title-desktop {
+            color: #f9fafb !important;
+          }
+
+          [data-theme="dark"] .mobile-project-desc-desktop,
+          .dark .mobile-project-desc-desktop {
+            color: #d1d5db !important;
+          }
+
           .mobile-project-tech-tags {
             display: flex !important;
             flex-wrap: wrap !important;
@@ -539,6 +618,19 @@ const MobileInlineStyles: React.FC = () => {
           .mobile-tech-tag.green {
             background-color: #dcfce7 !important;
             color: #166534 !important;
+          }
+
+          /* 技术标签夜间模式 */
+          [data-theme="dark"] .mobile-tech-tag.blue,
+          .dark .mobile-tech-tag.blue {
+            background-color: #1e3a8a !important;
+            color: #bfdbfe !important;
+          }
+
+          [data-theme="dark"] .mobile-tech-tag.green,
+          .dark .mobile-tech-tag.green {
+            background-color: #14532d !important;
+            color: #bbf7d0 !important;
           }
 
           .mobile-project-actions {
@@ -578,6 +670,13 @@ const MobileInlineStyles: React.FC = () => {
           .mobile-github-icon {
             width: 20px !important;
             height: 20px !important;
+          }
+
+          /* GitHub图标夜间模式 */
+          [data-theme="dark"] .mobile-project-github,
+          .dark .mobile-project-github {
+            background-color: #4b5563 !important;
+            color: #d1d5db !important;
           }
 
           /* 移动端图书馆样式 */
@@ -644,6 +743,40 @@ const MobileInlineStyles: React.FC = () => {
           .mobile-book-author {
             font-size: 12px !important;
             color: #666666 !important;
+          }
+
+          /* 书架部分夜间模式适配 */
+          [data-theme="dark"] .mobile-library-container,
+          .dark .mobile-library-container {
+            background-color: #1f2937 !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+          }
+
+          [data-theme="dark"] .mobile-library-title,
+          .dark .mobile-library-title {
+            color: #f9fafb !important;
+          }
+
+          [data-theme="dark"] .mobile-book-card,
+          .dark .mobile-book-card {
+            background-color: #374151 !important;
+            border: 1px solid #4b5563 !important;
+          }
+
+          [data-theme="dark"] .mobile-book-card:hover,
+          .dark .mobile-book-card:hover {
+            background-color: #4b5563 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+          }
+
+          [data-theme="dark"] .mobile-book-title,
+          .dark .mobile-book-title {
+            color: #f9fafb !important;
+          }
+
+          [data-theme="dark"] .mobile-book-author,
+          .dark .mobile-book-author {
+            color: #d1d5db !important;
           }
 
           /* 移动端段落间距优化 */
