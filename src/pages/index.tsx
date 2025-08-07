@@ -1,6 +1,5 @@
 import Layout from '../components/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { useTheme } from '@/contexts/ThemeContext'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
@@ -15,7 +14,6 @@ import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShor
 import { useBookStore } from '@/store/bookStore'
 export default function Home() {
   const { t } = useLanguage()
-  const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -220,14 +218,6 @@ export default function Home() {
 
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
       <div className="block md:hidden">
-        {/* 调试信息 - 检查dark模式是否工作 */}
-        <div className="fixed top-16 right-4 z-50 p-2 bg-red-500 text-white text-xs rounded">
-          <div>Theme: {theme}</div>
-          <div>HTML has dark: {typeof window !== 'undefined' ? (document.documentElement.classList.contains('dark') ? 'YES' : 'NO') : 'SSR'}</div>
-          <div className="bg-white dark:bg-gray-800 text-black dark:text-white p-1 mt-1 rounded">
-            Dark test: This should be white text on dark bg in dark mode
-          </div>
-        </div>
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 背景动画 */}
@@ -237,6 +227,11 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 text-center max-w-lg">
+            {/* 简单的dark模式测试 */}
+            <div className="mb-4 p-2 bg-white dark:bg-red-500 text-black dark:text-white text-xs border border-gray-300 dark:border-red-600 rounded">
+              Dark Mode Test: {typeof window !== 'undefined' && document.documentElement.classList.contains('dark') ? 'DARK MODE ON' : 'LIGHT MODE'}
+            </div>
+
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {t('你好，我是', 'Hello, I am')}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 block mt-2">
@@ -285,33 +280,18 @@ export default function Home() {
               {t('专注于数据分析与商业智能技术栈', 'Focused on data analysis and business intelligence tech stack')}
             </p>
 
-            {/* 数据处理与分析 - 强制夜间模式测试 */}
-            <div className="group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border relative overflow-hidden mb-6 bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700">
-              <style jsx>{`
-                @media (max-width: 767px) {
-                  .dark .mobile-test-card {
-                    background-color: #1f2937 !important;
-                    border-color: #374151 !important;
-                  }
-                  .dark .mobile-test-title {
-                    color: white !important;
-                  }
-                  .dark .mobile-test-desc {
-                    color: #d1d5db !important;
-                  }
-                }
-              `}</style>
-
+            {/* 数据处理与分析 */}
+            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📊</div>
-                <h3 className="mobile-test-title text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {t('数据处理与分析', 'Data Processing & Analysis')}
                 </h3>
               </div>
 
-              <p className="mobile-test-desc text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
+              <p className="text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
                 {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
               </p>
 
