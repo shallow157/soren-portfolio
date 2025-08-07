@@ -168,64 +168,59 @@ export default function MobileBookshelf() {
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* 头部区域 */}
+            {/* 头部区域 - 简单垂直布局 */}
             <div className={`p-4 border-b ${
               theme === 'dark' ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-gray-50'
             }`}>
-              {/* 关闭按钮 - 独立在右上角 */}
-              <div className="flex justify-end mb-3">
+              {/* 关闭按钮 */}
+              <div className="flex justify-end mb-2">
                 <button
-                  className={`p-2 rounded-full transition-colors ${
+                  className={`p-1 rounded-full transition-colors ${
                     theme === 'dark'
                       ? 'text-gray-400 hover:text-white hover:bg-gray-700'
                       : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200'
                   }`}
                   onClick={() => setShowModal(false)}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
 
-              {/* 书籍信息区域 */}
-              <div className="flex items-start space-x-3">
-                {/* 书籍封面 */}
-                <div className="flex-shrink-0">
-                  <img
-                    src={selectedBook.coverUrl}
-                    alt={selectedBook.title}
-                    className="w-20 h-28 object-cover rounded-lg shadow-md"
-                  />
-                </div>
-
-                {/* 书籍信息 - 确保有足够空间 */}
-                <div className="flex-1 min-w-0 pr-2">
-                  <h2 className={`text-base font-bold mb-3 leading-tight ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    📖 {selectedBook.title}
-                  </h2>
-
-                  {/* 标签区域 */}
-                  {tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1">
-                      {tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className={`px-2 py-1 text-xs rounded-full font-medium ${
-                            theme === 'dark'
-                              ? 'bg-blue-900/50 text-blue-300 border border-blue-700'
-                              : 'bg-blue-100 text-blue-700 border border-blue-200'
-                          }`}
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              {/* 书籍封面 - 居中显示 */}
+              <div className="text-center mb-3">
+                <img
+                  src={selectedBook.coverUrl}
+                  alt={selectedBook.title}
+                  className="w-16 h-20 object-cover rounded-lg shadow-md mx-auto"
+                />
               </div>
+
+              {/* 书籍标题 - 居中显示 */}
+              <h2 className={`text-sm font-bold mb-2 text-center ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                📖 {selectedBook.title}
+              </h2>
+
+              {/* 标签区域 - 居中显示 */}
+              {tags.length > 0 && (
+                <div className="flex flex-wrap gap-1 justify-center">
+                  {tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className={`px-2 py-1 text-xs rounded-full font-medium ${
+                        theme === 'dark'
+                          ? 'bg-blue-900/50 text-blue-300 border border-blue-700'
+                          : 'bg-blue-100 text-blue-700 border border-blue-200'
+                      }`}
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* 内容区域 */}
