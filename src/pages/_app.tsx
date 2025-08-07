@@ -225,7 +225,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
 
-      <MobileInlineStyles />
+      {/* <MobileInlineStyles /> - 暂时禁用，因为CSS类名不匹配，可能干扰Tailwind */}
       <ThemeProvider>
         <LanguageProvider>
           <Component {...pageProps} />
