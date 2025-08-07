@@ -214,108 +214,10 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* 样式隔离验证指示器 - 开发时使用 */}
-      <div className="breakpoint-indicator"></div>
+
 
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
-      <div className="block md:hidden mobile-force-visible mobile-force-layout">
-        {/* 移动端内联CSS测试 - 最高优先级 */}
-        <div className="mobile-inline-test">
-          内联CSS测试
-        </div>
-
-        {/* CSS加载失败指示器 */}
-        <div className="css-load-failed">
-          外部CSS加载状态检测
-        </div>
-
-        {/* 移动端CSS强制诊断系统 */}
-        <div className="mobile-css-test css-force-loaded">
-          🔴 移动端CSS强制加载诊断 - 如果看到红色背景说明强制CSS生效
-        </div>
-
-        <div className="mobile-css-loaded">
-          ✅ 移动端CSS修复系统已激活
-        </div>
-
-        {/* 移动端样式隔离测试 */}
-        <div className="isolation-test">
-          🔵 移动端样式隔离测试
-        </div>
-
-        {/* CSS加载状态检测 */}
-        <div className="mobile-force-spacing mobile-force-bg">
-          <h2 className="mobile-force-text">📊 CSS加载状态检测</h2>
-          <p className="mobile-force-text">
-            ✅ 内联CSS：正常工作（你能看到彩色框）<br/>
-            ❌ 外部CSS：加载失败（只有内联样式生效）<br/>
-            🔧 解决方案：使用内联CSS完全替代外部CSS
-          </p>
-        </div>
-
-        {/* 移动端内容强制显示 */}
-        <div className="mobile-force-spacing mobile-force-bg">
-          <h1 className="mobile-force-text">移动端内容测试</h1>
-          <p className="mobile-force-text">如果你能看到这段文字有正常的样式（不是纯文本），说明移动端内联CSS修复成功！</p>
-
-          <h3 className="mobile-force-text">测试功能</h3>
-          <button type="button">测试按钮</button>
-          <p className="mobile-force-text">按钮应该有蓝色背景和白色文字</p>
-
-          <div style={{
-            backgroundColor: '#e3f2fd',
-            padding: '16px',
-            borderRadius: '8px',
-            margin: '16px 0',
-            border: '1px solid #2196f3'
-          }}>
-            <p style={{
-              color: '#1976d2',
-              fontWeight: 'bold',
-              margin: '0'
-            }}>
-              🎯 这个蓝色框使用内联style属性，应该始终显示正确
-            </p>
-          </div>
-        </div>
-
-        {/* 移动端Hero区域示例 - 使用内联样式 */}
-        <div className="mobile-hero-inline mobile-fade-in">
-          <div className="mobile-hero-content">
-            <h1 className="mobile-hero-title">欢迎来到移动端</h1>
-            <p className="mobile-hero-subtitle">
-              这是使用内联CSS完全修复的移动端页面，
-              不依赖任何外部CSS文件，确保在所有移动端浏览器中正常显示。
-            </p>
-            <a href="#" className="mobile-hero-button">开始探索</a>
-          </div>
-        </div>
-
-        {/* 移动端卡片示例 */}
-        <div className="mobile-card-inline mobile-slide-up">
-          <h3 className="mobile-card-title">功能特性</h3>
-          <p className="mobile-card-text">
-            ✅ 内联CSS确保样式加载<br/>
-            ✅ 响应式设计适配移动端<br/>
-            ✅ 优化的触摸交互体验<br/>
-            ✅ 快速加载和流畅动画
-          </p>
-          <button className="mobile-card-button">了解更多</button>
-        </div>
-
-        {/* 移动端表单示例 */}
-        <div className="mobile-form-inline">
-          <h3 className="mobile-form-title">联系我们</h3>
-          <div className="mobile-form-group">
-            <label className="mobile-form-label">姓名</label>
-            <input type="text" className="mobile-form-input" placeholder="请输入您的姓名" />
-          </div>
-          <div className="mobile-form-group">
-            <label className="mobile-form-label">邮箱</label>
-            <input type="email" className="mobile-form-input" placeholder="请输入您的邮箱" />
-          </div>
-          <button className="mobile-form-button">提交</button>
-        </div>
+      <div className="block md:hidden">
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 背景动画 */}
@@ -782,12 +684,8 @@ export default function Home() {
         </section>
       </div>
 
-      {/* 桌面端版本 - 使用CSS媒体查询控制显示 */}
+      {/* 桌面端版本 */}
       <div className="hidden md:block">
-        {/* 桌面端样式隔离测试 */}
-        <div className="isolation-test">
-          桌面端样式隔离测试
-        </div>
 
       {/* Hero Section with animated background */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
