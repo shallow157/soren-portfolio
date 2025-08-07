@@ -106,7 +106,7 @@ export default function MobileBookshelf() {
                 {category.books.map((book) => (
                   <div
                     key={book.id}
-                    className="group cursor-pointer bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    className="group cursor-pointer bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-600 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     onClick={() => openModal(book)}
                   >
                     {/* 书籍封面 */}

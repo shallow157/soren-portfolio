@@ -226,6 +226,7 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
 
       <MobileInlineStyles />
+      <MobileInlineStyles />
       <ThemeProvider>
         <LanguageProvider>
           <Component {...pageProps} />
