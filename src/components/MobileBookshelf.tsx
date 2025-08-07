@@ -81,7 +81,7 @@ export default function MobileBookshelf() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
             📚 {t('我的书架', 'My Bookshelf')}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-gray-600 dark:text-white">
             {t('记录阅读足迹，分享读书心得', 'Recording reading journey, sharing insights')}
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function MobileBookshelf() {
                         {book.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-white text-xs rounded-full"
                           >
                             #{tag}
                           </span>
@@ -143,7 +143,7 @@ export default function MobileBookshelf() {
 
         {/* 底部提示 */}
         <div className="text-center mt-12">
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-gray-600 dark:text-white">
             📖 {t('点击书籍查看完整读书笔记', 'Click books to view complete reading notes')}
           </p>
         </div>

@@ -244,7 +244,7 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-white mb-8 leading-relaxed">
               {t(
                 '一名专注数据科学的分析师，致力于从数据中挖掘洞察，用智能分析驱动商业决策',
                 'A data science analyst focused on extracting insights from data and driving business decisions through intelligent analysis'
@@ -281,7 +281,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
               🚀 {t('技能专长', 'Skills & Expertise')}
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
+            <p className="text-center text-gray-600 dark:text-white text-lg mb-8 leading-relaxed">
               {t('专注于数据分析与商业智能技术栈', 'Focused on data analysis and business intelligence tech stack')}
             </p>
 
@@ -311,7 +311,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <p className="mobile-test-desc text-gray-600 dark:text-gray-300 mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-test-desc text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
                 {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
               </p>
 
@@ -334,7 +334,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-6 relative z-10 leading-relaxed">
+              <p className="text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
                 {t('创建直观美观的数据图表和交互式仪表板', 'Create intuitive and beautiful data charts and interactive dashboards')}
               </p>
 
@@ -357,7 +357,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-6 relative z-10 leading-relaxed">
+              <p className="text-gray-600 dark:text-white mb-6 relative z-10 leading-relaxed">
                 {t('熟练掌握多种数据库系统和开发工具', 'Proficient in various database systems and development tools')}
               </p>
 
@@ -377,7 +377,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
               💼 {t('精选项目', 'Featured Projects')}
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
+            <p className="text-center text-gray-600 dark:text-white text-lg mb-8 leading-relaxed">
               {t('展示我在数据分析和机器学习领域的实践成果', 'Showcasing my practical achievements in data analysis and machine learning')}
             </p>
 
@@ -641,7 +641,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t('联系我', 'Contact Me')}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-white">
                 {t('有任何想法或合作机会，欢迎联系', 'Feel free to reach out for any ideas or collaboration opportunities')}
               </p>
             </div>
@@ -649,7 +649,7 @@ export default function Home() {
             <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                     {t('姓名', 'Name')}
                   </label>
                   <input
@@ -664,7 +664,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                     {t('邮箱', 'Email')}
                   </label>
                   <input
@@ -679,7 +679,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                     {t('消息', 'Message')}
                   </label>
                   <textarea
