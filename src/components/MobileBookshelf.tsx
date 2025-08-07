@@ -154,14 +154,14 @@ export default function MobileBookshelf() {
       {/* 美化的移动端读书笔记模态框 */}
       {showModal && selectedBook && (
         <div
-          className={`fixed inset-0 z-[10000] flex items-center justify-center p-4 ${
+          className={`fixed inset-0 z-[10000] flex items-center justify-center p-3 ${
             theme === 'dark' ? 'bg-black/80' : 'bg-black/60'
           }`}
           style={{ backdropFilter: 'blur(4px)' }}
           onClick={() => setShowModal(false)}
         >
           <div
-            className={`w-full max-w-lg max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden ${
+            className={`w-full max-w-sm max-h-[85vh] rounded-2xl shadow-2xl overflow-hidden ${
               theme === 'dark'
                 ? 'bg-gray-800 border border-gray-700'
                 : 'bg-white border border-gray-200'
@@ -169,22 +169,39 @@ export default function MobileBookshelf() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* 头部区域 */}
-            <div className={`p-6 border-b ${
+            <div className={`p-4 border-b ${
               theme === 'dark' ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-gray-50'
             }`}>
-              <div className="flex items-start space-x-4">
+              {/* 关闭按钮 - 独立在右上角 */}
+              <div className="flex justify-end mb-3">
+                <button
+                  className={`p-2 rounded-full transition-colors ${
+                    theme === 'dark'
+                      ? 'text-gray-400 hover:text-white hover:bg-gray-700'
+                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200'
+                  }`}
+                  onClick={() => setShowModal(false)}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* 书籍信息区域 */}
+              <div className="flex items-start space-x-3">
                 {/* 书籍封面 */}
                 <div className="flex-shrink-0">
                   <img
                     src={selectedBook.coverUrl}
                     alt={selectedBook.title}
-                    className="w-16 h-20 object-cover rounded-lg shadow-md"
+                    className="w-20 h-28 object-cover rounded-lg shadow-md"
                   />
                 </div>
 
-                {/* 书籍信息 */}
-                <div className="flex-1 min-w-0">
-                  <h2 className={`text-lg font-bold mb-2 ${
+                {/* 书籍信息 - 确保有足够空间 */}
+                <div className="flex-1 min-w-0 pr-2">
+                  <h2 className={`text-base font-bold mb-3 leading-tight ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
                     📖 {selectedBook.title}
@@ -192,7 +209,7 @@ export default function MobileBookshelf() {
 
                   {/* 标签区域 */}
                   {tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-3">
+                    <div className="flex flex-wrap gap-1">
                       {tags.map((tag, index) => (
                         <span
                           key={index}
@@ -208,25 +225,11 @@ export default function MobileBookshelf() {
                     </div>
                   )}
                 </div>
-
-                {/* 关闭按钮 */}
-                <button
-                  className={`p-2 rounded-full transition-colors ${
-                    theme === 'dark'
-                      ? 'text-gray-400 hover:text-white hover:bg-gray-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200'
-                  }`}
-                  onClick={() => setShowModal(false)}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
               </div>
             </div>
 
             {/* 内容区域 */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4">
               <div className={`prose prose-sm max-w-none ${
                 theme === 'dark' ? 'prose-invert' : 'prose-gray'
               }`}>
