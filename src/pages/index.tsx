@@ -275,18 +275,33 @@ export default function Home() {
               {t('专注于数据分析与商业智能技术栈', 'Focused on data analysis and business intelligence tech stack')}
             </p>
 
-            {/* 数据处理与分析 */}
-            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
+            {/* 数据处理与分析 - 强制夜间模式测试 */}
+            <div className="group rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border relative overflow-hidden mb-6 bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700">
+              <style jsx>{`
+                @media (max-width: 767px) {
+                  .dark .mobile-test-card {
+                    background-color: #1f2937 !important;
+                    border-color: #374151 !important;
+                  }
+                  .dark .mobile-test-title {
+                    color: white !important;
+                  }
+                  .dark .mobile-test-desc {
+                    color: #d1d5db !important;
+                  }
+                }
+              `}</style>
+
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📊</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="mobile-test-title text-xl font-semibold text-gray-900 dark:text-white">
                   {t('数据处理与分析', 'Data Processing & Analysis')}
                 </h3>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-6 relative z-10 leading-relaxed">
+              <p className="mobile-test-desc text-gray-600 dark:text-gray-300 mb-6 relative z-10 leading-relaxed">
                 {t('熟练使用多种数据处理工具进行数据清洗、分析和建模', 'Proficient in various data processing tools for data cleaning, analysis and modeling')}
               </p>
 
@@ -610,7 +625,7 @@ export default function Home() {
         </section>
 
         {/* 移动端联系我部分 */}
-        <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+        <section className="py-16 px-4 bg-gradient-to-br from-white via-gray-50 to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-purple-900">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
