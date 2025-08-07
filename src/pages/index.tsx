@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useTheme } from '@/contexts/ThemeContext'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
@@ -14,6 +15,7 @@ import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShor
 import { useBookStore } from '@/store/bookStore'
 export default function Home() {
   const { t } = useLanguage()
+  const { theme } = useTheme()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -218,6 +220,14 @@ export default function Home() {
 
       {/* 移动端版本 - 使用CSS媒体查询控制显示 */}
       <div className="block md:hidden">
+        {/* 调试信息 - 检查dark模式是否工作 */}
+        <div className="fixed top-16 right-4 z-50 p-2 bg-red-500 text-white text-xs rounded">
+          <div>Theme: {theme}</div>
+          <div>HTML has dark: {typeof window !== 'undefined' ? (document.documentElement.classList.contains('dark') ? 'YES' : 'NO') : 'SSR'}</div>
+          <div className="bg-white dark:bg-gray-800 text-black dark:text-white p-1 mt-1 rounded">
+            Dark test: This should be white text on dark bg in dark mode
+          </div>
+        </div>
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 背景动画 */}
