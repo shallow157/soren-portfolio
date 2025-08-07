@@ -266,7 +266,7 @@ export default function Home() {
         </div>
 
         {/* 移动端技能专长模块 */}
-        <div className="py-16 px-4 bg-gray-50 dark:bg-gray-800">
+        <div className="py-16 px-4 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
               🚀 {t('技能专长', 'Skills & Expertise')}
@@ -276,7 +276,7 @@ export default function Home() {
             </p>
 
             {/* 数据处理与分析 */}
-            <div className="group bg-white dark:bg-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-600 relative overflow-hidden mb-6">
+            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
@@ -299,7 +299,7 @@ export default function Home() {
             </div>
 
             {/* 数据可视化 */}
-            <div className="group bg-white dark:bg-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-600 relative overflow-hidden mb-6">
+            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
@@ -322,7 +322,7 @@ export default function Home() {
             </div>
 
             {/* 数据库与工具 */}
-            <div className="group bg-white dark:bg-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-600 relative overflow-hidden mb-6">
+            <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700 relative overflow-hidden mb-6">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="flex items-center mb-4 relative z-10">
@@ -347,7 +347,7 @@ export default function Home() {
         </div>
 
         {/* 移动端精选项目模块 */}
-        <div className="py-16 px-4 bg-white dark:bg-gray-900">
+        <div className="py-16 px-4 bg-gradient-to-br from-white via-gray-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-4">
               💼 {t('精选项目', 'Featured Projects')}

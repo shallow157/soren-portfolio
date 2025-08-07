@@ -74,7 +74,7 @@ export default function MobileBookshelf() {
   }))
 
   return (
-    <section className="py-16 px-4 bg-white dark:bg-gray-900 md:hidden">
+    <section className="py-16 px-4 bg-gradient-to-br from-white via-gray-50 to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 md:hidden">
       <div className="max-w-4xl mx-auto">
         {/* 标题区域 */}
         <div className="text-center mb-12">
@@ -106,7 +106,7 @@ export default function MobileBookshelf() {
                 {category.books.map((book) => (
                   <div
                     key={book.id}
-                    className="group cursor-pointer bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-600 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    className="group cursor-pointer bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     onClick={() => openModal(book)}
                   >
                     {/* 书籍封面 */}
@@ -127,7 +127,7 @@ export default function MobileBookshelf() {
                         {book.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-200 text-xs rounded-full"
+                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full"
                           >
                             #{tag}
                           </span>
