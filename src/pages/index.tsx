@@ -616,7 +616,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t('联系我', 'Contact Me')}
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600 dark:text-gray-300">
                 {t('有任何想法或合作机会，欢迎联系', 'Feel free to reach out for any ideas or collaboration opportunities')}
               </p>
             </div>
