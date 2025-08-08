@@ -112,6 +112,12 @@ export default function App({ Component, pageProps }: AppProps) {
             -webkit-overflow-scrolling: touch !important;
           }
 
+          /* 移动端夜间模式全局样式 */
+          .dark body {
+            background-color: #111827 !important;
+            color: #f9fafb !important;
+          }
+
           /* 移动端布局强制修复 */
           .block {
             display: block !important;
@@ -221,6 +227,13 @@ export default function App({ Component, pageProps }: AppProps) {
             font-size: 16px !important;
             margin-bottom: 16px !important;
             background-color: white !important;
+          }
+
+          /* 移动端表单夜间模式 */
+          .dark input, .dark textarea, .dark select {
+            background-color: #374151 !important;
+            border-color: #4b5563 !important;
+            color: #f9fafb !important;
           }
         }
       `}</style>
