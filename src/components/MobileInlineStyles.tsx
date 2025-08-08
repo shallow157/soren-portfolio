@@ -412,14 +412,14 @@ const MobileInlineStyles: React.FC = () => {
 
           [data-theme="dark"] .mobile-skill-card,
           .dark .mobile-skill-card {
-            background-color: #374151 !important;
-            border: 1px solid #4b5563 !important;
+            background-color: #1f2937 !important;
+            border: 1px solid #374151 !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
           }
 
           [data-theme="dark"] .mobile-skill-card-title,
           .dark .mobile-skill-card-title {
-            color: #f9fafb !important;
+            color: #ffffff !important;
           }
 
           [data-theme="dark"] .mobile-skill-desc,
@@ -427,28 +427,28 @@ const MobileInlineStyles: React.FC = () => {
             color: #d1d5db !important;
           }
 
-          /* 技能标签夜间模式 */
+          /* 技能标签夜间模式 - 与电脑端一致 */
           [data-theme="dark"] .mobile-skill-tag.sky,
           .dark .mobile-skill-tag.sky {
-            background-color: #0c4a6e !important;
+            background-color: rgba(12, 74, 110, 0.5) !important;
             color: #bae6fd !important;
           }
 
           [data-theme="dark"] .mobile-skill-tag.emerald,
           .dark .mobile-skill-tag.emerald {
-            background-color: #064e3b !important;
+            background-color: rgba(6, 78, 59, 0.5) !important;
             color: #a7f3d0 !important;
           }
 
           [data-theme="dark"] .mobile-skill-tag.violet,
           .dark .mobile-skill-tag.violet {
-            background-color: #581c87 !important;
+            background-color: rgba(88, 28, 135, 0.5) !important;
             color: #ddd6fe !important;
           }
 
           [data-theme="dark"] .mobile-skill-tag.rose,
           .dark .mobile-skill-tag.rose {
-            background-color: #881337 !important;
+            background-color: rgba(136, 19, 55, 0.5) !important;
             color: #fecdd3 !important;
           }
 

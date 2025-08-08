@@ -284,7 +284,7 @@ export default function Home() {
             <div className="mobile-skill-card group transition-all duration-300">
               <div className="flex items-center mb-4">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📊</div>
-                <h3 className="mobile-skill-card-title text-xl font-semibold">
+                <h3 className="mobile-skill-card-title">
                   {t('数据处理与分析', 'Data Processing & Analysis')}
                 </h3>
               </div>
