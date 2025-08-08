@@ -227,11 +227,6 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 text-center max-w-lg">
-            {/* 简单的dark模式测试 */}
-            <div className="mb-4 p-2 bg-white dark:bg-red-500 text-black dark:text-white text-xs border border-gray-300 dark:border-red-600 rounded">
-              Dark Mode Test: {typeof window !== 'undefined' && document.documentElement.classList.contains('dark') ? 'DARK MODE ON' : 'LIGHT MODE'}
-            </div>
-
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {t('你好，我是', 'Hello, I am')}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 block mt-2">
@@ -284,7 +279,7 @@ export default function Home() {
             <div className="mobile-skill-card group transition-all duration-300">
               <div className="flex items-center mb-4">
                 <div className="text-3xl mr-3 group-hover:scale-110 transition-transform duration-300">📊</div>
-                <h3 className="mobile-skill-card-title">
+                <h3 className="mobile-skill-card-title text-xl font-semibold">
                   {t('数据处理与分析', 'Data Processing & Analysis')}
                 </h3>
               </div>

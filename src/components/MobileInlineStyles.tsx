@@ -337,6 +337,8 @@ const MobileInlineStyles: React.FC = () => {
             margin-bottom: 20px !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
             border: 1px solid #e9ecef !important;
+            position: relative !important;
+            overflow: hidden !important;
           }
 
           .mobile-skill-header {
