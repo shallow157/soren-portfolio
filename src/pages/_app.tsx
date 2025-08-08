@@ -118,6 +118,39 @@ export default function App({ Component, pageProps }: AppProps) {
             color: #f9fafb !important;
           }
 
+          /* 修复强制文字颜色的夜间模式 */
+          .dark .mobile-force-text {
+            color: #f9fafb !important;
+          }
+
+          .dark p {
+            color: #d1d5db !important;
+          }
+
+          /* 修复强制标题颜色的夜间模式 */
+          .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+            color: #f9fafb !important;
+          }
+
+          /* 强制覆盖移动端项目部分夜间模式 */
+          .dark .mobile-project-title-desktop {
+            color: #f9fafb !important;
+          }
+
+          .dark .mobile-project-desc-desktop {
+            color: #d1d5db !important;
+          }
+
+          .dark .mobile-project-card-desktop {
+            background-color: #374151 !important;
+            border-color: #4b5563 !important;
+          }
+
+          .dark .mobile-tech-tag {
+            background-color: #1e3a8a !important;
+            color: #bfdbfe !important;
+          }
+
           /* 移动端布局强制修复 */
           .block {
             display: block !important;
