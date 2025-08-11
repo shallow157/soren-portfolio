@@ -225,20 +225,25 @@ export default function Home() {
           {/* 左上角 - 夜间模式切换 */}
           <button
             onClick={toggleTheme}
-            className="absolute top-6 left-4 z-20 p-3 rounded-full transition-all duration-500 backdrop-blur-xl bg-gradient-to-br from-white/20 via-white/10 to-transparent dark:from-gray-800/30 dark:via-gray-700/20 dark:to-transparent hover:from-white/30 hover:via-white/20 dark:hover:from-gray-700/40 dark:hover:via-gray-600/30 shadow-xl hover:shadow-2xl hover:scale-110 text-gray-800 dark:text-yellow-300 border border-white/30 dark:border-gray-400/20"
+            className="absolute top-6 left-4 z-20 p-3 rounded-2xl transition-all duration-300 backdrop-blur-md bg-white/20 dark:bg-gray-800/30 hover:bg-white/30 dark:hover:bg-gray-700/40 shadow-lg hover:shadow-xl hover:scale-110 text-gray-800 dark:text-yellow-300 border border-white/40 dark:border-gray-500/30"
             aria-label={t('切换主题', 'Toggle theme')}
           >
-            <span className="text-2xl filter drop-shadow-lg">{theme === 'dark' ? '☀️' : '🌙'}</span>
+            <span className="text-2xl filter drop-shadow-md">
+              {(theme || 'light') === 'dark' ? '☀️' : '🌙'}
+              <span className="text-xs absolute -bottom-6 left-0 text-red-500">
+                {theme || 'undefined'}
+              </span>
+            </span>
           </button>
 
           {/* 右上角 - 语言切换 */}
           <button
             onClick={toggleLanguage}
-            className="absolute top-6 right-4 z-20 px-4 py-2 rounded-full transition-all duration-500 backdrop-blur-xl bg-gradient-to-br from-white/20 via-white/10 to-transparent dark:from-gray-800/30 dark:via-gray-700/20 dark:to-transparent hover:from-white/30 hover:via-white/20 dark:hover:from-gray-700/40 dark:hover:via-gray-600/30 shadow-xl hover:shadow-2xl hover:scale-105 text-gray-800 dark:text-gray-100 border border-white/30 dark:border-gray-400/20 font-medium text-sm"
+            className="absolute top-6 right-4 z-20 px-4 py-2 rounded-2xl transition-all duration-300 backdrop-blur-md bg-white/20 dark:bg-gray-800/30 hover:bg-white/30 dark:hover:bg-gray-700/40 shadow-lg hover:shadow-xl hover:scale-105 text-gray-800 dark:text-gray-100 border border-white/40 dark:border-gray-500/30 font-medium text-sm"
           >
             <span className="flex items-center space-x-2">
-              <span className="text-lg filter drop-shadow-lg">🌐</span>
-              <span className="filter drop-shadow-lg">{language === 'zh' ? 'EN' : '中文'}</span>
+              <span className="text-lg filter drop-shadow-md">🌐</span>
+              <span className="filter drop-shadow-md">{language === 'zh' ? 'EN' : '中文'}</span>
             </span>
           </button>
 
