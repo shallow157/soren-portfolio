@@ -64,12 +64,12 @@ export default function Layout({ children }: LayoutProps) {
             </div>
 
             {/* 移动端导航 - 核心内容导航 */}
-            <div className="md:hidden flex items-center space-x-4">
+            <div className="md:hidden flex items-center space-x-2">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-sm px-3 py-2 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 font-medium"
+                  className="text-sm px-2 py-2 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 font-medium"
                 >
                   {item.name}
                 </a>
