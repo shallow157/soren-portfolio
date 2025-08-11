@@ -223,33 +223,31 @@ export default function Home() {
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
           {/* 左上角 - 夜间模式切换按钮 */}
-          <div className="absolute top-6 left-4 z-30">
-            <button
-              onClick={toggleTheme}
-              className="p-4 rounded-xl transition-all duration-300 bg-white/15 dark:bg-gray-800/25 hover:bg-white/25 dark:hover:bg-gray-700/35 shadow-lg hover:shadow-xl hover:scale-110 text-gray-800 dark:text-yellow-300 border border-gray-200/30 dark:border-gray-500/25"
-              aria-label={t('切换主题', 'Toggle theme')}
-            >
-              <div className="text-2xl">
-                {theme === 'dark' ? '☀️' : '🌙'}
-              </div>
-              <div className="text-xs text-red-500 mt-1">
-                {theme || 'none'}
-              </div>
-            </button>
-          </div>
+          <button
+            onClick={toggleTheme}
+            className="absolute top-4 left-4 z-30 p-3 rounded-xl transition-all duration-300 bg-white/15 dark:bg-gray-800/25 hover:bg-white/25 dark:hover:bg-gray-700/35 shadow-lg hover:shadow-xl hover:scale-110 text-gray-800 dark:text-yellow-300 border border-gray-200/30 dark:border-gray-500/25"
+            aria-label={t('切换主题', 'Toggle theme')}
+            style={{ left: '16px', top: '16px' }}
+          >
+            <div className="text-2xl text-center">
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </div>
+            <div className="text-xs text-red-500 text-center mt-1">
+              {theme || 'none'}
+            </div>
+          </button>
 
           {/* 右上角 - 语言切换按钮 */}
-          <div className="absolute top-6 right-4 z-30">
-            <button
-              onClick={toggleLanguage}
-              className="px-4 py-3 rounded-xl transition-all duration-300 bg-white/15 dark:bg-gray-800/25 hover:bg-white/25 dark:hover:bg-gray-700/35 shadow-lg hover:shadow-xl hover:scale-105 text-gray-800 dark:text-gray-100 border border-gray-200/30 dark:border-gray-500/25 font-medium text-sm"
-            >
-              <div className="flex items-center space-x-2">
-                <span className="text-lg">🌐</span>
-                <span>{language === 'zh' ? 'EN' : '中文'}</span>
-              </div>
-            </button>
-          </div>
+          <button
+            onClick={toggleLanguage}
+            className="absolute top-4 right-4 z-30 px-3 py-2 rounded-xl transition-all duration-300 bg-white/15 dark:bg-gray-800/25 hover:bg-white/25 dark:hover:bg-gray-700/35 shadow-lg hover:shadow-xl hover:scale-105 text-gray-800 dark:text-gray-100 border border-gray-200/30 dark:border-gray-500/25 font-medium text-sm"
+            style={{ right: '16px', top: '16px' }}
+          >
+            <div className="flex items-center space-x-2">
+              <span className="text-lg">🌐</span>
+              <span>{language === 'zh' ? 'EN' : '中文'}</span>
+            </div>
+          </button>
 
           {/* 背景动画 */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
