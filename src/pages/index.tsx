@@ -243,7 +243,7 @@ export default function Home() {
       <div className="block md:hidden">
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-          {/* 功能按钮行 - 高级玻璃拟态设计 */}
+          {/* 功能按钮行 - 优化版玻璃拟态设计 */}
           <div className="absolute top-6 left-0 right-0 z-30 flex justify-between px-4">
             {/* 左边 - 夜间模式切换 */}
             <button
@@ -251,23 +251,25 @@ export default function Home() {
                 createRipple(e);
                 toggleTheme();
               }}
-              className={`glass-button theme-btn ${theme === 'dark' ? 'dark-mode' : 'light-mode'} w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-500 hover:scale-110 hover:-translate-y-1`}
+              className={`glass-button-subtle theme-btn ${theme === 'dark' ? 'dark-mode' : 'light-mode'} w-11 h-11 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-500 hover:scale-110 hover:-translate-y-1`}
             >
-              <span className="text-xl transition-transform duration-500">
+              <span className="text-lg transition-transform duration-500">
                 {theme === 'dark' ? '☀️' : '🌙'}
               </span>
             </button>
 
-            {/* 右边 - 语言切换 */}
+            {/* 右边 - 语言切换（紧凑版） */}
             <button
               onClick={(e) => {
                 createRipple(e);
                 toggleLanguage();
               }}
-              className="glass-button lang-btn px-4 py-2 rounded-full flex items-center space-x-2 relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+              className="glass-button-subtle lang-btn px-3 py-2 rounded-full flex items-center gap-1 relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-translate-y-1"
             >
-              <span className="text-lg">🌐</span>
-              <span className="text-sm font-medium">{language === 'zh' ? 'EN' : '中文'}</span>
+              <span className="text-base">🌐</span>
+              <span className={`text-sm font-medium transition-colors duration-300 ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>
+                {language === 'zh' ? 'EN' : '中文'}
+              </span>
             </button>
           </div>
 

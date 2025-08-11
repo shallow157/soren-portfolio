@@ -302,6 +302,35 @@ export default function App({ Component, pageProps }: AppProps) {
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
           }
 
+          /* 更subtle的玻璃效果 - 视觉弱化版本 */
+          .glass-button-subtle {
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          }
+
+          .glass-button-subtle:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1) !important;
+          }
+
+          /* 夜间模式下的subtle玻璃效果 */
+          .dark .glass-button-subtle {
+            background: rgba(0, 0, 0, 0.15) !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+          }
+
+          .dark .glass-button-subtle:hover {
+            background: rgba(0, 0, 0, 0.25) !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3) !important;
+          }
+
           /* 主题切换按钮的状态动效 */
           .theme-btn.light-mode {
             transform: rotate(0deg) !important;
