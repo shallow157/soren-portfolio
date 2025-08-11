@@ -63,38 +63,19 @@ export default function Layout({ children }: LayoutProps) {
               </button>
             </div>
 
-            {/* 移动端导航 */}
-            <div className="md:hidden flex items-center space-x-1">
+            {/* 移动端导航 - 核心内容导航 */}
+            <div className="md:hidden flex items-center space-x-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="mobile-nav-item text-xs px-1.5 py-1 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex-shrink-0 min-w-0"
-                  style={{
-                    maxWidth: '60px',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap'
-                  }}
+                  className="text-sm px-3 py-2 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 font-medium"
                 >
                   {item.name}
                 </a>
               ))}
 
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-lg transition-colors text-gray-600 hover:bg-gray-100 dark:text-yellow-400 dark:hover:bg-gray-700"
-                aria-label={t('切换主题', 'Toggle theme')}
-              >
-                {theme === 'dark' ? '☀️' : '🌙'}
-              </button>
 
-              <button
-                onClick={toggleLanguage}
-                className="px-3 py-1 rounded-lg text-sm font-medium transition-colors text-gray-700 hover:bg-gray-100 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 dark:border-gray-600"
-              >
-                {language === 'zh' ? 'EN' : '中文'}
-              </button>
             </div>
           </div>
         </div>

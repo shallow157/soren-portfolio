@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useTheme } from '@/contexts/ThemeContext'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
@@ -13,7 +14,8 @@ import KeyboardShortcutsHelp from '../components/KeyboardShortcutsHelp'
 import { useKeyboardShortcuts, defaultShortcuts } from '../hooks/useKeyboardShortcuts'
 import { useBookStore } from '@/store/bookStore'
 export default function Home() {
-  const { t } = useLanguage()
+  const { t, language, toggleLanguage } = useLanguage()
+  const { theme, toggleTheme } = useTheme()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -220,6 +222,26 @@ export default function Home() {
       <div className="block md:hidden">
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+          {/* 左上角 - 夜间模式切换 */}
+          <button
+            onClick={toggleTheme}
+            className="absolute top-6 left-4 z-20 p-3 rounded-full transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110 text-gray-600 dark:text-yellow-400 border border-gray-200/50 dark:border-gray-600/50"
+            aria-label={t('切换主题', 'Toggle theme')}
+          >
+            <span className="text-xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
+          </button>
+
+          {/* 右上角 - 语言切换 */}
+          <button
+            onClick={toggleLanguage}
+            className="absolute top-6 right-4 z-20 px-4 py-2 rounded-full transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-105 text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-600/50 font-medium text-sm"
+          >
+            <span className="flex items-center space-x-1">
+              <span className="text-base">🌐</span>
+              <span>{language === 'zh' ? 'EN' : '中文'}</span>
+            </span>
+          </button>
+
           {/* 背景动画 */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
             <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
