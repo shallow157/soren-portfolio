@@ -228,8 +228,10 @@ export default function Home() {
 
           <div className="relative z-10 text-center max-w-lg">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              {t('你好，我是', 'Hello, I am')}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 block mt-2">
+              <span className="mobile-hero-greeting">
+                {t('你好，我是', 'Hello, I am')}
+              </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 block mt-2 mobile-hero-name">
                 Soren
               </span>
             </h1>

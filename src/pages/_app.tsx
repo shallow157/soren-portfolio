@@ -151,6 +151,128 @@ export default function App({ Component, pageProps }: AppProps) {
             color: #bfdbfe !important;
           }
 
+          /* 移动端多语言响应式适配 - iPhone 12 Pro优化 */
+          @media (max-width: 390px) {
+            /* 英文状态下导航栏优化 */
+            [lang="en"] .mobile-nav-item {
+              padding: 0 6px !important;
+              font-size: 11px !important;
+              max-width: 50px !important;
+              letter-spacing: -0.5px !important;
+            }
+
+            /* 中文状态下导航栏保持原样 */
+            [lang="zh"] .mobile-nav-item {
+              padding: 0 8px !important;
+              font-size: 12px !important;
+              max-width: 55px !important;
+            }
+
+            /* Hero区域文本优化 */
+            .mobile-hero-greeting {
+              font-size: 1.8rem !important;
+              line-height: 1.2 !important;
+            }
+
+            .mobile-hero-name {
+              margin-left: -8px !important;
+              font-size: 2.2rem !important;
+            }
+
+            /* 英文状态下Hero文本调整 */
+            [lang="en"] .mobile-hero-greeting {
+              font-size: 1.6rem !important;
+              letter-spacing: -0.5px !important;
+            }
+
+            [lang="en"] .mobile-hero-name {
+              margin-left: -12px !important;
+              font-size: 2rem !important;
+              letter-spacing: -1px !important;
+            }
+          }
+
+          /* iPhone 12 Pro专属断点优化 (375px) */
+          @media (max-width: 375px) {
+            /* 导航栏进一步压缩 */
+            .mobile-nav-item {
+              padding: 0 4px !important;
+              font-size: 10px !important;
+              max-width: 45px !important;
+            }
+
+            /* 英文状态下更激进的压缩 */
+            [lang="en"] .mobile-nav-item {
+              padding: 0 3px !important;
+              font-size: 9px !important;
+              max-width: 40px !important;
+              letter-spacing: -0.8px !important;
+            }
+
+            /* Hero区域进一步优化 */
+            .mobile-hero-greeting {
+              font-size: 1.5rem !important;
+            }
+
+            .mobile-hero-name {
+              margin-left: -15px !important;
+              font-size: 1.8rem !important;
+            }
+
+            /* 英文状态下Hero区域更紧凑 */
+            [lang="en"] .mobile-hero-greeting {
+              font-size: 1.3rem !important;
+              letter-spacing: -0.8px !important;
+            }
+
+            [lang="en"] .mobile-hero-name {
+              margin-left: -18px !important;
+              font-size: 1.6rem !important;
+              letter-spacing: -1.2px !important;
+            }
+          }
+
+          /* 字体特性控制和交互容错设计 */
+          .mobile-nav-item {
+            font-kerning: auto !important;
+            word-break: break-word !important;
+            min-height: 32px !important;
+            min-width: 32px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            touch-action: manipulation !important;
+          }
+
+          /* 英文状态下的字体微调 */
+          [lang="en"] .mobile-nav-item {
+            letter-spacing: -0.3px !important;
+            font-weight: 500 !important;
+          }
+
+          /* 中文状态下的字体微调 */
+          [lang="zh"] .mobile-nav-item {
+            letter-spacing: 0px !important;
+            font-weight: 400 !important;
+          }
+
+          /* Hero区域文本容器弹性适配 */
+          .mobile-hero-greeting, .mobile-hero-name {
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+          }
+
+          /* 英文状态下的Hero文本优化 */
+          [lang="en"] .mobile-hero-greeting {
+            font-kerning: auto !important;
+            text-rendering: optimizeLegibility !important;
+          }
+
+          [lang="en"] .mobile-hero-name {
+            font-kerning: auto !important;
+            text-rendering: optimizeLegibility !important;
+          }
+
           /* 移动端布局强制修复 */
           .block {
             display: block !important;

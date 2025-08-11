@@ -69,7 +69,13 @@ export default function Layout({ children }: LayoutProps) {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-xs px-2 py-1 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
+                  className="mobile-nav-item text-xs px-1.5 py-1 rounded transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex-shrink-0 min-w-0"
+                  style={{
+                    maxWidth: '60px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                  }}
                 >
                   {item.name}
                 </a>
