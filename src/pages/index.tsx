@@ -16,6 +16,27 @@ import { useBookStore } from '@/store/bookStore'
 export default function Home() {
   const { t, language, toggleLanguage } = useLanguage()
   const { theme, toggleTheme } = useTheme()
+
+  // 点击波纹效果函数
+  const createRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const button = e.currentTarget
+    const ripple = document.createElement('span')
+    const rect = button.getBoundingClientRect()
+    const size = Math.max(rect.width, rect.height)
+    const x = e.clientX - rect.left - size / 2
+    const y = e.clientY - rect.top - size / 2
+
+    ripple.style.width = ripple.style.height = size + 'px'
+    ripple.style.left = x + 'px'
+    ripple.style.top = y + 'px'
+    ripple.classList.add('ripple')
+
+    button.appendChild(ripple)
+
+    setTimeout(() => {
+      ripple.remove()
+    }, 600)
+  }
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -222,20 +243,28 @@ export default function Home() {
       <div className="block md:hidden">
         {/* 移动端Hero区域 - 改进版 */}
         <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-          {/* 功能按钮行 */}
+          {/* 功能按钮行 - 高级玻璃拟态设计 */}
           <div className="absolute top-6 left-0 right-0 z-30 flex justify-between px-4">
             {/* 左边 - 夜间模式切换 */}
             <button
-              onClick={toggleTheme}
-              className="p-3 rounded-xl bg-white/20 dark:bg-gray-800/30 hover:bg-white/30 dark:hover:bg-gray-700/40 shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={(e) => {
+                createRipple(e);
+                toggleTheme();
+              }}
+              className={`glass-button theme-btn ${theme === 'dark' ? 'dark-mode' : 'light-mode'} w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-500 hover:scale-110 hover:-translate-y-1`}
             >
-              <span className="text-2xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
+              <span className="text-xl transition-transform duration-500">
+                {theme === 'dark' ? '☀️' : '🌙'}
+              </span>
             </button>
 
             {/* 右边 - 语言切换 */}
             <button
-              onClick={toggleLanguage}
-              className="px-4 py-2 rounded-xl bg-white/20 dark:bg-gray-800/30 hover:bg-white/30 dark:hover:bg-gray-700/40 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+              onClick={(e) => {
+                createRipple(e);
+                toggleLanguage();
+              }}
+              className="glass-button lang-btn px-4 py-2 rounded-full flex items-center space-x-2 relative overflow-hidden transition-all duration-300 hover:scale-105 hover:-translate-y-1"
             >
               <span className="text-lg">🌐</span>
               <span className="text-sm font-medium">{language === 'zh' ? 'EN' : '中文'}</span>

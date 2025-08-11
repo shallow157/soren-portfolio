@@ -273,6 +273,65 @@ export default function App({ Component, pageProps }: AppProps) {
             text-rendering: optimizeLegibility !important;
           }
 
+          /* 高级玻璃拟态按钮设计 */
+          .glass-button {
+            background: rgba(255, 255, 255, 0.15) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          }
+
+          .glass-button:hover {
+            background: rgba(255, 255, 255, 0.25) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+          }
+
+          /* 夜间模式下的玻璃效果 */
+          .dark .glass-button {
+            background: rgba(0, 0, 0, 0.2) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+          }
+
+          .dark .glass-button:hover {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
+          }
+
+          /* 主题切换按钮的状态动效 */
+          .theme-btn.light-mode {
+            transform: rotate(0deg) !important;
+          }
+
+          .theme-btn.dark-mode {
+            transform: rotate(180deg) !important;
+          }
+
+          /* 点击波纹效果 */
+          .ripple {
+            position: absolute !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.4) !important;
+            transform: scale(0) !important;
+            animation: ripple-animation 0.6s linear !important;
+            pointer-events: none !important;
+          }
+
+          .dark .ripple {
+            background: rgba(255, 255, 255, 0.2) !important;
+          }
+
+          @keyframes ripple-animation {
+            to {
+              transform: scale(2) !important;
+              opacity: 0 !important;
+            }
+          }
+
           /* 移动端布局强制修复 */
           .block {
             display: block !important;
