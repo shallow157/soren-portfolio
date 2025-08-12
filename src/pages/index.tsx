@@ -496,6 +496,37 @@ export default function Home() {
             </div>
 
             <div className="space-y-6">
+              {/* 最新文章：梦憩随笔 */}
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div className="flex items-start justify-between mb-4">
+                  <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-800 dark:text-pink-200 text-sm rounded-full">
+                    {t('生活随笔', 'Life Essays')}
+                  </span>
+                  <span className="text-gray-500 dark:text-gray-400 text-sm">
+                    2025-08-09
+                  </span>
+                </div>
+                <Link href="/life/4">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer">
+                    {t('梦憩随笔 -- 八月九日梦', 'Dream Reverie -- August 9th Dream')}
+                  </h3>
+                </Link>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {t(
+                    '桌子上的那摊东西起初只是模糊的褐影，细碎的嗡鸣伴着酸腐气味，无不提醒我——那颗苹果已然腐烂。我是刚睡醒，清晰地记得梦到了多年前喜欢的人...',
+                    'The mess on the table was initially just a blurry brown shadow, with tiny buzzing and sour smell reminding me - that apple had rotted. I just woke up, clearly remembering dreaming of someone I liked years ago...'
+                  )}
+                </p>
+                <Link href="/life/4">
+                  <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium hover:underline">
+                    {t('阅读更多', 'Read More')}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              </div>
+
               {/* 文章1：关于技术成长的思考 */}
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="flex items-start justify-between mb-4">
@@ -1834,7 +1865,7 @@ export default function Home() {
             </motion.p>
           </motion.div>
           
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             initial="initial"
             whileInView="animate"
@@ -1847,7 +1878,97 @@ export default function Home() {
               }
             }}
           >
-            <motion.article 
+            {/* 最新文章：梦憩随笔 */}
+            <motion.article
+              className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 dark:border-gray-700 relative overflow-hidden"
+              variants={{
+                initial: { opacity: 0, y: 50, rotateY: -10 },
+                animate: { opacity: 1, y: 0, rotateY: 0 }
+              }}
+              whileHover={{
+                y: -8,
+                rotateY: 2,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <motion.div
+                className="flex items-center justify-between mb-6 relative z-10"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <motion.span
+                  className="px-4 py-2 bg-pink-100 dark:bg-pink-900/50 text-pink-800 dark:text-pink-200 text-sm rounded-full font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {t('生活随笔', 'Life Essays')}
+                </motion.span>
+                <motion.span
+                  className="text-sm text-gray-500 dark:text-gray-400"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  2025-08-09
+                </motion.span>
+              </motion.div>
+
+              <Link href="/life/4">
+                <motion.h3
+                  className="text-2xl font-bold text-gray-900 dark:text-white mb-4 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer relative z-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  whileHover={{ x: 5 }}
+                >
+                  {t('梦憩随笔 -- 八月九日梦', 'Dream Reverie -- August 9th Dream')}
+                </motion.h3>
+              </Link>
+
+              <motion.p
+                className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed relative z-10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
+                {t(
+                  '桌子上的那摊东西起初只是模糊的褐影，细碎的嗡鸣伴着酸腐气味，无不提醒我——那颗苹果已然腐烂。我是刚睡醒，清晰地记得梦到了多年前喜欢的人...',
+                  'The mess on the table was initially just a blurry brown shadow, with tiny buzzing and sour smell reminding me - that apple had rotted. I just woke up, clearly remembering dreaming of someone I liked years ago...'
+                )}
+              </motion.p>
+
+              <Link href="/life/4">
+                <motion.div
+                  className="flex items-center text-blue-600 dark:text-blue-400 font-medium relative z-10"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  whileHover={{ x: 5 }}
+                >
+                  {t('阅读更多', 'Read More')}
+                  <motion.svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </motion.svg>
+                </motion.div>
+              </Link>
+            </motion.article>
+
+            <motion.article
               className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8 border border-gray-100 dark:border-gray-700 relative overflow-hidden"
               variants={{
                 initial: { opacity: 0, y: 50, rotateY: -10 },
