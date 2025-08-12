@@ -361,59 +361,6 @@ export default function App({ Component, pageProps }: AppProps) {
             }
           }
 
-          /* 导航栏hover效果优化 */
-          .nav-item {
-            position: relative;
-            overflow: hidden;
-          }
-
-          /* 夜间模式切换过渡动画 */
-          html {
-            transition: background-color 0.3s ease, color 0.3s ease !important;
-          }
-
-          body {
-            transition: background-color 0.3s ease, color 0.3s ease !important;
-          }
-
-          /* 社交链接样式 */
-          .social-link {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-          }
-
-          .social-link:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
-          }
-
-          .dark .social-link {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-          }
-
-          .dark .social-link:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
-          }
-
-          /* 移动端背景渐变优化 */
-          @media (max-width: 767px) {
-            .mobile-gradient-bg {
-              background: linear-gradient(135deg,
-                #f0f9ff 0%,
-                #e0e7ff 25%,
-                #fdf4ff 50%,
-                #f0f9ff 75%,
-                #e0e7ff 100%) !important;
-            }
-
-            .dark .mobile-gradient-bg {
-              background: linear-gradient(135deg,
-                #0f172a 0%,
-                #1e1b4b 25%,
-                #581c87 50%,
-                #1e1b4b 75%,
-                #0f172a 100%) !important;
-            }
-          }
-
           /* 移动端布局强制修复 */
           .block {
             display: block !important;
