@@ -219,14 +219,14 @@ export default function Home() {
 
     try {
       await emailjs.send(
-        'service_io3k8bu',    // 您的 Service ID
-        'template_1mx1sls',   // 您的 Template ID
+        'service_yv8rjqt',    // 您的 Service ID
+        'template_js35cre',   // 您的 Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        'dD19_yxO-Hs_UyFVU'   // 您的 Public Key
+        'ZnI1gk9_5X2kMVRBS'   // 您的 Public Key
       )
       
       setSubmitStatus('success')
@@ -2510,7 +2510,7 @@ export default function Home() {
                   </motion.div>
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{t('邮箱', 'Email')}</p>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">shallowyang157@outlook.com</span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">sorencareer@outlook.com</span>
                   </div>
                 </motion.div>
                 
@@ -2722,7 +2722,7 @@ export default function Home() {
 
         {/* 邮箱链接 */}
         <a
-          href="mailto:your.email@example.com"
+          href="mailto:sorencareer@outlook.com"
           className="social-link-side w-11 h-11 rounded-lg bg-white/8 dark:bg-gray-800/15 backdrop-blur-sm border border-white/15 dark:border-gray-500/15 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/15 dark:hover:bg-gray-700/25 group hover:-translate-x-1"
           aria-label="Email"
         >
