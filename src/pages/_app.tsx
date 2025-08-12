@@ -393,6 +393,52 @@ export default function App({ Component, pageProps }: AppProps) {
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
           }
 
+          /* 侧边社交链接样式 */
+          .social-link-side {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+            position: relative;
+          }
+
+          .social-link-side:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+          }
+
+          .dark .social-link-side {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+          }
+
+          .dark .social-link-side:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+          }
+
+          /* 侧边社交链接的tooltip效果 */
+          .social-link-side::before {
+            content: attr(aria-label);
+            position: absolute;
+            right: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 50;
+          }
+
+          .social-link-side:hover::before {
+            opacity: 1;
+          }
+
+          .dark .social-link-side::before {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+          }
+
           /* 移动端背景渐变优化 */
           @media (max-width: 767px) {
             .mobile-gradient-bg {
